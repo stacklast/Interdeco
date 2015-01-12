@@ -12,6 +12,7 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
 
 <head>
 
+    <meta name="robots" content="noindex">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -59,7 +60,7 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<?php echo $domain; ?>/">Sistema de Planes Turistcos |</a>
+                <a class="navbar-brand" href="<?php echo $domain; ?>/">Sistema Interdeco |</a>
                 <div class="navbar-brand">Bienvenido: <small><?php echo $_SESSION['usuario']; ?></small></div>
             </div>
             <!-- /.navbar-header -->
@@ -126,7 +127,7 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
                                 <div>
                                     <p>
                                         <strong>Registros Nuevos 1</strong>
-                                        <span class="pull-right text-muted">40% Aproximadamente</span>
+                                        <span class="pull-right text-muted">40% Aprox.</span>
                                     </p>
                                     <div class="progress progress-striped active">
                                         <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
@@ -142,7 +143,7 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
                                 <div>
                                     <p>
                                         <strong>Registros Actualizados</strong>
-                                        <span class="pull-right text-muted">20% Aproximadamente</span>
+                                        <span class="pull-right text-muted">20% Aprox.</span>
                                     </p>
                                     <div class="progress progress-striped active">
                                         <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
@@ -158,7 +159,7 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
                                 <div>
                                     <p>
                                         <strong>Registros Modificados</strong>
-                                        <span class="pull-right text-muted">60% Aproximadamente</span>
+                                        <span class="pull-right text-muted">60% Aprox.</span>
                                     </p>
                                     <div class="progress progress-striped active">
                                         <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
@@ -174,7 +175,7 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
                                 <div>
                                     <p>
                                         <strong>Registros Eliminados</strong>
-                                        <span class="pull-right text-muted">80% Aproximadamente</span>
+                                        <span class="pull-right text-muted">80% Aprox.</span>
                                     </p>
                                     <div class="progress progress-striped active">
                                         <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
@@ -279,7 +280,7 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
                     <ul class="nav" id="side-menu">
                         <li class="sidebar-search">
                             <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
+                                <input type="text" class="form-control" placeholder="Buscar...">
                                 <span class="input-group-btn">
                                 <button class="btn btn-default" type="button">
                                     <i class="fa fa-search"></i>
@@ -316,7 +317,7 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
                                     <a href="<?php echo $domain; ?>/Vista/Mantenimiento/Usuarios/">Usuarios</a>
                                 </li>
                                 <li>
-                                    <a href="buttons.html">Botones</a>
+                                    <a href="#">Botones</a>
                                 </li>
                                 <li>
                                     <a href="notifications.html">Notificaciones</a>

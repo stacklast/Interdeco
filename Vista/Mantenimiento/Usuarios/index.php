@@ -1,20 +1,18 @@
 <?php include ('../../header.php') ?>
 <?php include ('../../../Modelo/DAO/Cls.DAO.Combos.php'); //incluimos Clase  DAO de Usuarios ?>
 	<div class="row">
-		<div class="col-md-12">
-	    	<div class="page-header" style="text-align:center;">
-			  <h1>Usuarios <small>Mantenimiento</small></h1>
-			</div>
-	    </div>
-	</div>
-	<div>
-		<div class="col-md-12">
-			<div class="form-group col-md-3">
+        <div class="col-lg-12">
+            <h1 class="page-header">Usuarios <small>Mantenimiento</small></h1>
+        </div>
+      	<!-- /.col-lg-12 -->
+    </div>
+	<div class="col-lg-12">
+			<div class="form-group col-lg-3">
 			    <div class="col-sm-10">
 			      <button id="nuevo" type="button" class="btn btn-success"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Nuevo</button>
 			    </div>
 			 </div>
-			 <div class="col-md-6">
+			 <div class="col-lg-6">
 			    <div class="input-group">
 			      <input type="text" class="form-control" placeholder="Buscar Usuario...">
 			      <span class="input-group-btn">
@@ -22,10 +20,9 @@
 			      </span>
 			    </div><!-- /input-group -->
 		   </div><!-- /.col-lg-6 -->
-		</div>
 	</div>
 	<div class="row">
-	   	<div class="col-md-12 panel panel-default">
+	   	<div class="col-lg-12 panel panel-default">
 		   	<div class="panel-body">
 		   		<div class="table-responsive" id="resultados-busqueda">
 			      <table class="table table-hover">
