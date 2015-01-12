@@ -1,4 +1,10 @@
 $(document).ready(function(){
+
+
+         $('#pag').click(function() {
+         	$('#pag').addClass('active');
+         	$('.nav-second-level').addClass('colapse in');
+             });
 	$('#cap').click(function() {
                     
                     validarCaptcha();
@@ -31,8 +37,8 @@ $(document).ready(function(){
                 });
 	
 	$(function () {
-	  $('[data-toggle="tooltip"]').tooltip()
-	})
+	  $('[data-toggle="tooltip"]').tooltip();
+	});
 	function HabilitarCampos(){
 		$("#id").prop('disabled', true);
 		$("#cooperativa").prop('disabled', false);
@@ -44,18 +50,20 @@ $(document).ready(function(){
 		$("#password").prop('disabled', false);
 	}
 	function limpiar(){
-		$("#id").val("");
-		$("#nombre").val("");
-		$("#alias").val("");
-		$("#apellido").val("");
-		$("#email").val("");
-		$("#password").val("");
+		
+		$("#id").val('');
+		$("#nombre").val('');
+		$("#alias").val('');
+		$("#apellido").val('');
+		$("#email").val('');
+		$("#password").val('');
 	}
 	$("#nuevo").click(function(){
 		$("#usuarios").show();
 		HabilitarCampos();
 		$("#resultados-busqueda").hide();
 	});
+
 	$("#buscar").click(function(){
 		$("#usuarios").hide();
 		$("#resultados-busqueda").show();
@@ -80,12 +88,8 @@ $(document).ready(function(){
 		var datosString = $("#usuarios").serialize();
 		var dato = '&accion=' + accion;
 		var validacion_email = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
-		if(id == ""){
-			$("#id").focus();
-			alert('(*)Campo Obligatorio: Ingrese id');
-			return false;
-		}
-		else if(email == "" || !validacion_email.test(email)){
+		
+		 if(email == "" || !validacion_email.test(email)){
 			$("#email").focus();
 			alert('(*)Campo Obligatorio: Ingrese su email');
 			return false;

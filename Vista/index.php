@@ -5,6 +5,9 @@
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
+            <div class="usuario">
+                
+            </div>
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-3 col-md-6">

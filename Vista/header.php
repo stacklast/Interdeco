@@ -12,7 +12,6 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
 
 <head>
 
-    <meta name="robots" content="noindex">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -60,7 +59,7 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<?php echo $domain; ?>/">Sistema Interdeco |</a>
+                <a class="navbar-brand" href="<?php echo $domain; ?>/">Sistema de Planes Turistcos |</a>
                 <div class="navbar-brand">Bienvenido: <small><?php echo $_SESSION['usuario']; ?></small></div>
             </div>
             <!-- /.navbar-header -->
@@ -314,10 +313,10 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> Mantenimientos<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="<?php echo $domain; ?>/Vista/Mantenimiento/Usuarios/">Usuarios</a>
+                                    <a id="pag" href="<?php echo $domain; ?>/Vista/Mantenimiento/Usuarios/">Usuarios</a>
                                 </li>
                                 <li>
-                                    <a href="#">Botones</a>
+                                    <a href="buttons.html">Botones</a>
                                 </li>
                                 <li>
                                     <a href="notifications.html">Notificaciones</a>

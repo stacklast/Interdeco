@@ -7,7 +7,7 @@
     <script src="/github/Interdeco/js/jquery-1.11.0.js"></script>
 
     <!-- jQuery usuarios.ajax -->
-    <script src="<?php echo $domain; ?>/js/usuarios.ajax.js"></script>
+    <script src="/github/Interdeco/js/ajax.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="/github/Interdeco/js/bootstrap.min.js"></script>

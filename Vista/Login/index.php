@@ -83,7 +83,7 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
     <script src="<?php echo $domain; ?>/js/jquery-1.11.0.js"></script>
 
     <!-- jQuery usuarios.ajax -->
-    <script src="<?php echo $domain; ?>/js/usuarios.ajax.js"></script>
+    <script src="<?php echo $domain; ?>/js/ajax.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="<?php echo $domain; ?>/js/bootstrap.min.js"></script>
