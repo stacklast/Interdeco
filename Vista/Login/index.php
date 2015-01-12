@@ -2,7 +2,7 @@
 $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
 

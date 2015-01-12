@@ -185,7 +185,7 @@ $(document).ready(function(){
 			    		$('#error').html("su contraseña  y correo electrónico son  incorrectos");
 			    	}
 			    	else{
-			    		location.href = "/Github/Interdeco/Vista/index.php	";
+			    		location.href = "/Github/Interdeco/Vista/";
 			    	}
 			        $('.ajaxgif').hide();
 			        $('.msg').text('Mensaje enviado!').addClass('msg_ok').animate({ 'right' : '130px' }, 300);  

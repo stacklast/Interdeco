@@ -9,11 +9,11 @@ if (isset($_SESSION['usuario']) && isset($_SESSION['password']))
 		setTimeout ("redireccionar()", 5000); //tiempo expresado en milisegundos
 		</script>
     header("Location: vista/home.php");*/
-    echo '<script>location.href = "/Github/Interdeco/Vista/index.php";</script>'; 
+    echo '<script>location.href = "/Github/Interdeco/Vista/";</script>'; 
 }
 else
 {
 	//header("Location: vista/login.php");
-	echo '<script>location.href = "/Github/Interdeco/Vista/Login/login.php";</script>'; 
+	echo '<script>location.href = "/Github/Interdeco/Vista/Login/";</script>'; 
 }
 ?>

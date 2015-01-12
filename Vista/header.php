@@ -3,7 +3,7 @@ session_start();
 if (!isset($_SESSION['usuario']) && !isset($_SESSION['usuario']) !='')
 if (!isset($_SESSION['password']) && !isset($_SESSION['password']) !='')
 {
-  echo '<script>location.href = "/GitHub/Interdeco/Vista/Login/login.php";</script>';
+  echo '<script>location.href = "/GitHub/Interdeco/Vista/Login/";</script>';
 } 
 $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
 ?>
@@ -59,7 +59,7 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Sistema de Planes Turistcos |</a>
+                <a class="navbar-brand" href="<?php echo $domain; ?>/">Sistema de Planes Turistcos |</a>
                 <div class="navbar-brand">Bienvenido: <small><?php echo $_SESSION['usuario']; ?></small></div>
             </div>
             <!-- /.navbar-header -->
@@ -125,8 +125,8 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
                             <a href="#">
                                 <div>
                                     <p>
-                                        <strong>Task 1</strong>
-                                        <span class="pull-right text-muted">40% Complete</span>
+                                        <strong>Registros Nuevos 1</strong>
+                                        <span class="pull-right text-muted">40% Aproximadamente</span>
                                     </p>
                                     <div class="progress progress-striped active">
                                         <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
@@ -141,8 +141,8 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
                             <a href="#">
                                 <div>
                                     <p>
-                                        <strong>Task 2</strong>
-                                        <span class="pull-right text-muted">20% Complete</span>
+                                        <strong>Registros Actualizados</strong>
+                                        <span class="pull-right text-muted">20% Aproximadamente</span>
                                     </p>
                                     <div class="progress progress-striped active">
                                         <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
@@ -157,8 +157,8 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
                             <a href="#">
                                 <div>
                                     <p>
-                                        <strong>Task 3</strong>
-                                        <span class="pull-right text-muted">60% Complete</span>
+                                        <strong>Registros Modificados</strong>
+                                        <span class="pull-right text-muted">60% Aproximadamente</span>
                                     </p>
                                     <div class="progress progress-striped active">
                                         <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
@@ -173,8 +173,8 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
                             <a href="#">
                                 <div>
                                     <p>
-                                        <strong>Task 4</strong>
-                                        <span class="pull-right text-muted">80% Complete</span>
+                                        <strong>Registros Eliminados</strong>
+                                        <span class="pull-right text-muted">80% Aproximadamente</span>
                                     </p>
                                     <div class="progress progress-striped active">
                                         <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
@@ -187,7 +187,7 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
                         <li class="divider"></li>
                         <li>
                             <a class="text-center" href="#">
-                                <strong>See All Tasks</strong>
+                                <strong>Ver log de Registros</strong>
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         </li>
@@ -260,12 +260,12 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
                         <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i>Perfil de Usuarios</a>
                         </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i>Configuracion</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="<?php echo $domain; ?>/Vista/Login/logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="<?php echo $domain; ?>/Vista/Login/logout.php"><i class="fa fa-sign-out fa-fw"></i> Cerrar Cesión</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -289,7 +289,7 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a class="active" href="index.html"><i class="fa fa-dashboard fa-fw"></i> Inicio</a>
+                            <a class="active" href="<?php echo $domain; ?>/"><i class="fa fa-dashboard fa-fw"></i> Inicio</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
@@ -310,10 +310,10 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
                             <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Formularios</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i> Mantenimientos<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="panels-wells.html">Panels and Wells</a>
+                                    <a href="<?php echo $domain; ?>/Vista/Mantenimiento/Usuarios/">Usuarios</a>
                                 </li>
                                 <li>
                                     <a href="buttons.html">Botones</a>
@@ -326,36 +326,6 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
                                 </li>
                                 <li>
                                     <a href="grid.html">Grid</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Third Level <span class="fa arrow"></span></a>
-                                    <ul class="nav nav-third-level">
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                    </ul>
-                                    <!-- /.nav-third-level -->
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
