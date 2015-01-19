@@ -1,6 +1,6 @@
 <?php
 /** Clase abstracta para el manejo de datos en tablas
-* @author: Leonardo Molina; lama_amx AT hotmail DOT com
+* @author: Leonardo Molina; lama_amx AT hotmail DOT com editado por Edwin Benalcázar E.
 * @version 3.0 2008-12-17
 */
 class SQLConection {
