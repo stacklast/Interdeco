@@ -17,8 +17,7 @@ class ClsDAO_Combos
 //CONSTRUCTOR Cooperativa
 
       public function __construct()
-      {
-         
+      { 
          $this->_cooperativa=array();
       }
 //METODO OBTENER Cooperativa

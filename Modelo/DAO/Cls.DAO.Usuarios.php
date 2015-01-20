@@ -39,16 +39,14 @@ class ClsDAO_Usuarios
 		 * @var SQLConection
 		 * @param String Nombre de la Tabla de BD a Usar
 		 */
-		$this->_tablaUsuarios =new SQLConection ('USU_USUARIOS');
+		$this->_tablaUsuarios =new SQLConection ('USU_USUARIO');
 		$fields = $this->_tablaUsuarios->fields =array (
-		              array ('private', 'ID', "' '"),
-		              array ('public', 'COP_CODIGO'),
-		              array ('public', 'ROL'),
-		              array ('public', 'USU_NOMBRE'),
-		              array ('public', 'USU_APELLIDO'),
+		              array ('private', 'USU_ID', "' '"),
+		              array ('public', 'EMP_ID'),
 		              array ('public', 'USU_ALIAS'),
+		              array ('public', 'USU_PASSWORD'),
 		              array ('public', 'USU_EMAIL'),
-		              array ('public', 'USU_PASSWORD')
+		              array ('private', 'USU_FECHA_REGISTRO',"'".date('yyyy/mm/dd hh:mm:ss')."'")
 				);  //instanciamos base de datos
 		/*$buscar = mysql_query("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS 
 		WHERE TABLE_NAME = 'USU_USUARIOS'"); 
@@ -85,14 +83,14 @@ class ClsDAO_Usuarios
 	 */
 	public function ValidarUsuario($email,$password,$recordar){
 		try{
-			$this->_consulta = $this->_tablaUsuarios->getRecords("USU_EMAIL='$email' OR USU_PASSWORD = '$password' ",false,1);
+			 $this->_consulta = $this->_tablaUsuarios->getRecords("USU_EMAIL='$email' OR USU_PASSWORD = '$password' ",false,1);
 			//var_dump($this->_consulta);
 			if($this->_consulta)
 				{
 					 $this->_pass     = $this->_consulta[0]['USU_PASSWORD'];
 					 $this->_mail     = $this->_consulta[0]['USU_EMAIL'];
-					 $this->_nombre   = $this->_consulta[0]['USU_NOMBRE'];
-					 $this->_apellido = $this->_consulta[0]['USU_APELLIDO'];
+					 $this->_nombre   = 'Edwin';
+					 $this->_apellido = 'Benalcazar';
 					//si el password y el email coinciden con la BD
 					if($this->_pass==$password && $email == $this->_mail){
 						session_start();
@@ -134,7 +132,7 @@ class ClsDAO_Usuarios
 	}
 	public function VerificaRegistroExistente($email,$alias)
 	{
-		$this->_consulta = $this->_tablaUsuarios->getRecords("USU_EMAIL='$email' OR USU_ALIAS = '$alias' ",false,1);
+		echo $this->_consulta = $this->_tablaUsuarios->getRecords("USU_EMAIL='$email' OR USU_ALIAS = '$alias' ",false,1);
 		$numrows = mysql_num_rows($this->_consulta);
 		if ($numrows!=0) { 
 			echo "ya existe un registro con ese email o ese alias"; 

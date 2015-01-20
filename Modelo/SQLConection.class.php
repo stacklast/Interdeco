@@ -133,4 +133,5 @@ class SQLConection {
 			}
 		return $resultado;
 		}
-}?>
+}
+?>

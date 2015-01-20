@@ -24,7 +24,7 @@ Class Conf{
       $host='localhost';
 
       //Base de datos a utilizar
-      $db='embarque';
+      $db='interdeco';
 
       //Qué sistema gestor de base de datos utilizamos, mysql, oracle, ...
       $dbType='mysql';
