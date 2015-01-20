@@ -24,6 +24,7 @@ class ClsDAO_Usuarios
 	private  $_consulta; //array();
 	private  $_pass;//string 
 	private  $_mail;//string
+	private  $_TBL_empleados;
 	/**
 	 * [__construct constructor para instanciar tabla a utilizar]
 	 */
@@ -89,8 +90,26 @@ class ClsDAO_Usuarios
 				{
 					 $this->_pass     = $this->_consulta[0]['USU_PASSWORD'];
 					 $this->_mail     = $this->_consulta[0]['USU_EMAIL'];
-					 $this->_nombre   = 'Edwin';
-					 $this->_apellido = 'Benalcazar';
+					 /**
+					 * $bd variable que instancia la conexion a BD
+					 * @var objeto
+					 */
+					 $bd=Db::getInstance();	
+					 $id =  $this->_consulta[0]['EMP_ID'];
+					 /*Creamos una query sencilla*/
+					 $sql="SELECT EMP_NOMBRE, EMP_APELLIDO FROM emp_empleados WHERE EMP_ID = $id";
+
+						/*Ejecutamos la query*/
+						$stmt=$bd->ejecutar($sql);
+
+						/*Realizamos un bucle para ir obteniendo los resultados*/
+						while ($x=$bd->obtener_fila($stmt,0)){
+						  // echo $x['USU_NOMBRE'].'<br />';
+							$nombre = $x['EMP_NOMBRE'];
+							$apellido= $x['EMP_APELLIDO'];
+						}
+					 $this->_nombre   = $nombre;
+					 $this->_apellido = $apellido;
 					//si el password y el email coinciden con la BD
 					if($this->_pass==$password && $email == $this->_mail){
 						session_start();
