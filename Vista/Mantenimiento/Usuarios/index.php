@@ -32,14 +32,11 @@
 			        <thead>
 			          <tr>
 			            <th>ID</th>
-			            <th>Cooperativa</th>
-			            <th>Rol</th>
-			            <th>Nombre</th>
-			            <th>Apellido</th>
+			            <th>Empleado</th>
 			            <th>Alias</th>
-			            <th>Email</th>
 			            <th>Password</th>
-			            <th>Acciones</th>
+			            <th>Email</th>
+			            <th>Fecha</th>
 			          </tr>
 			        </thead>
 			        <tbody>
@@ -50,8 +47,7 @@
 			            <td>Table cell</td>
 			            <td>Table cell</td>
 			            <td>Table cell</td>
-			            <td>Table cell</td>
-			            <td>Table cell</td>
+			           
 			            <td><button class="btn btn-info btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Editar Campo"><span class="glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span></button> <button class="btn btn-danger btn-sm" type="button"><span class="glyphicon glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span></button></td>
 			          </tr>
 			          <tr class="success">
@@ -61,8 +57,7 @@
 			            <td>Table cell</td>
 			            <td>Table cell</td>
 			            <td>Table cell</td>
-			            <td>Table cell</td>
-			            <td>Table cell</td>
+			            
 			            <td><button class="btn btn-info btn-sm" type="button"><span class="glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span></button> <button class="btn btn-danger btn-sm" type="button"><span class="glyphicon glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span></button></td>
 			          </tr>
 			          <tr>
@@ -72,8 +67,7 @@
 			            <td>Table cell</td>
 			            <td>Table cell</td>
 			            <td>Table cell</td>
-			            <td>Table cell</td>
-			            <td>Table cell</td>
+			           
 			            <td><button class="btn btn-info btn-sm" type="button"><span class="glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span></button> <button class="btn btn-danger btn-sm" type="button"><span class="glyphicon glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span></button></td>
 			          </tr>
 			        </tbody>
@@ -89,37 +83,17 @@
 				    </div>
 				  </div>
 				  <div class="form-group col-md-4">
-				    <label for="inputEmail3" class="col-sm-4 control-label">Cooperativa</label>
+				    <label for="inputEmail3" class="col-sm-4 control-label">Empleado</label>
 				    <div class="col-sm-8">
 
-				    <select id="cooperativa" name="cooperativa" class="form-control">
+				    <select id="empleado" name="empleado" class="form-control">
 					<?php
-					$cooperativa = new ClsDAO_Combos();
-					$reg = $cooperativa->Get_Cooperativa();
+					$empleado = new ClsDAO_Combos();
+					$reg = $empleado->Get_Empleado();
 					 for($i=0; $i<count($reg); $i++) { ?>    
-					<option value="<?php echo $reg[$i]["COP_CODIGO"];?>"><?php echo $reg[$i]["COP_NOMBRE"];?></option>
+					<option value="<?php echo $reg[$i]["EMP_ID"];?>"><?php echo $reg[$i]["EMP_NOMBRE"]." ".$reg[$i]["EMP_APELLIDO"];?></option>
 					 <?php } ?>
 					</select>
-				    </div>
-				  </div>
-				  <div class="form-group col-md-4">
-				    <label for="inputEmail3" class="col-sm-4 control-label">Rol</label>
-				    <div class="col-sm-8">
-				      <select  class="form-control" id="rol" name="rol" >
-				      	<option value="Administrador">Administrador</option>
-				      </select>
-				    </div>
-				  </div>
-				  <div class="form-group col-md-4">
-				    <label for="inputEmail3" class="col-sm-4 control-label">Nombre</label>
-				    <div class="col-sm-8">
-				      <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre">
-				    </div>
-				  </div>
-				  <div class="form-group col-md-4">
-				    <label for="inputEmail3" class="col-sm-4 control-label">Apellido</label>
-				    <div class="col-sm-8">
-				      <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido">
 				    </div>
 				  </div>
 				  <div class="form-group col-md-4">
@@ -129,15 +103,21 @@
 				    </div>
 				  </div>
 				  <div class="form-group col-md-4">
+				    <label for="inputPassword3" class="col-sm-4 control-label">Password</label>
+				    <div class="col-sm-8">
+				      <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+				    </div>
+				  </div>
+				  <div class="form-group col-md-4">
 				    <label for="inputEmail3" class="col-sm-4 control-label">Email</label>
 				    <div class="col-sm-8">
 				      <input type="email" class="form-control" id="email" name="email" placeholder="Email">
 				    </div>
 				  </div>
 				  <div class="form-group col-md-4">
-				    <label for="inputPassword3" class="col-sm-4 control-label">Password</label>
+				    <label for="inputEmail3" class="col-sm-4 control-label">Fecha</label>
 				    <div class="col-sm-8">
-				      <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+				      <input type="email" class="form-control" id="fecha" name="fecha" placeholder="Fecha">
 				    </div>
 				  </div>
 		    	</div>
