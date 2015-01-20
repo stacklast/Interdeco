@@ -24,7 +24,7 @@ class ClsDAO_Combos
  
    public function Get_Cooperativa()
    {
-   	  $bd=Db::getInstance();
+   	$bd=Db::getInstance();
       $sql="SELECT * FROM cop_coperativa ORDER BY COP_CODIGO ASC";
       $res=$bd->ejecutar($sql);
       //mysql_fetch_assoc se utiliza para trabajar con array multidimensional
