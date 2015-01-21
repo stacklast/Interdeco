@@ -1,6 +1,4 @@
 $(document).ready(function(){
-
-
          $('#pag').click(function() {
          	$('#pag').addClass('active');
          	$('.nav-second-level').addClass('colapse in');
