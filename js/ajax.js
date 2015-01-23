@@ -1,11 +1,10 @@
 $(document).ready(function(){
 	var total = $("#totalregistros").val();
 	for (var i = 0; i < total; i++) {
-		alert($("#USU_ID"+i).val());
 		$('#EditarUsuario'+i).click(function() {
-		var id =$("#USU_ID"+i).val();
-         	alert($("#USU_ID"+i).val());
-    });
+			 var asd = $('#USU_ID'+i).val();
+         	alert(asd);
+   		 });
 	};
 	
          $('#pag').click(function() {
