@@ -47,7 +47,6 @@
 			            <td>Table cell</td>
 			            <td>Table cell</td>
 			            <td>Table cell</td>
-			           
 			            <td><button class="btn btn-info btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Editar Campo"><span class="glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span></button> <button class="btn btn-danger btn-sm" type="button"><span class="glyphicon glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span></button></td>
 			          </tr>
 			          <tr class="success">
@@ -57,7 +56,6 @@
 			            <td>Table cell</td>
 			            <td>Table cell</td>
 			            <td>Table cell</td>
-			            
 			            <td><button class="btn btn-info btn-sm" type="button"><span class="glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span></button> <button class="btn btn-danger btn-sm" type="button"><span class="glyphicon glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span></button></td>
 			          </tr>
 			          <tr>
@@ -67,7 +65,6 @@
 			            <td>Table cell</td>
 			            <td>Table cell</td>
 			            <td>Table cell</td>
-			           
 			            <td><button class="btn btn-info btn-sm" type="button"><span class="glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span></button> <button class="btn btn-danger btn-sm" type="button"><span class="glyphicon glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span></button></td>
 			          </tr>
 			        </tbody>
@@ -117,7 +114,7 @@
 				  <div class="form-group col-md-4">
 				    <label for="inputEmail3" class="col-sm-4 control-label">Fecha</label>
 				    <div class="col-sm-8">
-				      <input type="email" class="form-control" id="fecha" name="fecha" placeholder="Fecha">
+				      <input type="email" class="form-control" id="fecha" name="fecha" placeholder="Fecha" value="<?php echo date('y/m/d h:m:s'); ?>" readonly="readonly">
 				    </div>
 				  </div>
 		    	</div>

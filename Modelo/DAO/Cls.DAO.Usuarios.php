@@ -47,7 +47,7 @@ class ClsDAO_Usuarios
 		              array ('public', 'USU_ALIAS'),
 		              array ('public', 'USU_PASSWORD'),
 		              array ('public', 'USU_EMAIL'),
-		              array ('private', 'USU_FECHA_REGISTRO',"'".date('yyyy/mm/dd hh:mm:ss')."'")
+		              array ('public', 'USU_FECHA_REGISTRO',"'".date('yyyy/mm/dd hh:mm:ss')."'")
 				);  //instanciamos base de datos
 		/*$buscar = mysql_query("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS 
 		WHERE TABLE_NAME = 'USU_USUARIOS'"); 

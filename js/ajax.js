@@ -78,11 +78,11 @@ $(document).ready(function(){
 		var id = $("#id").val();
 		var cooperativa =$("#cooperativa").val();
 		var rol = $("#rol").val();
-		var nombre = $("#nombre").val();
+		var empleado = $("#empleado").val();
 		var alias = $("#alias").val();
-		var apellido = $("#apellido").val();
-		var email = $("#email").val();
 		var password = $("#password").val();
+		var email = $("#email").val();
+		var fecha = $("#fecha").val();
 		var datosString = $("#usuarios").serialize();
 		var dato = '&accion=' + accion;
 		var validacion_email = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
@@ -99,8 +99,8 @@ $(document).ready(function(){
 			return false;
 		}
 		else 
-		if(cooperativa == ""){
-			$("#cooperativa").focus();
+		if(empleado == ""){
+			$("#empleado").focus();
 			alert('(*)Campo Obligatorio: Ingrese cooperativa');
 			return false;
 		}
@@ -108,12 +108,6 @@ $(document).ready(function(){
 		if(rol == ""){
 			$("#rol").focus();
 			alert('(*)Campo Obligatorio: Ingrese rol');
-			return false;
-		}
-		else 
-		if(nombre == ""){
-			$("#nombre").focus();
-			alert('(*)Campo Obligatorio: Ingrese nombre');
 			return false;
 		}
 		else{

@@ -14,14 +14,13 @@ include ('funciones.php');
  * @var ClsDAO_Usuarios
  */
 @$UsuariosDAO = new ClsDAO_Usuarios();
-@$rol 		  = NoInjection($_POST['rol']);
-@$nombre 	  = NoInjection($_POST['nombre']);
-@$apellido 	  = NoInjection($_POST['apellido']);
+@$empleado 	  = NoInjection($_POST['empleado']);
 @$alias 	  = NoInjection($_POST['alias']);
-@$email 	  = NoInjection($_POST['email']);
-@$cooperativa = NoInjection($_POST['cooperativa']);
-@$recordar 	  = $_POST['recordar'];
 @$password 	  = EncriptarMD5_SALT($_POST['password']);
+@$email 	  = NoInjection($_POST['email']);
+@$fecha       = NoInjection($_POST['fecha']);
+@$recordar 	  = $_POST['recordar'];
+
 /**
  * $procesar Para realizar accion
  * @var string Valor 
@@ -32,7 +31,7 @@ if(isset($procesar)){
 	 	echo $UsuariosDAO->ValidarUsuario($email,$password,$recordar);
 	}
 	if($procesar == "InsertarUsuario"){
-		$insertar= array("".$cooperativa."","".$rol."","".$nombre."","".$apellido."","".$alias."","".$email."","".$password."");
+		 $insertar= array("".$empleado."","".$alias."","".$password."","".$email."","".$fecha."");
 		echo $UsuariosDAO->InsertarUsuario($insertar);
 	}
 }
