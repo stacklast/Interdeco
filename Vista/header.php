@@ -26,6 +26,9 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
     <!-- MetisMenu CSS -->
     <link href="<?php echo $domain; ?>/css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
 
+    <!-- DataTables CSS -->
+    <link href="<?php echo $domain; ?>/css/plugins/dataTables.bootstrap.css" rel="stylesheet">
+
     <!-- Timeline CSS -->
     <link href="<?php echo $domain; ?>/css/plugins/timeline.css" rel="stylesheet">
 

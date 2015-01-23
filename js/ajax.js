@@ -1,4 +1,13 @@
 $(document).ready(function(){
+	var total = $("#totalregistros").val();
+	for (var i = 0; i < total; i++) {
+		alert($("#USU_ID"+i).val());
+		$('#EditarUsuario'+i).click(function() {
+		var id =$("#USU_ID"+i).val();
+         	alert($("#USU_ID"+i).val());
+    });
+	};
+	
          $('#pag').click(function() {
          	$('#pag').addClass('active');
          	$('.nav-second-level').addClass('colapse in');

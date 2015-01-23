@@ -11,64 +11,78 @@
 		<div class="col-md-12">
 			<div class="form-group col-md-3">
 			    <div class="col-sm-10">
-			      <button id="nuevo" type="button" class="btn btn-success"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Nuevo</button>
+			      <button id="nuevo" type="button" class="btn btn-success"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Nuevo</button>
 			    </div>
 			 </div>
-			 <div class="col-md-6">
-			    <div class="input-group">
-			      <input type="text" class="form-control" placeholder="Buscar Usuario...">
-			      <span class="input-group-btn">
-			        <button id="buscar" class="btn btn-warning" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Buscar</button>
-			      </span>
-			    </div><!-- /input-group -->
-		   </div><!-- /.col-lg-6 -->
+			 <div class="form-group col-md-3">
+			    <div class="col-sm-10">
+			      <button id="buscar" class="btn btn-warning" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Buscar</button>
+			    </div>
+			 </div>
 		</div>
 	</div>
 	<div class="row">
 	   	<div class="col-md-12 panel panel-default">
+	   	<div class="panel-heading">
+                           Registros de Usuarios
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
 		   	<div class="panel-body">
 		   		<div class="table-responsive" id="resultados-busqueda">
-			      <table class="table table-hover">
-			        <thead>
-			          <tr>
-			            <th>ID</th>
-			            <th>Empleado</th>
-			            <th>Alias</th>
-			            <th>Password</th>
-			            <th>Email</th>
-			            <th>Fecha</th>
-			          </tr>
-			        </thead>
-			        <tbody>
-			          <tr class="active">
-			            <th scope="row">1</th>
-			            <td>Table cell</td>
-			            <td>Table cell</td>
-			            <td>Table cell</td>
-			            <td>Table cell</td>
-			            <td>Table cell</td>
-			            <td><button class="btn btn-info btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Editar Campo"><span class="glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span></button> <button class="btn btn-danger btn-sm" type="button"><span class="glyphicon glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span></button></td>
-			          </tr>
-			          <tr class="success">
-			            <th scope="row">2</th>
-			            <td>Table cell</td>
-			            <td>Table cell</td>
-			            <td>Table cell</td>
-			            <td>Table cell</td>
-			            <td>Table cell</td>
-			            <td><button class="btn btn-info btn-sm" type="button"><span class="glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span></button> <button class="btn btn-danger btn-sm" type="button"><span class="glyphicon glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span></button></td>
-			          </tr>
-			          <tr>
-			            <th scope="row">3</th>
-			            <td>Table cell</td>
-			            <td>Table cell</td>
-			            <td>Table cell</td>
-			            <td>Table cell</td>
-			            <td>Table cell</td>
-			            <td><button class="btn btn-info btn-sm" type="button"><span class="glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span></button> <button class="btn btn-danger btn-sm" type="button"><span class="glyphicon glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span></button></td>
-			          </tr>
-			        </tbody>
-			      </table>
+			      <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th>USU_ID</th>
+                                            <th>EMP_ID</th>
+                                            <th>Alias</th>
+                                            <th>Password</th>
+                                            <th>Email</th>
+                                            <th>Fecha de Registro</th>
+                                            <th>Opciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                  <?php 
+                                     $usuario=array();
+                                      $bd=Db::getInstance();
+								      $sql="SELECT `USU_ID`, `EMP_ID`, `USU_ALIAS`, `USU_PASSWORD`, `USU_EMAIL`, `USU_FECHA_REGISTRO` FROM `usu_usuario`";
+								      $res=$bd->ejecutar($sql);
+								      //mysql_fetch_assoc se utiliza para trabajar con array multidimensional
+								      while($reg=mysql_fetch_assoc($res))
+								      {
+								         //recibe cada uno de los registros que tiene la tabla tipo_equipo
+								         $usuario[]=$reg;   
+								      }   
+
+                                      for($i=0; $i<count($usuario); $i++) { ?>    
+
+                                        <tr class="odd gradeX">
+                                            <td class="center">
+                                            	<?php echo $usuario[$i]["USU_ID"];?>
+                                            	<input type="hidden" id="USU_ID<?php echo $i; ?>" value="<?php echo $usuario[$i]["USU_ID"];?>">
+                                            </td>
+                                            <td>
+                                            	<?php echo $usuario[$i]["EMP_ID"];?>
+                                            	<input type="hidden" id="EMP_ID<?php echo $i; ?>" value="<?php echo $usuario[$i]["EMP_ID"];?>">
+                                            </td>
+                                            <td><?php echo $usuario[$i]["USU_ALIAS"];?></td>
+                                            <td class="center"><?php echo $usuario[$i]["USU_PASSWORD"];?></td>
+                                            <td class="center"><?php echo $usuario[$i]["USU_EMAIL"];?></td>
+                                            <td class="center"><?php echo $usuario[$i]["USU_FECHA_REGISTRO"];?></td>
+                                            <td>
+								            	<button id="EditarUsuario<?php echo $i; ?>" class="btn btn-info btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Editar Registro">
+								            		<span class="glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span>
+								            	</button> 
+								            	<button id="EliminarUsuario<?php echo $i; ?>" class="btn btn-danger btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Elimiar Registro">
+								            		<span class="glyphicon glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span>
+								            	</button>
+								            </td>
+                                        </tr>
+                                  <?php } ?>
+                                    </tbody>
+                                </table>
+                               <input type="hidden" id="totalregistros" value="<?php echo count($usuario); ?>">
 			    </div>
 							   	
 				<form class="form-horizontal" id="usuarios" name="usuarios" style="display:none;">

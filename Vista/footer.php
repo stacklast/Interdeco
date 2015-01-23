@@ -15,6 +15,15 @@
     <!-- Metis Menu Plugin JavaScript -->
     <script src="/github/Interdeco/js/plugins/metisMenu/metisMenu.min.js"></script>
 
+    <!-- DataTables JavaScript -->
+    <script src="/github/Interdeco/js/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="/github/Interdeco/js/plugins/dataTables/dataTables.bootstrap.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('#dataTables-example').dataTable();
+    });
+    </script>
+
     <!-- Custom Theme JavaScript -->
     <script src="/github/Interdeco/js/sb-admin-2.js"></script>
 
