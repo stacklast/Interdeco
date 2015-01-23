@@ -10,10 +10,10 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Sistema de Facturación Electrónica de Planes Turísticos">
+    <meta name="author" content="Edwin Benalcázar Espín <softwareywebsoluciones@gmail.com>">
 
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <title>Sistema Interdeco</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo $domain; ?>/css/bootstrap.min.css" rel="stylesheet">
@@ -43,7 +43,7 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Please Sign In</h3>
+                        <h3 class="panel-title">Por favor Autentificarse</h3>
                     </div>
                     <div class="panel-body">
                         <form role="form">
@@ -66,7 +66,7 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
                                 </div>
                                 <div class="checkbox">
                                     <label>
-                                        <input name="remember" type="checkbox" value="Remember Me">Remember Me
+                                        <input name="remember" type="checkbox" value="Recordarme">Recordarme
                                     </label>
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
