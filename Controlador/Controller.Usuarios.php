@@ -34,6 +34,9 @@ if(isset($procesar)){
 		 $insertar= array("".$empleado."","".$alias."","".$password."","".$email."","".$fecha."");
 		echo $UsuariosDAO->InsertarUsuario($insertar);
 	}
+	if($procesar == "ModificarUsuario"){
+		
+	}
 }
 else{
 	echo "Se ha Enviado una petición Errónea: Controller.Usuarios.php";

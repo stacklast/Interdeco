@@ -1,17 +1,37 @@
 $(document).ready(function(){
-	var total = $("#totalregistros").val();
-	for (var i = 0; i < total; i++) {
-		$('#EditarUsuario'+i).click(function() {
-			 var asd = $('#USU_ID'+i).val();
-         	alert(asd);
-   		 });
+		
+    var total = $("#totalregistros").val();
+	for (var i = 1; i <= total; i++) {
+		aux = i;
+		$('#EditarUsuario'+aux).click({param1: aux}, editarUsuario);
+		function editarUsuario(event)
+		{
+				id = $('#USU_ID'+event.data.param1).val();
+				empleado = $('#EMP_ID'+event.data.param1).val();
+				alias = $('#USU_ALIAS'+event.data.param1).val();
+				pass = $('#USU_PASSWORD'+event.data.param1).val();
+				email = $('#USU_EMAIL'+event.data.param1).val();
+				fecharegistro = $('#USU_FECHA_REGISTRO'+event.data.param1).val();
+				$("#id").val(id);
+				$("#empleado").val(empleado);
+				$("#alias").val(alias);
+				$("#password").val(pass);
+				$("#email").val(email);
+				$("#fecha").val(fecharegistro);
+				$("#resultados-busqueda").hide();
+				$("#div-agregar").hide();
+				$("#div-limpiar").hide();
+	    	    $("#usuarios").show();
+	    	    $("#div-modificar").show();
+			    HabilitarCampos();
+		}
 	};
 	
          $('#pag').click(function() {
          	$('#pag').addClass('active');
          	$('.nav-second-level').addClass('colapse in');
              });
-	$('#cap').click(function() {
+			$('#cap').click(function() {
                     
                     validarCaptcha();
                 });
@@ -47,25 +67,26 @@ $(document).ready(function(){
 	});
 	function HabilitarCampos(){
 		$("#id").prop('disabled', true);
-		$("#cooperativa").prop('disabled', false);
-		$("#rol").prop('disabled', false);
-		$("#nombre").prop('disabled', false);
+		$("#empleado").prop('disabled', false);
 		$("#alias").prop('disabled', false);
-		$("#apellido").prop('disabled', false);
-		$("#email").prop('disabled', false);
 		$("#password").prop('disabled', false);
+		$("#email").prop('disabled', false);
+		$("#fecha").prop('disabled', false);
 	}
 	function limpiar(){
 		
 		$("#id").val('');
-		$("#nombre").val('');
+		$("#empleado").val('');
 		$("#alias").val('');
-		$("#apellido").val('');
-		$("#email").val('');
 		$("#password").val('');
+		$("#email").val('');
+		//$("#fecha").val('');
 	}
 	$("#nuevo").click(function(){
 		$("#usuarios").show();
+		$("#div-agregar").show();
+		$("#div-limpiar").show();
+		$("#div-modificar").hide();
 		HabilitarCampos();
 		$("#resultados-busqueda").hide();
 	});
@@ -80,6 +101,76 @@ $(document).ready(function(){
 	});
 	$("#limpiar").click(function(){
 		limpiar();
+	});
+	$("#modificar").click(function(){
+		var accion = "ModificarUsuario";
+		var id = $("#id").val();
+		var cooperativa =$("#cooperativa").val();
+		var rol = $("#rol").val();
+		var empleado = $("#empleado").val();
+		var alias = $("#alias").val();
+		var password = $("#password").val();
+		var email = $("#email").val();
+		var fecha = $("#fecha").val();
+		var datosString = $("#usuarios").serialize();
+		var dato = '&accion=' + accion;
+		var validacion_email = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
+		
+		 if(email == "" || !validacion_email.test(email)){
+			$("#email").focus();
+			alert('(*)Campo Obligatorio: Ingrese su email');
+			return false;
+		}
+		else 
+		if(password == ""){
+			$("#password").focus();
+			alert('(*)Campo Obligatorio: Ingrese la contraseña');
+			return false;
+		}
+		else 
+		if(empleado == ""){
+			$("#empleado").focus();
+			alert('(*)Campo Obligatorio: Ingrese cooperativa');
+			return false;
+		}
+		else 
+		if(rol == ""){
+			$("#rol").focus();
+			alert('(*)Campo Obligatorio: Ingrese rol');
+			return false;
+		}
+		else{
+			$('#error').html('');
+			$('.ajaxgif').removeClass('hide');
+			datos = datosString+dato;
+			//alert(datos);
+			$.ajax({
+			    type: "POST",
+			    url: "/Github/Interdeco/Controlador/Controller.Usuarios.php",
+			    data: datos,
+			    success: function(response) {
+			    	limpiar();
+			    	//alert(response);
+			    	if(response == 1){
+			    		alert("No se ha podido Modificar los datos del Usuario");
+			    	}
+			    	else if (response == "Exito"){
+			    		alert("Los datos del  Usuario han sido Modificados con Exito");
+			    	}
+			    	else{
+			    		alert(response);
+			    	}
+			        $('.ajaxgif').hide();
+			        $('.msg').text('Mensaje enviado!').addClass('msg_ok').animate({ 'right' : '130px' }, 300);  
+			    },
+			    error: function(response) {
+			    	alert(response);
+			        $('.ajaxgif').hide();
+			        $('.msg').text('Hubo un error!').addClass('msg_error').animate({ 'right' : '130px' }, 300);                 
+			    }
+			});
+			return false;
+		}
 	});
 	$("#agregar").click(function(){
 		var accion = "InsertarUsuario";

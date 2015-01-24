@@ -60,22 +60,34 @@
                                         <tr class="odd gradeX">
                                             <td class="center">
                                             	<?php echo $usuario[$i]["USU_ID"];?>
-                                            	<input type="hidden" id="USU_ID<?php echo $i; ?>" value="<?php echo $usuario[$i]["USU_ID"];?>">
+                                            	<input type="hidden" id="USU_ID<?php echo $i+1; ?>" value="<?php echo $usuario[$i]["USU_ID"];?>">
                                             </td>
                                             <td>
                                             	<?php echo $usuario[$i]["EMP_ID"];?>
-                                            	<input type="hidden" id="EMP_ID<?php echo $i; ?>" value="<?php echo $usuario[$i]["EMP_ID"];?>">
+                                            	<input type="hidden" id="EMP_ID<?php echo $i+1; ?>" value="<?php echo $usuario[$i]["EMP_ID"];?>">
                                             </td>
-                                            <td><?php echo $usuario[$i]["USU_ALIAS"];?></td>
-                                            <td class="center"><?php echo $usuario[$i]["USU_PASSWORD"];?></td>
-                                            <td class="center"><?php echo $usuario[$i]["USU_EMAIL"];?></td>
-                                            <td class="center"><?php echo $usuario[$i]["USU_FECHA_REGISTRO"];?></td>
                                             <td>
-								            	<button id="EditarUsuario<?php echo $i; ?>" class="btn btn-info btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Editar Registro">
+                                            	<?php echo $usuario[$i]["USU_ALIAS"];?>
+                                            	<input type="hidden" id="USU_ALIAS<?php echo $i+1; ?>" value="<?php echo $usuario[$i]["USU_ALIAS"];?>">
+                                            </td>
+                                            <td class="center">
+                                            	<?php echo $usuario[$i]["USU_PASSWORD"];?>
+                                            	<input type="hidden" id="USU_PASSWORD<?php echo $i+1; ?>" value="<?php echo $usuario[$i]["USU_PASSWORD"];?>">
+                                            </td>
+                                            <td class="center">
+                                            	<?php echo $usuario[$i]["USU_EMAIL"];?>
+                                            	<input type="hidden" id="USU_EMAIL<?php echo $i+1; ?>" value="<?php echo $usuario[$i]["USU_EMAIL"];?>">
+                                            </td>
+                                            <td class="center">
+                                            	<?php echo $usuario[$i]["USU_FECHA_REGISTRO"];?>
+                                            	<input type="hidden" id="USU_FECHA_REGISTRO<?php echo $i+1; ?>" value="<?php echo $usuario[$i]["USU_FECHA_REGISTRO"];?>">
+                                            </td>
+                                            <td>
+								            	<button id="EditarUsuario<?php echo $i+1; ?>" class="btn btn-info btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Editar Registro">
 								            		<span class="glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span>
 								            	</button> 
-								            	<button id="EliminarUsuario<?php echo $i; ?>" class="btn btn-danger btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Elimiar Registro">
-								            		<span class="glyphicon glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span>
+								            	<button id="EliminarUsuario<?php echo $i+1; ?>" class="btn btn-danger btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Elimiar Registro">
+								            		<span class="glyphicon glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span>
 								            	</button>
 								            </td>
                                         </tr>
@@ -96,7 +108,6 @@
 				  <div class="form-group col-md-4">
 				    <label for="inputEmail3" class="col-sm-4 control-label">Empleado</label>
 				    <div class="col-sm-8">
-
 				    <select id="empleado" name="empleado" class="form-control">
 					<?php
 					$empleado = new ClsDAO_Combos();
@@ -133,18 +144,23 @@
 				  </div>
 		    	</div>
 		    	<div class="form-group"></div>
-		    	<div class="col-md-12">
-		    	  <div class="form-group col-md-3">
+		    	<div  class="col-md-12">
+		    	  <div id="div-agregar" class="form-group col-md-3">
 				    <div class="col-sm-10">
 				      <a id="agregar" type="botton" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Guardar</a>
 				    </div>
 				  </div>
-				  <div class="form-group col-md-3">
+				  <div id="div-modificar" class="form-group col-md-3">
+				    <div class="col-sm-10">
+				      <a id="modificar" type="botton" class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar Registro</a>
+				    </div>
+				  </div>
+				  <div id="div-limpiar" class="form-group col-md-3">
 				    <div class="col-sm-10">
 				      <a id="limpiar" type="reset" class="btn btn-primary"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Limpiar</a>
 				    </div>
 				  </div>
-				  <div class="form-group col-md-3">
+				  <div id="div-cancelar" class="form-group col-md-3">
 				    <div class="col-sm-10">
 				      <a id="cancelar" type="botton" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span> Cancelar</a>
 				    </div>
