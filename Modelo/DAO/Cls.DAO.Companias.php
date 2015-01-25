@@ -18,14 +18,9 @@ class ClsDAO_Companias
 	 * @var objeto
 	 */
 	private  $_tablaCompanias;//Objeto
-	private  $_nombre;//String
-	private  $_ruc;//String
 	private  $_resultado;// bool true false
 	private  $_consulta; //array();
-	private  $_direccion;//string 
-	private  $_telefono;//string
-	private  $_email;//string
-	private  $_web;//string
+
 	/**
 	 * [__construct constructor para instanciar tabla a utilizar]
 	 */
@@ -70,7 +65,7 @@ class ClsDAO_Companias
 				return "1";
 			}
 		}catch (Exception $e){
-			return 'Se ha generado una Exception al Agregar Nuevo Usuario: '.$e;
+			return 'Se ha generado una Exception al Agregar Nueva Compania: '.$e;
 		}
 	}
 	/**
@@ -91,7 +86,7 @@ class ClsDAO_Companias
 				return "1";
 			}
 		}catch (Exception $e){
-			return 'Se ha generado una Exception al Modificar Usuario: '.$e;
+			return 'Se ha generado una Exception al Modificar Compania: '.$e;
 		}
 	}
 	public function EliminarCompania($id)
@@ -107,7 +102,7 @@ class ClsDAO_Companias
 				return "1";
 			}
 		}catch (Exception $e){
-			return 'Se ha generado una Exception al Modificar Usuario: '.$e;
+			return 'Se ha generado una Exception al Modificar Compania: '.$e;
 		}
 	}
 	public function VerificaRegistroExistenteCompania($email,$ruc)
@@ -119,7 +114,7 @@ class ClsDAO_Companias
 			exit();
 		}
 		else{
-			echo "puede agregarse ese usuario";
+			echo "puede agregarse esa compania";
 		}
 	}
 }

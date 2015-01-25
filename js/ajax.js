@@ -1,9 +1,11 @@
 $(document).ready(function(){
 	var nav = $('#navegacion').val();
+	//solo numeros
 	(function(a){a.fn.validCampoFranz=function(b){a(this).on({keypress:function(a){var c=a.which,d=a.keyCode,e=String.fromCharCode(c).toLowerCase(),f=b;(-1!=f.indexOf(e)||9==d||37!=c&&37==d||39==d&&39!=c||8==d||46==d&&46!=c)&&161!=c||a.preventDefault()}})}})(jQuery);
-					
-						$('#ruc').validCampoFranz('0123456789');
-						$('#telefono').validCampoFranz('0123456789');
+	$('#ruc').validCampoFranz('0123456789');
+	$('#telefono').validCampoFranz('0123456789');
+	$('#celular').validCampoFranz('0123456789');
+	$('#telefax').validCampoFranz('0123456789');
 					
 	if(nav == 'Usuarios'){
 		$('#menu-mantenimientos').addClass('active');
@@ -16,6 +18,350 @@ $(document).ready(function(){
 		$('#menu-companias').addClass('active');
         $('#menu-mantenimientos .nav-second-level').addClass('in');
 	}
+	else 
+	if(nav == 'Empleados'){
+		$('#menu-empleados').addClass('active');
+		$('#menu-empleados').addClass('active');
+        $('#menu-mantenimientos .nav-second-level').addClass('in');
+	}
+
+/**
+ *  Mantenimiento de la tabla com_compania
+ * 
+ */
+    var total = $("#totalregistrosEmpleado").val();
+	for (var i = 1; i <= total; i++) {
+		var aux = i;
+		$('#EditarEmpleado'+aux).click({param1: aux}, editarEmpleado);
+		function editarEmpleado(event){
+			id = $('#EMP_ID'+event.data.param1).val();
+			compania = $('#COM_ID'+event.data.param1).val();
+			nombre = $('#EMP_NOMBRE'+event.data.param1).val();
+			apellido = $('#EMP_APELLIDO'+event.data.param1).val();
+			telefono = $('#EMP_TELEFONO'+event.data.param1).val();
+			celular = $('#EMP_CELULAR'+event.data.param1).val();
+			pais = $('#EMP_PAIS'+event.data.param1).val();
+			provincia = $('#EMP_PROVINCIA_ESTADO'+event.data.param1).val();
+			ciudad = $('#EMP_CIUDAD'+event.data.param1).val();
+			direccion = $('#EMP_DIRECCION'+event.data.param1).val();
+			cargo = $('#EMP_CARGO'+event.data.param1).val();
+			telefax = $('#EMP_TELEFAX'+event.data.param1).val();
+			$("#id").val(id);
+			$("#compania").val(compania);
+			$("#nombre").val(nombre);
+			$("#apellido").val(apellido);
+			$("#telefono").val(telefono);
+			$("#celular").val(celular);
+			$("#pais").val(pais);
+			$("#provincia").val(provincia);
+			$("#ciudad").val(ciudad);
+			$("#direccion").val(direccion);
+			$("#cargo").val(cargo);
+			$("#telefax").val(telefax);
+			$("#resultados-busqueda").hide();
+			$("#div-agregar").hide();
+			$("#div-limpiar").hide();
+	    	$("#empleados").show();
+	    	$("#div-modificar").show();
+			HabilitarCamposCompania();
+		}
+		$('#EliminarEmpleado'+aux).click({param1: aux}, eliminarEmpleado);
+		function eliminarEmpleado(event){
+			id = $('#EMP_ID'+event.data.param1).val();
+			$("#identificador").val(id);
+			$('#myModalLabel').html('Advertencia!');
+			$('.modal-body').html('<div class="alert alert-warning" role="alert">Está seguro que desea eliminar el Registro?</div>');
+			$('#myModal').modal('show');
+		}
+	};
+	$('#eliminarEmpleado').click(function() {
+		var accion = "EliminarEmpleado";
+	 	var id = $("#identificador").val();
+	 	var datos = 'id=' + id+'&accion=' + accion;
+        $.ajax({
+			    type: "POST",
+			    url: "/Github/Interdeco/Controlador/Controller.Empleados.php",
+			    data: datos,
+			    success: function(response) {
+			    	$('#myModal').modal('hide');
+			    	limpiarCompania();
+			    	//alert(response);
+			    	if(response == 1){
+			    		alert("No se ha podido Eliminar el registro del Empleado");
+			    	}
+			    	else if (response == "Exito"){
+			    		location.reload(true);
+			    		alert("Los datos del Empleado han sido Eliminados con Exito");
+			    	}
+			    	else{
+			    		alert(response);
+			    	}
+			    },
+			    error: function(response) {
+			    	$('#myModal').modal('hide');
+			    	alert(response);
+			    }
+			});
+			return false;
+    });
+	$("#modificarEmpleado").click(function(){
+		var accion = "ModificarEmpleado";
+		var id = $("#id").val();
+		var compania = $("#compania").val();
+		var nombre = $("#nombre").val();
+		var apellido = $("#apellido").val();
+		var telefono = $("#telefono").val();
+		var celular = $("#celular").val();
+		var pais = $("#pais").val();
+		var provincia = $("#provincia").val();
+		var ciudad = $("#ciudad").val();
+		var direccion = $("#direccion").val();
+		var cargo = $("#cargo").val();
+		var telefax = $("#telefax").val();
+		var datosString = $("#empleados").serialize();
+		var dato = '&accion=' + accion+'&id=' + id;
+		
+		if(nombre == ""){
+			$("#nombre").focus();
+			alert('(*)Campo Obligatorio: Ingrese nombre');
+			return false;
+		}
+		else
+		if(apellido == ""){
+			$("#apellido").focus();
+			alert('(*)Campo Obligatorio: Ingrese apellido');
+			return false;
+		}
+		else
+		if(telefono == ""){
+			$("#telefono").focus();
+			alert('(*)Campo Obligatorio: Ingrese telefono');
+			return false;
+		}
+		else
+		if(celular == ""){
+			$("#celular").focus();
+			alert('(*)Campo Obligatorio: Ingrese celular');
+			return false;
+		}
+		else
+		if(pais == ""){
+			$("#pais").focus();
+			alert('(*)Campo Obligatorio: Ingrese pais');
+			return false;
+		}
+		else
+		if(provincia == ""){
+			$("#provincia").focus();
+			alert('(*)Campo Obligatorio: Ingrese provincia');
+			return false;
+		}
+		else
+		if(ciudad == ""){
+			$("#ciudad").focus();
+			alert('(*)Campo Obligatorio: Ingrese ciudad');
+			return false;
+		}
+		else 
+		if(direccion == ""){
+			$("#direccion").focus();
+			alert('(*)Campo Obligatorio: Ingrese la direccion');
+			return false;
+		}
+		else 
+		if(cargo == ""){
+			$("#cargo").focus();
+			alert('(*)Campo Obligatorio: Ingrese la cargo');
+			return false;
+		}
+		else 
+		if(telefax == ""){
+			$("#telefax").focus();
+			alert('(*)Campo Obligatorio: Ingrese la telefax');
+			return false;
+		}
+		else{
+			datos = datosString+dato;
+			//alert(datos);
+			$.ajax({
+			    type: "POST",
+			    url: "/Github/Interdeco/Controlador/Controller.Empleados.php",
+			    data: datos,
+			    success: function(response) {
+			    	limpiarUsuario();
+			    	//alert(response);
+			    	if(response == 1){
+			    		alert("No se ha podido Modificar los datos del Empleado");
+			    	}
+			    	else if (response == "Exito"){
+			    		location.reload(true);
+			    		 alert("Los datos del Empleado han sido Modificados con Exito");
+			    		 
+			    	}
+			    	else{
+			    		alert(response);
+			    	}
+			    },
+			    error: function(response) {
+			    	//alert(response);
+			    }
+			});
+			return false;
+		}
+	});
+	$("#agregarEmpleado").click(function(){
+		var accion = "InsertarEmpleado";
+		var id = $("#id").val();
+		var compania = $("#compania").val();
+		var nombre = $("#nombre").val();
+		var apellido = $("#apellido").val();
+		var telefono = $("#telefono").val();
+		var celular = $("#celular").val();
+		var pais = $("#pais").val();
+		var provincia = $("#provincia").val();
+		var ciudad = $("#ciudad").val();
+		var direccion = $("#direccion").val();
+		var cargo = $("#cargo").val();
+		var telefax = $("#telefax").val();
+		var datosString = $("#empleados").serialize();
+		var dato = '&accion=' + accion+'&id=' + id;
+		
+		if(nombre == ""){
+			$("#nombre").focus();
+			alert('(*)Campo Obligatorio: Ingrese nombre');
+			return false;
+		}
+		else
+		if(apellido == ""){
+			$("#apellido").focus();
+			alert('(*)Campo Obligatorio: Ingrese apellido');
+			return false;
+		}
+		else
+		if(telefono == ""){
+			$("#telefono").focus();
+			alert('(*)Campo Obligatorio: Ingrese telefono');
+			return false;
+		}
+		else
+		if(celular == ""){
+			$("#celular").focus();
+			alert('(*)Campo Obligatorio: Ingrese celular');
+			return false;
+		}
+		else
+		if(pais == ""){
+			$("#pais").focus();
+			alert('(*)Campo Obligatorio: Ingrese pais');
+			return false;
+		}
+		else
+		if(provincia == ""){
+			$("#provincia").focus();
+			alert('(*)Campo Obligatorio: Ingrese provincia');
+			return false;
+		}
+		else
+		if(ciudad == ""){
+			$("#ciudad").focus();
+			alert('(*)Campo Obligatorio: Ingrese ciudad');
+			return false;
+		}
+		else 
+		if(direccion == ""){
+			$("#direccion").focus();
+			alert('(*)Campo Obligatorio: Ingrese la direccion');
+			return false;
+		}
+		else 
+		if(cargo == ""){
+			$("#cargo").focus();
+			alert('(*)Campo Obligatorio: Ingrese la cargo');
+			return false;
+		}
+		else 
+		if(telefax == ""){
+			$("#telefax").focus();
+			alert('(*)Campo Obligatorio: Ingrese la telefax');
+			return false;
+		}
+		else{
+			datos = datosString+dato;
+			//alert(datos);
+			$.ajax({
+			    type: "POST",
+			    url: "/Github/Interdeco/Controlador/Controller.Empleados.php",
+			    data: datos,
+			    success: function(response) {
+			    	limpiarUsuario();
+			    	//alert(response);
+			    	if(response == 1){
+			    		alert("No se ha podido Agregar los datos del Empleado");
+			    	}
+			    	else if (response == "Exito"){
+			    		location.reload(true);
+			    		 alert("Los datos del Empleado han sido Agregados con Exito");
+			    	}
+			    	else{
+			    		alert(response);
+			    	}
+			    },
+			    error: function(response) {
+			    	//alert(response);
+			    }
+			});
+			return false;
+		}
+	});
+    function HabilitarCamposEmpleado(){
+		$("#id").prop('disabled', true);
+		$("#nombre").prop('disabled', false);
+		$("#apellido").prop('disabled', false);
+		$("#telefono").prop('disabled', false);
+		$("#celular").prop('disabled', false);
+		$("#pais").prop('disabled', false);
+		$("#provincia").prop('disabled', false);
+		$("#ciudad").prop('disabled', false);
+		$("#direccion").prop('disabled', false);
+		$("#cargo").prop('disabled', false);
+		$("#telefax").prop('disabled', false);
+	}
+	function limpiarEmpleado(){
+		$("#id").val('');
+		$('#compania').prop('selectedIndex',0);
+		$("#nombre").val('');
+		$("#apellido").val('');
+		$("#telefono").val('');
+		$("#celular").val('');
+		$("#pais").val('');
+		$("#provincia").val('');
+		$("#ciudad").val('');
+		$("#direccion").val('');
+		$("#cargo").val('');
+		$("#telefax").val('');
+	}
+	$("#nuevoEmpleado").click(function(){
+		$("#empleados").show();
+		$("#div-limpiar").show();
+		$("#div-modificar").hide();
+		limpiarCompania();
+		HabilitarCamposCompania();
+		$("#resultados-busqueda").hide();
+	});
+
+	$("#buscarEmpleado").click(function(){
+		$("#empleados").hide();
+		$("#resultados-busqueda").show();
+	});
+	$("#cancelarEmpleado").click(function(){
+		limpiarEmpleado();
+		$("#empleados").hide();
+		$("#resultados-busqueda").show();
+	});
+	$("#limpiarEmpleado").click(function(){
+		limpiarEmpleado();
+	});   
+
 /**
  *  Mantenimiento de la tabla com_compania
  * 

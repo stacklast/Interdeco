@@ -312,7 +312,7 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
                                     <a id="menu-companias" href="<?php echo $domain; ?>/Vista/Mantenimiento/Companias/">Companias</a>
                                 </li>
                                 <li>
-                                    <a href="notifications.html">Notificaciones</a>
+                                    <a id="menu-empleados" href="<?php echo $domain; ?>/Vista/Mantenimiento/Empleados/">Empleados</a>
                                 </li>
                                 <li>
                                     <a href="typography.html">Tipografia</a>

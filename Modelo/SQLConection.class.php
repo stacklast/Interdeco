@@ -2,7 +2,8 @@
 
 
 /** Clase abstracta para el manejo de datos en tablas
-* @author: Leonardo Molina; lama_amx AT hotmail DOT com editado por Edwin Benalcázar E.
+* @author: Original de Leonardo Molina; lama_amx AT hotmail DOT com
+* @author: Adaptación y mejoras por Edwin Benalcázar E.
 * @version 3.0 2008-12-17
 */
 class SQLConection {
