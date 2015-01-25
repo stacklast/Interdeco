@@ -3,13 +3,25 @@
                 <div class="col-lg-12">
                     <h1 class="page-header">Sistema de Facturación <small>Planes Turísticos</small></h1>
                 </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <div class="usuario">
                 
+                <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
             <div class="row">
+                <div class="col-lg-6 col-md-8">
+                    <div id="clock" class="light">
+                                <div class="display">
+                                    <div class="weekdays"></div>
+                                    <div class="ampm"></div>
+                                    <div class="alarm"></div>
+                                    <div class="digits"></div>
+                                </div>
+                            </div>
+
+                            <div class="button-holder">
+                                <a class="button">Oscurecer Reloj</a>
+                            </div>
+                </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
@@ -19,13 +31,13 @@
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge">26</div>
-                                    <div>Nuevow Registros!</div>
+                                    <div>Registros Editados</div>
                                 </div>
                             </div>
                         </div>
                         <a href="#">
                             <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
+                                <span class="pull-left">Ver Detalles</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -41,13 +53,13 @@
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge">12</div>
-                                    <div>New Tasks!</div>
+                                    <div>Nuevos Registros</div>
                                 </div>
                             </div>
                         </div>
                         <a href="#">
                             <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
+                                <span class="pull-left">Ver Detalles</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -63,13 +75,13 @@
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge">124</div>
-                                    <div>New Orders!</div>
+                                    <div>Nuevos Pagos</div>
                                 </div>
                             </div>
                         </div>
                         <a href="#">
                             <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
+                                <span class="pull-left">Ver Detalles</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -85,7 +97,7 @@
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge">13</div>
-                                    <div>Support Tickets!</div>
+                                    <div>Registros Eliminados!</div>
                                 </div>
                             </div>
                         </div>

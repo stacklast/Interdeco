@@ -19,6 +19,8 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
     <meta name="author" content="">
 
     <title>Sistema Interdeco</title>
+        <!-- The main CSS file -->
+        <link href="<?php echo $domain; ?>/assets/css/style.css" rel="stylesheet" />
 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo $domain; ?>/css/bootstrap.min.css" rel="stylesheet">
@@ -353,3 +355,4 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
         </nav>
 
         <div id="page-wrapper">
+        

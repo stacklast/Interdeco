@@ -67,7 +67,7 @@ class SQLConection {
 			}
 		$datos = implode (", ", $datos);
 		$query = "UPDATE {$this->table} SET $datos WHERE $campoid ='$id'";
-		echo $query;
+		//echo $query;
 		mysql_query ($query);
 		return $this->validateOperation ();
 		}
