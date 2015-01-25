@@ -1,10 +1,9 @@
 $(document).ready(function(){
-	$('[data-toggle="tooltip"]').tooltip();//Habilita tooltip
 /**
  *  Mantenimiento de la tabla USU_USUARIO
  * 
  */
-    var total = $("#totalregistros").val();
+    var total = $("#totalregistrosUsuario").val();
 	for (var i = 1; i <= total; i++) {
 		aux = i;
 		$('#EditarUsuario'+aux).click({param1: aux}, editarUsuario);
@@ -243,25 +242,27 @@ $(document).ready(function(){
 	function limpiarUsuario(){
 		
 		$("#id").val('');
-		$("#empleado").val('');
+		$('#empleado').prop('selectedIndex',0);
 		$("#alias").val('');
 		$("#password").val('');
 		$("#email").val('');
 		//$("#fecha").val('');
 	}
-	$("#nuevo").click(function(){
+	$("#nuevoUsuario").click(function(){
 		$("#usuarios").show();
 		$("#div-limpiar").show();
 		$("#div-modificar").hide();
+		limpiarUsuario();
 		HabilitarCamposUsuario();
 		$("#resultados-busqueda").hide();
 	});
 
-	$("#buscar").click(function(){
+	$("#buscarUsuario").click(function(){
 		$("#usuarios").hide();
 		$("#resultados-busqueda").show();
 	});
 	$("#cancelarUsuario").click(function(){
+		limpiarUsuario();
 		$("#usuarios").hide();
 		$("#resultados-busqueda").show();
 	});
@@ -359,5 +360,5 @@ $(document).ready(function(){
     //Utiliza el número aleatorio para no traer la imagen desde el caché del navegador.
        $('#captchaImg').attr('src', "get_captcha.php?rnd=" + Math.random());
     });
-
+	$('[data-toggle="tooltip"]').tooltip();//Habilita tooltip
 });

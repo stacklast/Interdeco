@@ -179,7 +179,7 @@ class ClsDAO_Usuarios
 			return 'Se ha generado una Exception al Validar Usuario: '.$e;
 		}
 	}
-	public function VerificaRegistroExistente($email,$alias)
+	public function VerificaRegistroExistenteUsuario($email,$alias)
 	{
 		echo $this->_consulta = $this->_tablaUsuarios->getRecords("USU_EMAIL='$email' OR USU_ALIAS = '$alias' ",false,1);
 		$numrows = mysql_num_rows($this->_consulta);

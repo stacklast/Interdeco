@@ -12,16 +12,17 @@ require ('/../Conf.class.php');/*Incluimos el fichero de la clase Conf*/
 require ('/../Db.class.php');/*Incluimos el fichero de la clase Db*/
 class ClsDAO_Combos
 {   
-//ATRIBUTOS Cooperativa
-   private $_cooperativa;
-//CONSTRUCTOR Cooperativa
+   private $_empleado;
+
 
       public function __construct()
       { 
-         $this->_cooperativa=array();
+         $this->_empleado=array();
       }
-//METODO OBTENER Cooperativa
- 
+
+ /**
+  *  Obtener Empleados
+  */
    public function Get_Empleado()
    {
    	$bd=Db::getInstance();
@@ -31,10 +32,10 @@ class ClsDAO_Combos
       while($reg=mysql_fetch_assoc($res))
       {
          //recibe cada uno de los registros que tiene la tabla tipo_equipo
-         $this->_cooperativa[]=$reg;   
+         $this->_empleado[]=$reg;   
       }   
  
-      return $this->_cooperativa;       
+      return $this->_empleado;       
    }
  
 }

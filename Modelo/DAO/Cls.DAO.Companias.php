@@ -57,7 +57,7 @@ class ClsDAO_Companias
 	 * @param 	array(); Ingresamos Array de Datos de los campos de tabla USU_USUARIOS
 	 * @return  string Mensaje de Validacion
 	 */
-	public function InsertarUsuario($arrayDatos)
+	public function InsertarCompania($arrayDatos)
 	{
 		try{
 			 $this->_resultado = $this->_tablaCompanias->insertRecord($arrayDatos);
@@ -78,7 +78,7 @@ class ClsDAO_Companias
 	 * @param 	id, array(); Ingresamos Array de Datos de los campos de tabla USU_USUARIOS y el id
 	 * @return  string Mensaje de Validacion
 	 */
-	public function ModificarUsuario($id,$arrayDatos)
+	public function ModificarCompania($id,$arrayDatos)
 	{
 		try{
 			 $this->_resultado = $this->_tablaCompanias->updateRecord($id,$arrayDatos,'COM_ID');
@@ -94,7 +94,7 @@ class ClsDAO_Companias
 			return 'Se ha generado una Exception al Modificar Usuario: '.$e;
 		}
 	}
-	public function EliminarUsuario($id)
+	public function EliminarCompania($id)
 	{
 		try{
 			 $this->_resultado = $this->_tablaCompanias->deleteRecord($id,'COM_ID');
@@ -110,7 +110,7 @@ class ClsDAO_Companias
 			return 'Se ha generado una Exception al Modificar Usuario: '.$e;
 		}
 	}
-	public function VerificaRegistroExistente($email,$ruc)
+	public function VerificaRegistroExistenteCompania($email,$ruc)
 	{
 		echo $this->_consulta = $this->_tablaCompanias->getRecords("COM_EMAIL='$email' OR COM_RUC = '$ruc' ",false,1);
 		$numrows = mysql_num_rows($this->_consulta);
