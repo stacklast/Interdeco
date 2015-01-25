@@ -1,5 +1,10 @@
 $(document).ready(function(){
 	var nav = $('#navegacion').val();
+	(function(a){a.fn.validCampoFranz=function(b){a(this).on({keypress:function(a){var c=a.which,d=a.keyCode,e=String.fromCharCode(c).toLowerCase(),f=b;(-1!=f.indexOf(e)||9==d||37!=c&&37==d||39==d&&39!=c||8==d||46==d&&46!=c)&&161!=c||a.preventDefault()}})}})(jQuery);
+					
+						$('#ruc').validCampoFranz('0123456789');
+						$('#telefono').validCampoFranz('0123456789');
+					
 	if(nav == 'Usuarios'){
 		$('#menu-mantenimientos').addClass('active');
 		$('#menu-usuarios').addClass('active');
@@ -17,31 +22,33 @@ $(document).ready(function(){
  */
     var total = $("#totalregistrosCompania").val();
 	for (var i = 1; i <= total; i++) {
-		aux = i;
+		var aux = i;
 		$('#EditarCompania'+aux).click({param1: aux}, editarCompania);
 		function editarCompania(event){
-			id = $('#USU_ID'+event.data.param1).val();
-			empleado = $('#EMP_ID'+event.data.param1).val();
-			alias = $('#USU_ALIAS'+event.data.param1).val();
-			pass = $('#USU_PASSWORD'+event.data.param1).val();
-			email = $('#USU_EMAIL'+event.data.param1).val();
-			fecharegistro = $('#USU_FECHA_REGISTRO'+event.data.param1).val();
+			id = $('#COM_ID'+event.data.param1).val();
+			nombre = $('#COM_NOMBRE'+event.data.param1).val();
+			ruc = $('#COM_RUC'+event.data.param1).val();
+			direccion = $('#COM_DIRECCION'+event.data.param1).val();
+			telefono = $('#COM_TELEFONO'+event.data.param1).val();
+			email = $('#COM_EMAIL'+event.data.param1).val();
+			web = $('#COM_WEB'+event.data.param1).val();
 			$("#id").val(id);
-			$("#empleado").val(empleado);
-			$("#alias").val(alias);
-			$("#password").val(pass);
+			$("#nombre").val(nombre);
+			$("#ruc").val(ruc);
+			$("#direccion").val(direccion);
+			$("#telefono").val(telefono);
 			$("#email").val(email);
-			$("#fecha").val(fecharegistro);
+			$("#web").val(web);
 			$("#resultados-busqueda").hide();
 			$("#div-agregar").hide();
 			$("#div-limpiar").hide();
-	    	$("#usuarios").show();
+	    	$("#companias").show();
 	    	$("#div-modificar").show();
 			HabilitarCamposCompania();
 		}
-		$('#EliminarCompania'+aux).click({param1: aux}, eliminarUsuario);
-		function eliminarUsuario(event){
-			id = $('#USU_ID'+event.data.param1).val();
+		$('#EliminarCompania'+aux).click({param1: aux}, eliminarCompania);
+		function eliminarCompania(event){
+			id = $('#COM_ID'+event.data.param1).val();
 			$("#identificador").val(id);
 			$('#myModalLabel').html('Advertencia!');
 			$('.modal-body').html('<div class="alert alert-warning" role="alert">Está seguro que desea eliminar el Registro?</div>');
@@ -58,14 +65,14 @@ $(document).ready(function(){
 			    data: datos,
 			    success: function(response) {
 			    	$('#myModal').modal('hide');
-			    	limpiarUsuario();
+			    	limpiarCompania();
 			    	//alert(response);
 			    	if(response == 1){
-			    		alert("No se ha podido Eliminar el registro del  Usuario");
+			    		alert("No se ha podido Eliminar el registro de la Compania");
 			    	}
 			    	else if (response == "Exito"){
-			    		alert("Los datos del  Usuario han sido Eliminados con Exito");
-			    		
+			    		location.reload(true);
+			    		alert("Los datos de la Compania han sido Eliminados con Exito");
 			    	}
 			    	else{
 			    		alert(response);
@@ -85,38 +92,49 @@ $(document).ready(function(){
 	$("#modificarCompania").click(function(){
 		var accion = "ModificarCompania";
 		var id = $("#id").val();
-		var cooperativa =$("#cooperativa").val();
-		var rol = $("#rol").val();
-		var empleado = $("#empleado").val();
-		var alias = $("#alias").val();
-		var password = $("#password").val();
+		var nombre = $("#nombre").val();
+		var ruc = $("#ruc").val();
+		var direccion = $("#direccion").val();
+		var telefono = $("#telefono").val();
 		var email = $("#email").val();
-		var fecha = $("#fecha").val();
-		var datosString = $("#usuarios").serialize();
+		var web = $("#web").val();
+		var datosString = $("#companias").serialize();
 		var dato = '&accion=' + accion+'&id=' + id;
 		var validacion_email = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
 		
+		if(nombre == ""){
+			$("#nombre").focus();
+			alert('(*)Campo Obligatorio: Ingrese nombre');
+			return false;
+		}
+		else
+		if(ruc == ""){
+			$("#ruc").focus();
+			alert('(*)Campo Obligatorio: Ingrese ruc');
+			return false;
+		}
+		else
+		if(direccion == ""){
+			$("#ruc").focus();
+			alert('(*)Campo Obligatorio: Ingrese direccion');
+			return false;
+		}
+		else
+		if(telefono == ""){
+			$("#ruc").focus();
+			alert('(*)Campo Obligatorio: Ingrese telefono');
+			return false;
+		}
+		else
 		if(email == "" || !validacion_email.test(email)){
 			$("#email").focus();
 			alert('(*)Campo Obligatorio: Ingrese su email');
 			return false;
 		}
 		else 
-		if(password == ""){
-			$("#password").focus();
-			alert('(*)Campo Obligatorio: Ingrese la contraseña');
-			return false;
-		}
-		else 
-		if(empleado == ""){
-			$("#empleado").focus();
-			alert('(*)Campo Obligatorio: Ingrese cooperativa');
-			return false;
-		}
-		else 
-		if(rol == ""){
-			$("#rol").focus();
-			alert('(*)Campo Obligatorio: Ingrese rol');
+		if(web == ""){
+			$("#web").focus();
+			alert('(*)Campo Obligatorio: Ingrese la web');
 			return false;
 		}
 		else{
@@ -126,17 +144,17 @@ $(document).ready(function(){
 			//alert(datos);
 			$.ajax({
 			    type: "POST",
-			    url: "/Github/Interdeco/Controlador/Controller.Usuarios.php",
+			    url: "/Github/Interdeco/Controlador/Controller.Companias.php",
 			    data: datos,
 			    success: function(response) {
 			    	limpiarUsuario();
 			    	//alert(response);
 			    	if(response == 1){
-			    		alert("No se ha podido Modificar los datos del Usuario");
+			    		alert("No se ha podido Modificar los datos de la Compania");
 			    	}
 			    	else if (response == "Exito"){
 			    		location.reload(true);
-			    		 alert("Los datos del  Usuario han sido Modificados con Exito");
+			    		 alert("Los datos de la COmpania han sido Modificados con Exito");
 			    		 
 			    	}
 			    	else{
@@ -157,69 +175,75 @@ $(document).ready(function(){
 	$("#agregarCompania").click(function(){
 		var accion = "InsertarCompania";
 		var id = $("#id").val();
-		var cooperativa =$("#cooperativa").val();
-		var rol = $("#rol").val();
-		var empleado = $("#empleado").val();
-		var alias = $("#alias").val();
-		var password = $("#password").val();
+		var nombre = $("#nombre").val();
+		var ruc = $("#ruc").val();
+		var direccion = $("#direccion").val();
+		var telefono = $("#telefono").val();
 		var email = $("#email").val();
-		var fecha = $("#fecha").val();
-		var datosString = $("#usuarios").serialize();
-		var dato = '&accion=' + accion;
+		var web = $("#web").val();
+		var datosString = $("#companias").serialize();
+		var dato = '&accion=' + accion+'&id=' + id;
 		var validacion_email = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
 		
-		 if(email == "" || !validacion_email.test(email)){
+		if(nombre == ""){
+			$("#nombre").focus();
+			alert('(*)Campo Obligatorio: Ingrese nombre');
+			return false;
+		}
+		else
+		if(ruc == ""){
+			$("#ruc").focus();
+			alert('(*)Campo Obligatorio: Ingrese ruc');
+			return false;
+		}
+		else
+		if(direccion == ""){
+			$("#ruc").focus();
+			alert('(*)Campo Obligatorio: Ingrese direccion');
+			return false;
+		}
+		else
+		if(telefono == ""){
+			$("#ruc").focus();
+			alert('(*)Campo Obligatorio: Ingrese telefono');
+			return false;
+		}
+		else
+		if(email == "" || !validacion_email.test(email)){
 			$("#email").focus();
 			alert('(*)Campo Obligatorio: Ingrese su email');
 			return false;
 		}
 		else 
-		if(password == ""){
-			$("#password").focus();
-			alert('(*)Campo Obligatorio: Ingrese la contraseña');
-			return false;
-		}
-		else 
-		if(empleado == ""){
-			$("#empleado").focus();
-			alert('(*)Campo Obligatorio: Ingrese cooperativa');
-			return false;
-		}
-		else 
-		if(rol == ""){
-			$("#rol").focus();
-			alert('(*)Campo Obligatorio: Ingrese rol');
+		if(web == ""){
+			$("#web").focus();
+			alert('(*)Campo Obligatorio: Ingrese la web');
 			return false;
 		}
 		else{
-			$('#error').html('');
-			$('.ajaxgif').removeClass('hide');
 			datos = datosString+dato;
-			//alert(datos);
+			alert(datos);
 			$.ajax({
 			    type: "POST",
 			    url: "/Github/Interdeco/Controlador/Controller.Companias.php",
 			    data: datos,
 			    success: function(response) {
-			    	limpiarUsuario();
+			    	limpiarCompania();
 			    	//alert(response);
 			    	if(response == 1){
-			    		alert("No se ha podido Agregar el Usuario");
+			    		alert("No se ha podido Agregar los datos de la Compania");
 			    	}
 			    	else if (response == "Exito"){
-			    		location.reload();
-			    		alert("El Usuario ha sido agregado con Exito");
+			    		location.reload(true);
+			    		 alert("Los datos de la Compania han sido Agregados con Exito");
+			    		 
 			    	}
 			    	else{
 			    		alert(response);
 			    	}
-			        $('.ajaxgif').hide();
-			        $('.msg').text('Mensaje enviado!').addClass('msg_ok').animate({ 'right' : '130px' }, 300);  
 			    },
 			    error: function(response) {
-			    	alert(response);
-			        $('.ajaxgif').hide();
-			        $('.msg').text('Hubo un error!').addClass('msg_error').animate({ 'right' : '130px' }, 300);                 
+			    	alert("error: "+response);
 			    }
 			});
 			return false;
@@ -227,23 +251,24 @@ $(document).ready(function(){
 	});
     function HabilitarCamposCompania(){
 		$("#id").prop('disabled', true);
-		$("#empleado").prop('disabled', false);
-		$("#alias").prop('disabled', false);
-		$("#password").prop('disabled', false);
+		$("#nombre").prop('disabled', false);
+		$("#ruc").prop('disabled', false);
+		$("#direccion").prop('disabled', false);
+		$("#telefono").prop('disabled', false);
 		$("#email").prop('disabled', false);
-		$("#fecha").prop('disabled', false);
+		$("#web").prop('disabled', false);
 	}
 	function limpiarCompania(){
-		
 		$("#id").val('');
-		$('#empleado').prop('selectedIndex',0);
-		$("#alias").val('');
-		$("#password").val('');
+		$("#nombre").val('');
+		$("#ruc").val('');
+		$("#direccion").val('');
+		$("#telefono").val('');
 		$("#email").val('');
-		//$("#fecha").val('');
+		$("#web").val('');
 	}
 	$("#nuevoCompania").click(function(){
-		$("#usuarios").show();
+		$("#companias").show();
 		$("#div-limpiar").show();
 		$("#div-modificar").hide();
 		limpiarCompania();
@@ -252,17 +277,18 @@ $(document).ready(function(){
 	});
 
 	$("#buscarCompania").click(function(){
-		$("#usuarios").hide();
+		$("#companias").hide();
 		$("#resultados-busqueda").show();
 	});
 	$("#cancelarCompania").click(function(){
 		limpiarCompania();
-		$("#usuarios").hide();
+		$("#companias").hide();
 		$("#resultados-busqueda").show();
 	});
 	$("#limpiarCompania").click(function(){
 		limpiarCompania();
 	});   
+
 /**
  *  Mantenimiento de la tabla usu_usuario
  * 
@@ -316,6 +342,7 @@ $(document).ready(function(){
 			    		alert("No se ha podido Eliminar el registro del  Usuario");
 			    	}
 			    	else if (response == "Exito"){
+			    		location.reload(true);
 			    		alert("Los datos del  Usuario han sido Eliminados con Exito");
 			    	}
 			    	else{
@@ -336,8 +363,6 @@ $(document).ready(function(){
 	$("#modificarUsuario").click(function(){
 		var accion = "ModificarUsuario";
 		var id = $("#id").val();
-		var cooperativa =$("#cooperativa").val();
-		var rol = $("#rol").val();
 		var empleado = $("#empleado").val();
 		var alias = $("#alias").val();
 		var password = $("#password").val();
@@ -362,12 +387,6 @@ $(document).ready(function(){
 		if(empleado == ""){
 			$("#empleado").focus();
 			alert('(*)Campo Obligatorio: Ingrese cooperativa');
-			return false;
-		}
-		else 
-		if(rol == ""){
-			$("#rol").focus();
-			alert('(*)Campo Obligatorio: Ingrese rol');
 			return false;
 		}
 		else{
@@ -408,8 +427,6 @@ $(document).ready(function(){
 	$("#agregarUsuario").click(function(){
 		var accion = "InsertarUsuario";
 		var id = $("#id").val();
-		var cooperativa =$("#cooperativa").val();
-		var rol = $("#rol").val();
 		var empleado = $("#empleado").val();
 		var alias = $("#alias").val();
 		var password = $("#password").val();
@@ -520,20 +537,25 @@ $(document).ready(function(){
  * 
  */
 	$("#login").click(function(){
+		$(".alert").remove();
 		var accion = "login";
+		var capcha = $("#code").val();
 		var email = $("#email").val();
 		var password = $("#password").val();
 		var check = $("#recordar:checked").val();//:checked para recoger el valor solo si ha sido seleccionado
 		var validacion_email = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
 		if(email == "" || !validacion_email.test(email)){
-			$("#email").focus();
-			$('#error').html('(*)Campo Obligatorio: Ingrese su email');
+			$("#email").focus().after("<div class='alert alert-warning' role='alert'><strong>(*)Campo Obligatorio!:</strong>Ingrese su correo electrónico</div>");
 			return false;
 		}
 		else 
 		if(password == ""){
-			$("#password").focus();
-			$('#error').html('(*)Campo Obligatorio: Ingrese la contraseña');
+			$("#password").focus().after("<div class='alert alert-warning' role='alert'><strong>(*)Campo Obligatorio!:</strong>Ingrese la contraseña</div>");;
+			return false;
+		}
+		else if(capcha == "")
+		{
+			$("#code").focus().after("<div class='alert alert-warning' role='alert'><strong>(*)Campo Obligatorio!:</strong>Ingrese Captcha</div>");;
 			return false;
 		}
 		else{
@@ -548,10 +570,10 @@ $(document).ready(function(){
 			    success: function(response) {
 			    	alert(response);
 			    	if(response == 1){
-			    		$('#error').html("su correo electrónico es incorrecto");
+			    		$("#email").focus().after("<div class='alert alert-warning' role='alert'>Su correo electrónico es inválido</div>");
 			    	}
 			    	else if (response == 2){
-			    		$('#error').html("su contraseña es incorrecta");
+			    		$("#password").focus().after("<div class='alert alert-warning' role='alert'>Su contraseña es incorrecta</div>");;
 			    	}
 			    	else if(response == 3){
 			    		$('#error').html("su contraseña  y correo electrónico son  incorrectos");
@@ -589,6 +611,7 @@ $(document).ready(function(){
                     } 
                     else {
                     alert('Captcha mal escrito');
+                    return false;
                     }
                 },
                 error: function() {

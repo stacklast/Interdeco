@@ -1,6 +1,6 @@
 <?php 
 /**
- *	@package Transporte
+ *	@package Interdeco
  *	@subpackage Controlador
  * 	@author Edwin Benalcácar Espín <softwareywebsoluciones@gmail.com>
  * 	@version 1.0
@@ -14,6 +14,7 @@ include ('funciones.php');
  * @var ClsDAO_Usuarios
  */
 @$UsuariosDAO = new ClsDAO_Usuarios();
+
 @$empleado 	  = NoInjection($_POST['empleado']);
 @$alias 	  = NoInjection($_POST['alias']);
 @$password 	  = EncriptarMD5_SALT($_POST['password']);

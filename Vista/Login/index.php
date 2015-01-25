@@ -37,7 +37,6 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
 </head>
 
 <body>
-
     <div class="container">
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
@@ -50,6 +49,7 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
                             <fieldset>
                                 <div class="form-group">
                                     <input id="email" class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
+
                                 </div>
                                 <div class="form-group">
                                     <input id="password" class="form-control" placeholder="Password" name="password" type="password" value="">

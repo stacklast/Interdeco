@@ -13,11 +13,13 @@ require ('/../Db.class.php');/*Incluimos el fichero de la clase Db*/
 class ClsDAO_Combos
 {   
    private $_empleado;
+   private $_compania;
 
 
       public function __construct()
       { 
          $this->_empleado=array();
+         $this->_compania=array();
       }
 
  /**
@@ -36,6 +38,22 @@ class ClsDAO_Combos
       }   
  
       return $this->_empleado;       
+   }
+/**
+  *  Obtener Companias
+  */
+   public function Get_Compania()
+   {
+      $bd=Db::getInstance();
+      $sql="SELECT COM_ID, COM_NOMBRE FROM com_compania ORDER BY COM_ID ASC";
+      $res=$bd->ejecutar($sql);
+      //mysql_fetch_assoc se utiliza para trabajar con array multidimensional
+      while($reg=mysql_fetch_assoc($res))
+      {
+         //recibe cada uno de los registros que tiene la tabla tipo_equipo
+         $this->_compania[]=$reg;   
+      }   
+      return $this->_compania;       
    }
  
 }

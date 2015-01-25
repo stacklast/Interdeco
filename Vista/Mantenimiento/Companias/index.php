@@ -158,8 +158,7 @@
 				  <div class="form-group col-md-4">
 				    <label for="inputEmail3" class="col-sm-4 control-label">WEB</label>
 				    <div class="col-sm-8">
-				      <input type="text" class="form-control" id="web" name="web" placeholder="URL WEB" value="<?php echo date('y/m/d h:m:s'); ?>" readonly="readonly">
-				    </div>
+				      <input type="text" class="form-control" id="web" name="web" placeholder="URL WEB">
 				  </div>
 		    	</div>
 		    	<div class="form-group"></div>
