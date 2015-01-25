@@ -58,19 +58,21 @@ class SQLConection {
 		mysql_query ($query);
 		return $this->validateOperation ();
 		}
-	public function updateRecord ($id, $data){
+	public function updateRecord ($id, $data, $campoid){
 		$campos =$this->getEditableFields (true);
 		$datos =array ();
 		foreach ($campos as $ind => $campo){
 			$current_data =$data[$ind];
 			array_push ($datos, "$campo='$current_data'");
 			}
-		$datos =implode (", ", $datos);
-		mysql_query ("UPDATE {$this->table} SET $datos WHERE id=$id");
+		$datos = implode (", ", $datos);
+		$query = "UPDATE {$this->table} SET $datos WHERE $campoid ='$id'";
+		echo $query;
+		mysql_query ($query);
 		return $this->validateOperation ();
 		}
-	public function deleteRecord ($id){
-		mysql_query ("DELETE FROM {$this->table} WHERE id=$id");
+	public function deleteRecord ($id,$campoid){
+		mysql_query ("DELETE FROM {$this->table} WHERE $campoid='$id'");
 		return $this->validateOperation ();
 		}
 

@@ -1,5 +1,23 @@
 <?php include ('../../header.php') ?>
 <?php include ('../../../Modelo/DAO/Cls.DAO.Combos.php'); //incluimos Clase  DAO de Usuarios ?>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"></h4>
+      </div>
+      <div class="modal-body">
+      </div>
+      <div class="modal-footer">
+        <input type="hidden" id="identificador" name="identificador">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        <button id="eliminar" type="button" class="btn btn-primary">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
 	<div class="row">
 		<div class="col-md-12">
 	    	<div class="page-header" style="text-align:center;">
@@ -86,7 +104,7 @@
 								            	<button id="EditarUsuario<?php echo $i+1; ?>" class="btn btn-info btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Editar Registro">
 								            		<span class="glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span>
 								            	</button> 
-								            	<button id="EliminarUsuario<?php echo $i+1; ?>" class="btn btn-danger btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Elimiar Registro">
+								            	<button id="EliminarUsuario<?php echo $i+1; ?>" class="btn btn-danger btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Elimiar Registro" data-target="#myModal">
 								            		<span class="glyphicon glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span>
 								            	</button>
 								            </td>
@@ -95,8 +113,7 @@
                                     </tbody>
                                 </table>
                                <input type="hidden" id="totalregistros" value="<?php echo count($usuario); ?>">
-			    </div>
-							   	
+			    </div>	   	
 				<form class="form-horizontal" id="usuarios" name="usuarios" style="display:none;">
 		    	<div class="col-md-12">
 		    		<div class="form-group col-md-4">

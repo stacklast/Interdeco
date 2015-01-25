@@ -19,8 +19,8 @@ include ('funciones.php');
 @$password 	  = EncriptarMD5_SALT($_POST['password']);
 @$email 	  = NoInjection($_POST['email']);
 @$fecha       = NoInjection($_POST['fecha']);
+@$id 	      = NoInjection($_POST['id']);
 @$recordar 	  = $_POST['recordar'];
-
 /**
  * $procesar Para realizar accion
  * @var string Valor 
@@ -35,7 +35,11 @@ if(isset($procesar)){
 		echo $UsuariosDAO->InsertarUsuario($insertar);
 	}
 	if($procesar == "ModificarUsuario"){
-		
+		$modificar= array("".$empleado."","".$alias."","".$password."","".$email."","".$fecha."");
+		echo $UsuariosDAO->ModificarUsuario($id,$modificar);
+	}
+	if($procesar == "EliminarUsuario"){
+		echo $UsuariosDAO->EliminarUsuario($id);
 	}
 }
 else{

@@ -78,6 +78,43 @@ class ClsDAO_Usuarios
 		}
 	}
 	/**
+	 * ModificarUsuario 
+	 * @param 	id, array(); Ingresamos Array de Datos de los campos de tabla USU_USUARIOS y el id
+	 * @return  string Mensaje de Validacion
+	 */
+	public function ModificarUsuario($id,$arrayDatos)
+	{
+		try{
+			 $this->_resultado = $this->_tablaUsuarios->updateRecord($id,$arrayDatos,'USU_ID');
+			if($this->_resultado)
+			{
+				return 'Exito';
+			}
+			else
+			{
+				return "1";
+			}
+		}catch (Exception $e){
+			return 'Se ha generado una Exception al Modificar Usuario: '.$e;
+		}
+	}
+	public function EliminarUsuario($id)
+	{
+		try{
+			 $this->_resultado = $this->_tablaUsuarios->deleteRecord($id,'USU_ID');
+			if($this->_resultado)
+			{
+				return 'Exito';
+			}
+			else
+			{
+				return "1";
+			}
+		}catch (Exception $e){
+			return 'Se ha generado una Exception al Modificar Usuario: '.$e;
+		}
+	}
+	/**
 	 * ValidarUsuario
 	 * @param String $email   
 	 * @param Strinf $password Encriptado con MD5SALT
@@ -160,7 +197,6 @@ class ClsDAO_Usuarios
 		else{
 			echo "puede agregarse ese usuario";
 		}
-
 	}
 }
 ?>
