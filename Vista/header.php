@@ -52,7 +52,10 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
 
 </head>
 <body>
-
+ 
+<noscript>
+    <h2>Para ver esta pagina web se requiere JavaScript.<br>Se aborto la carga de la pagina.</h2>
+</noscript>
     <div id="wrapper">
 
         <!-- Navigation -->

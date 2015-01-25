@@ -46,7 +46,7 @@ $(function(){
 
 	// Add the weekday names
 
-	var weekday_names = 'MON TUE WED THU FRI SAT SUN'.split(' '),
+	var weekday_names = 'LUN MAR MIE JUE VIE SAB DOM'.split(' '),
 		weekday_holder = clock.find('.weekdays');
 
 	$.each(weekday_names, function(){

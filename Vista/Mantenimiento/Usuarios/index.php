@@ -103,7 +103,7 @@
 								            	<button id="EditarUsuario<?php echo $i+1; ?>" class="btn btn-info btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Editar Registro">
 								            		<span class="glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span>
 								            	</button> 
-								            	<button id="EliminarUsuario<?php echo $i+1; ?>" class="btn btn-danger btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Elimiar Registro" data-target="#myModal">
+								            	<button id="EliminarUsuario<?php echo $i+1; ?>" class="btn btn-danger btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Eliminar Registro" data-target="#myModal">
 								            		<span class="glyphicon glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span>
 								            	</button>
 								            </td>
@@ -186,4 +186,5 @@
 				</form>
 		   	</div>
 	</div>
+	
 <?php include ('../../footer.php') ?>

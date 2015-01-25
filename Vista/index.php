@@ -8,7 +8,7 @@
             </div>
             <!-- /.row -->
             <div class="row">
-                <div class="col-lg-6 col-md-8">
+                <div class="col-lg-5 col-md-8">
                     <div id="clock" class="light">
                                 <div class="display">
                                     <div class="weekdays"></div>

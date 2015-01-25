@@ -1,5 +1,9 @@
 $(document).ready(function(){
-	$('[data-toggle="tooltip"]').tooltip();
+	$('[data-toggle="tooltip"]').tooltip();//Habilita tooltip
+/**
+ *  Mantenimiento de la tabla USU_USUARIO
+ * 
+ */
     var total = $("#totalregistros").val();
 	for (var i = 1; i <= total; i++) {
 		aux = i;
@@ -85,77 +89,6 @@ $(document).ready(function(){
 			});
 			return false;
     });
-    $('#pag').click(function() {
-         $('#pag').addClass('active');
-         $('.nav-second-level').addClass('colapse in');
-    });
-	$('#cap').click(function() {
-        validarCaptcha();
-    });
-    function validarCaptcha() {
-        //alert('Captcha');
-        var code = $('#code').val();
-        var param = 'code=' + code;
-        $.ajax({
-                type: "POST",
-                url: "validate_captcha.php",
-                data: param,
-                success: function(msg) {
-                //alert(msg);
-                    if (msg == '1') {
-                    alert('Captcha correcto');
-                    } 
-                    else {
-                    alert('Captcha mal escrito');
-                    }
-                },
-                error: function() {
-                    alert('error al hacer la petición ajax');
-                }
-        });
-        return false;
-    }
-    $('#captcha').click(function() {
-    //Utiliza el número aleatorio para no traer la imagen desde el caché del navegador.
-       $('#captchaImg').attr('src', "get_captcha.php?rnd=" + Math.random());
-    });
-	function HabilitarCampos(){
-		$("#id").prop('disabled', true);
-		$("#empleado").prop('disabled', false);
-		$("#alias").prop('disabled', false);
-		$("#password").prop('disabled', false);
-		$("#email").prop('disabled', false);
-		$("#fecha").prop('disabled', false);
-	}
-	function limpiar(){
-		
-		$("#id").val('');
-		$("#empleado").val('');
-		$("#alias").val('');
-		$("#password").val('');
-		$("#email").val('');
-		//$("#fecha").val('');
-	}
-	$("#nuevo").click(function(){
-		$("#usuarios").show();
-		$("#div-agregar").show();
-		$("#div-limpiar").show();
-		$("#div-modificar").hide();
-		HabilitarCampos();
-		$("#resultados-busqueda").hide();
-	});
-
-	$("#buscar").click(function(){
-		$("#usuarios").hide();
-		$("#resultados-busqueda").show();
-	});
-	$("#cancelar").click(function(){
-		$("#usuarios").hide();
-		$("#resultados-busqueda").show();
-	});
-	$("#limpiar").click(function(){
-		limpiar();
-	});
 	$("#modificar").click(function(){
 		var accion = "ModificarUsuario";
 		var id = $("#id").val();
@@ -299,6 +232,48 @@ $(document).ready(function(){
 			return false;
 		}
 	});
+    function HabilitarCampos(){
+		$("#id").prop('disabled', true);
+		$("#empleado").prop('disabled', false);
+		$("#alias").prop('disabled', false);
+		$("#password").prop('disabled', false);
+		$("#email").prop('disabled', false);
+		$("#fecha").prop('disabled', false);
+	}
+	function limpiar(){
+		
+		$("#id").val('');
+		$("#empleado").val('');
+		$("#alias").val('');
+		$("#password").val('');
+		$("#email").val('');
+		//$("#fecha").val('');
+	}
+	$("#nuevo").click(function(){
+		$("#usuarios").show();
+		$("#div-agregar").show();
+		$("#div-limpiar").show();
+		$("#div-modificar").hide();
+		HabilitarCampos();
+		$("#resultados-busqueda").hide();
+	});
+
+	$("#buscar").click(function(){
+		$("#usuarios").hide();
+		$("#resultados-busqueda").show();
+	});
+	$("#cancelar").click(function(){
+		$("#usuarios").hide();
+		$("#resultados-busqueda").show();
+	});
+	$("#limpiar").click(function(){
+		limpiar();
+	});
+/**
+ *  Login de Usuarios
+ * 
+ * 
+ */
 	$("#login").click(function(){
 		var accion = "login";
 		var email = $("#email").val();
@@ -320,7 +295,7 @@ $(document).ready(function(){
 			$('#error').html('');
 			$('.ajaxgif').removeClass('hide');
 			var datos = '&email=' + email + '&password=' + password + '&accion=' + accion + '&recordar='+check;
-			alert(datos);
+			//alert(datos);
 			$.ajax({
 			    type: "POST",
 			    url: "/Github/Interdeco/Controlador/Controller.Usuarios.php",
@@ -351,5 +326,39 @@ $(document).ready(function(){
 			return false;
 		}
 	});
+	$('#pag').click(function() {
+         $('#pag').addClass('active');
+         $('.nav-second-level').addClass('colapse in');
+    });
+	$('#cap').click(function() {
+        validarCaptcha();
+    });
+    function validarCaptcha() {
+        //alert('Captcha');
+        var code = $('#code').val();
+        var param = 'code=' + code;
+        $.ajax({
+                type: "POST",
+                url: "validate_captcha.php",
+                data: param,
+                success: function(msg) {
+                //alert(msg);
+                    if (msg == '1') {
+                    alert('Captcha correcto');
+                    } 
+                    else {
+                    alert('Captcha mal escrito');
+                    }
+                },
+                error: function() {
+                    alert('error al hacer la petición ajax');
+                }
+        });
+        return false;
+    }
+    $('#captcha').click(function() {
+    //Utiliza el número aleatorio para no traer la imagen desde el caché del navegador.
+       $('#captchaImg').attr('src', "get_captcha.php?rnd=" + Math.random());
+    });
 
 });
