@@ -41,11 +41,10 @@
 	</div>
 	<div class="row">
 	   	<div class="col-md-12 panel panel-default">
-	   	<div class="panel-heading">
-                           Registros de Usuarios
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
+	   	    <div class="panel-heading">
+                 Registros de Usuarios
+            </div>
+            <!-- /.panel-heading -->
 		   	<div class="panel-body">
 		   		<div class="table-responsive" id="resultados-busqueda">
 			      <table class="table table-striped table-bordered table-hover" id="dataTables-example">
@@ -186,7 +185,5 @@
 				
 				</form>
 		   	</div>
-	    	
-    	</div>
 	</div>
 <?php include ('../../footer.php') ?>

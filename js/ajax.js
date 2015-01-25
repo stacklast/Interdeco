@@ -46,10 +46,29 @@ $(document).ready(function(){
 			    	limpiar();
 			    	//alert(response);
 			    	if(response == 1){
-			    		alert("No se ha podido Modificar los datos del Usuario");
+			    		alert("No se ha podido Eliminar el registro del  Usuario");
 			    	}
 			    	else if (response == "Exito"){
-			    		alert("Los datos del  Usuario han sido Modificados con Exito");
+			    		alert("Los datos del  Usuario han sido Eliminados con Exito");
+			    		var param = 'buscar = busqueda';
+			    		$.ajax({
+				                type: "POST",
+				                url: "validate_captcha.php",
+				                data: param,
+				                success: function(msg) {
+				                //alert(msg);
+				                    if (msg == '1') {
+				                    alert('Captcha correcto');
+				                    } 
+				                    else {
+				                    alert('Captcha mal escrito');
+				                    }
+				                },
+				                error: function() {
+				                    alert('error al hacer la petición ajax');
+				                }
+				        });
+				        return false;
 			    	}
 			    	else{
 			    		alert(response);
@@ -151,7 +170,7 @@ $(document).ready(function(){
 		var dato = '&accion=' + accion+'&id=' + id;
 		var validacion_email = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
 		
-		 if(email == "" || !validacion_email.test(email)){
+		if(email == "" || !validacion_email.test(email)){
 			$("#email").focus();
 			alert('(*)Campo Obligatorio: Ingrese su email');
 			return false;
@@ -178,7 +197,7 @@ $(document).ready(function(){
 			$('#error').html('');
 			$('.ajaxgif').removeClass('hide');
 			datos = datosString+dato;
-			alert(datos);
+			//alert(datos);
 			$.ajax({
 			    type: "POST",
 			    url: "/Github/Interdeco/Controlador/Controller.Usuarios.php",
@@ -190,7 +209,9 @@ $(document).ready(function(){
 			    		alert("No se ha podido Modificar los datos del Usuario");
 			    	}
 			    	else if (response == "Exito"){
-			    		alert("Los datos del  Usuario han sido Modificados con Exito");
+			    		location.reload(true);
+			    		 alert("Los datos del  Usuario han sido Modificados con Exito");
+			    		 
 			    	}
 			    	else{
 			    		alert(response);
@@ -199,7 +220,7 @@ $(document).ready(function(){
 			        $('.msg').text('Mensaje enviado!').addClass('msg_ok').animate({ 'right' : '130px' }, 300);  
 			    },
 			    error: function(response) {
-			    	alert(response);
+			    	//alert(response);
 			        $('.ajaxgif').hide();
 			        $('.msg').text('Hubo un error!').addClass('msg_error').animate({ 'right' : '130px' }, 300);                 
 			    }
@@ -260,6 +281,7 @@ $(document).ready(function(){
 			    		alert("No se ha podido Agregar el Usuario");
 			    	}
 			    	else if (response == "Exito"){
+			    		location.reload();
 			    		alert("El Usuario ha sido agregado con Exito");
 			    	}
 			    	else{
