@@ -1,5 +1,6 @@
 <?php include ('../../header.php') ?>
 <?php include ('../../../Modelo/DAO/Cls.DAO.Combos.php'); //incluimos Clase  DAO de Usuarios ?>
+<input type="hidden" id="navegacion" value="Companias">
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -72,7 +73,7 @@
 								         //recibe cada uno de los registros que tiene la tabla tipo_equipo
 								         $consulta[]=$reg;   
 								      }   
-                                      for($i=0; $i<count($compania); $i++) { ?>    
+                                      for($i=0; $i<count($consulta); $i++) { ?>    
                                         <tr class="odd gradeX">
                                             <td class="center">
                                             	<?php echo $consulta[$i]["COM_ID"];?>

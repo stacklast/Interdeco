@@ -300,31 +300,16 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
                             <a class="active" href="<?php echo $domain; ?>/"><i class="fa fa-dashboard fa-fw"></i> Inicio</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="flot.html">Flot Charts</a>
-                                </li>
-                                <li>
-                                    <a href="morris.html">Morris.js Charts</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
+                            <a href="forms.html"><i class="fa fa-edit fa-fw"></i>Facturación</a>
                         </li>
-                        <li>
-                            <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tablas</a>
-                        </li>
-                        <li>
-                            <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Formularios</a>
-                        </li>
-                        <li>
+                        <li id="menu-mantenimientos">
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> Mantenimientos<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a id="pag" href="<?php echo $domain; ?>/Vista/Mantenimiento/Usuarios/">Usuarios</a>
+                                    <a id="menu-usuarios" href="<?php echo $domain; ?>/Vista/Mantenimiento/Usuarios/">Usuarios</a>
                                 </li>
                                 <li>
-                                    <a href="buttons.html">Botones</a>
+                                    <a id="menu-companias" href="<?php echo $domain; ?>/Vista/Mantenimiento/Companias/">Companias</a>
                                 </li>
                                 <li>
                                     <a href="notifications.html">Notificaciones</a>
@@ -339,13 +324,13 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-files-o fa-fw"></i>Reportes<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="blank.html">Blank Page</a>
+                                    <a href="#">Blank Page</a>
                                 </li>
                                 <li>
-                                    <a href="login.html">Login Page</a>
+                                    <a href="#">Login Page</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

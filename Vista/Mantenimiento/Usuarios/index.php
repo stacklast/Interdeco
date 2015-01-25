@@ -1,5 +1,6 @@
 <?php include ('../../header.php') ?>
 <?php include ('../../../Modelo/DAO/Cls.DAO.Combos.php'); //incluimos Clase  DAO de Usuarios ?>
+<input type="hidden" id="navegacion" value="Usuarios">
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -109,7 +110,7 @@
                                   <?php } ?>
                                     </tbody>
                                 </table>
-                               <input type="hidden" id="totalregistrosUsuario" value="<?php echo count($usuario); ?>">
+                               <input type="hidden" id="totalregistrosUsuario" value="<?php echo count($consulta); ?>">
 			    </div>	   	
 				<form class="form-horizontal" id="usuarios" name="usuarios" style="display:none;">
 		    	<div class="col-md-12">
