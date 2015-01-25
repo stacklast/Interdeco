@@ -1,6 +1,6 @@
 <?php 
 /**
- *	@package Transporte
+ *	@package Interdeco
  *	@subpackage Modelo
  * 	@author Edwin Benalcácar Espín <softwareywebsoluciones@gmail.com>
  * 	@version 1.0
@@ -24,7 +24,6 @@ class ClsDAO_Usuarios
 	private  $_consulta; //array();
 	private  $_pass;//string 
 	private  $_mail;//string
-	private  $_TBL_empleados;
 	/**
 	 * [__construct constructor para instanciar tabla a utilizar]
 	 */
@@ -40,7 +39,7 @@ class ClsDAO_Usuarios
 		 * @var SQLConection
 		 * @param String Nombre de la Tabla de BD a Usar
 		 */
-		$this->_tablaUsuarios =new SQLConection ('USU_USUARIO');
+		$this->_tablaUsuarios =new SQLConection ('usu_usuario');
 		$fields = $this->_tablaUsuarios->fields =array (
 		              array ('private', 'USU_ID', "' '"),
 		              array ('public', 'EMP_ID'),
@@ -49,12 +48,6 @@ class ClsDAO_Usuarios
 		              array ('public', 'USU_EMAIL'),
 		              array ('public', 'USU_FECHA_REGISTRO',"'".date('yyyy/mm/dd hh:mm:ss')."'")
 				);  //instanciamos base de datos
-		/*$buscar = mysql_query("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS 
-		WHERE TABLE_NAME = 'USU_USUARIOS'"); 
-		$i=0;
-		while($datos = mysql_fetch_array($buscar)){  
-		$arrayName[0][$i] = $datos["COLUMN_NAME"];$i++;
-		} */
 	}
 	/**
 	 * InsertarUsuario 

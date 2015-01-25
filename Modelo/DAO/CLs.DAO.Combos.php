@@ -1,10 +1,10 @@
 <?php 
 /**
- *	@package Transporte
+ *	@package Interdeco
  *	@subpackage Modelo
  * 	@author Edwin Benalcácar Espín <softwareywebsoluciones@gmail.com>
  * 	@version 1.0
- * 	#file : Cls.DAO.Usuarios.php
+ * 	#file : Cls.DAO.Combos.php
  *	#DAO  : DATA ACCES OBJECT => Objeto de Acceso a Datos Indirecto
  *	#Clase: ClsDAO_Combos
  */

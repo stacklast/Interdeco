@@ -26,7 +26,7 @@ $(document).ready(function(){
 			$("#div-limpiar").hide();
 	    	$("#usuarios").show();
 	    	$("#div-modificar").show();
-			HabilitarCampos();
+			HabilitarCamposUsuario();
 		}
 		$('#EliminarUsuario'+aux).click({param1: aux}, eliminarUsuario);
 		function eliminarUsuario(event){
@@ -37,7 +37,7 @@ $(document).ready(function(){
 			$('#myModal').modal('show');
 		}
 	};
-	$('#eliminar').click(function() {
+	$('#eliminarUsuario').click(function() {
 		var accion = "EliminarUsuario";
 	 	var id = $("#identificador").val();
 	 	var datos = 'id=' + id+'&accion=' + accion;
@@ -47,7 +47,7 @@ $(document).ready(function(){
 			    data: datos,
 			    success: function(response) {
 			    	$('#myModal').modal('hide');
-			    	limpiar();
+			    	limpiarUsuario();
 			    	//alert(response);
 			    	if(response == 1){
 			    		alert("No se ha podido Eliminar el registro del  Usuario");
@@ -89,7 +89,7 @@ $(document).ready(function(){
 			});
 			return false;
     });
-	$("#modificar").click(function(){
+	$("#modificarUsuario").click(function(){
 		var accion = "ModificarUsuario";
 		var id = $("#id").val();
 		var cooperativa =$("#cooperativa").val();
@@ -136,7 +136,7 @@ $(document).ready(function(){
 			    url: "/Github/Interdeco/Controlador/Controller.Usuarios.php",
 			    data: datos,
 			    success: function(response) {
-			    	limpiar();
+			    	limpiarUsuario();
 			    	//alert(response);
 			    	if(response == 1){
 			    		alert("No se ha podido Modificar los datos del Usuario");
@@ -161,7 +161,7 @@ $(document).ready(function(){
 			return false;
 		}
 	});
-	$("#agregar").click(function(){
+	$("#agregarUsuario").click(function(){
 		var accion = "InsertarUsuario";
 		var id = $("#id").val();
 		var cooperativa =$("#cooperativa").val();
@@ -208,7 +208,7 @@ $(document).ready(function(){
 			    url: "/Github/Interdeco/Controlador/Controller.Usuarios.php",
 			    data: datos,
 			    success: function(response) {
-			    	limpiar();
+			    	limpiarUsuario();
 			    	//alert(response);
 			    	if(response == 1){
 			    		alert("No se ha podido Agregar el Usuario");
@@ -232,7 +232,7 @@ $(document).ready(function(){
 			return false;
 		}
 	});
-    function HabilitarCampos(){
+    function HabilitarCamposUsuario(){
 		$("#id").prop('disabled', true);
 		$("#empleado").prop('disabled', false);
 		$("#alias").prop('disabled', false);
@@ -240,7 +240,7 @@ $(document).ready(function(){
 		$("#email").prop('disabled', false);
 		$("#fecha").prop('disabled', false);
 	}
-	function limpiar(){
+	function limpiarUsuario(){
 		
 		$("#id").val('');
 		$("#empleado").val('');
@@ -251,10 +251,9 @@ $(document).ready(function(){
 	}
 	$("#nuevo").click(function(){
 		$("#usuarios").show();
-		$("#div-agregar").show();
 		$("#div-limpiar").show();
 		$("#div-modificar").hide();
-		HabilitarCampos();
+		HabilitarCamposUsuario();
 		$("#resultados-busqueda").hide();
 	});
 
@@ -262,12 +261,12 @@ $(document).ready(function(){
 		$("#usuarios").hide();
 		$("#resultados-busqueda").show();
 	});
-	$("#cancelar").click(function(){
+	$("#cancelarUsuario").click(function(){
 		$("#usuarios").hide();
 		$("#resultados-busqueda").show();
 	});
-	$("#limpiar").click(function(){
-		limpiar();
+	$("#limpiarUsuario").click(function(){
+		limpiarUsuario();
 	});
 /**
  *  Login de Usuarios

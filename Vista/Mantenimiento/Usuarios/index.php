@@ -13,7 +13,7 @@
       <div class="modal-footer">
         <input type="hidden" id="identificador" name="identificador">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-        <button id="eliminar" type="button" class="btn btn-primary">Aceptar</button>
+        <button id="eliminarUsuario" type="button" class="btn btn-primary">Aceptar</button>
       </div>
     </div>
   </div>
@@ -163,22 +163,22 @@
 		    	<div  class="col-md-12">
 		    	  <div id="div-agregar" class="form-group col-md-3">
 				    <div class="col-sm-10">
-				      <a id="agregar" type="botton" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Guardar</a>
+				      <a id="agregarUsuario" type="botton" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Guardar</a>
 				    </div>
 				  </div>
 				  <div id="div-modificar" class="form-group col-md-3">
 				    <div class="col-sm-10">
-				      <a id="modificar" type="botton" class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar Registro</a>
+				      <a id="modificarUsuario" type="botton" class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar Registro</a>
 				    </div>
 				  </div>
 				  <div id="div-limpiar" class="form-group col-md-3">
 				    <div class="col-sm-10">
-				      <a id="limpiar" type="reset" class="btn btn-primary"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Limpiar</a>
+				      <a id="limpiarUsuario" type="reset" class="btn btn-primary"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Limpiar</a>
 				    </div>
 				  </div>
 				  <div id="div-cancelar" class="form-group col-md-3">
 				    <div class="col-sm-10">
-				      <a id="cancelar" type="botton" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span> Cancelar</a>
+				      <a id="cancelarUsuario" type="botton" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span> Cancelar</a>
 				    </div>
 				  </div>	
 		    	</div>
