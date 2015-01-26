@@ -81,7 +81,9 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
 
     <!-- jQuery Version 1.11.0 -->
     <script src="<?php echo $domain; ?>/js/jquery-1.11.0.js"></script>
-
+    
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
     <!-- jQuery usuarios.ajax -->
     <script src="<?php echo $domain; ?>/js/ajax.js"></script>
 
