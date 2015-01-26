@@ -6,6 +6,9 @@
    <!-- jQuery Version 1.11.0 -->
     <script src="/github/Interdeco/js/jquery-1.11.0.js"></script>
 
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+
     <!-- Reloj Digital -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.min.js"></script>
     <script src="/github/Interdeco/assets/js/script.js"></script>

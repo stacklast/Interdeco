@@ -1,6 +1,6 @@
 <?php include ('../../header.php') ?>
 <?php include ('../../../Modelo/DAO/Cls.DAO.Combos.php'); //incluimos Clase  DAO de Usuarios ?>
-<input type="hidden" id="navegacion" value="Usuarios">
+<input type="hidden" id="navegacion" value="Empleados">
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -47,12 +47,12 @@
             </div>
             <!-- /.panel-heading -->
 		   	<div class="panel-body">
-		   		<div class="table-responsive" id="resultados-busqueda" style="max-width:600px;">
-			      <table class="table table-responsive table-striped table-bordered table-hover" id="dataTables-example">
+		   		<div class="table-responsive" id="resultados-busqueda">
+			      <table class="table table-responsive table-striped table-bordered table-hover" id="dataTables-example" style="display: inline-block;overflow-x: auto;">
                                     <thead>
                                         <tr>
-                                            <th>E<br>M<br>P<br>_<br>ID</th>
-                                            <th>C<br>O<br>M<br>_<br>ID</th>
+                                            <th>EMP_ID</th>
+                                            <th>COM_ID</th>
                                             <th>Nombre</th>
                                             <th>Apellido</th>
                                             <th>Teléfono</th>

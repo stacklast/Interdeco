@@ -14,12 +14,19 @@ class ClsDAO_Combos
 {   
    private $_empleado;
    private $_compania;
+   private $_pais;
+   private $_distrito;
+   private $_ciudad;
+   public  $_code;
 
 
       public function __construct()
       { 
          $this->_empleado=array();
          $this->_compania=array();
+         $this->_distrito=array();
+         $this->_ciudad=array();
+         $this->_pais=array();
       }
 
  /**
@@ -55,6 +62,75 @@ class ClsDAO_Combos
       }   
       return $this->_compania;       
    }
+/**
+  *  Obtener Paises
+  */
+   public function Get_Pais()
+   {
+      $bd=Db::getInstance();
+      $sql="SELECT PA_ID, PA_CODIGO, PA_NOMBRE FROM dpa_pais ORDER BY PA_ID ASC";
+      $res=$bd->ejecutar($sql);
+      //mysql_fetch_assoc se utiliza para trabajar con array multidimensional
+      while($reg=mysql_fetch_assoc($res))
+      {
+         //recibe cada uno de los registros que tiene la tabla tipo_equipo
+         $this->_pais[]=$reg;   
+      }   
+      return $this->_pais;       
+   }
+/**
+  *  Obtener Paises
+  */
+   public function Get_Distrito()
+   {
+      $bd=Db::getInstance();
+      $sql="SELECT CI_DISTRITO FROM dci_ciudad WHERE CI_ID = '$this->_code' ORDER BY CI_DISTRITO ASC";
+      $res=$bd->ejecutar($sql);
+      //mysql_fetch_assoc se utiliza para trabajar con array multidimensional
+      while($reg=mysql_fetch_assoc($res))
+      {
+         //recibe cada uno de los registros que tiene la tabla tipo_equipo
+         $this->_distrito[]=$reg;   
+      }   
+      return $this->_distrito;       
+   }
+/**
+  *  Obtener Paises
+  */
+   public function Get_Ciudad()
+   {
+      $bd=Db::getInstance();
+      $sql="SELECT CI_ID, CI_NOMBRE FROM dci_ciudad WHERE CI_CODIGO_PAIS = '$this->_code' ORDER BY CI_ID ASC";
+      $res=$bd->ejecutar($sql);
+      //mysql_fetch_assoc se utiliza para trabajar con array multidimensional
+      while($reg=mysql_fetch_assoc($res))
+      {
+         //recibe cada uno de los registros que tiene la tabla tipo_equipo
+         $this->_ciudad[]=$reg;   
+      }   
+      return $this->_ciudad;       
+   }
  
 }
+
+@$combo = $_POST["combo"];
+if($combo == "ciudad")
+{
+  $ciudad = new ClsDAO_Combos();
+  $ciudad->_code = $_POST["code"];
+  $reg = $ciudad->Get_Ciudad();
+  for($i=0; $i<count($reg); $i++) { ?>    
+      <option value="<?php echo $reg[$i]["CI_ID"];?>"><?php echo $reg[$i]["CI_NOMBRE"];?></option>
+  <?php } 
+}
+if($combo == "distrito")
+{
+  $distrito = new ClsDAO_Combos();
+  $distrito->_code = $_POST["code"];
+  $reg = $distrito->Get_Distrito();
+  for($i=0; $i<count($reg); $i++) {  
+       echo $reg[$i]["CI_DISTRITO"];
+  } 
+}
+
 ?>
