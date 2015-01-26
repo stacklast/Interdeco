@@ -300,7 +300,7 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
                             <a class="active" href="<?php echo $domain; ?>/"><i class="fa fa-dashboard fa-fw"></i> Inicio</a>
                         </li>
                         <li>
-                            <a href="forms.html"><i class="fa fa-edit fa-fw"></i>Facturación</a>
+                            <a href="<?php echo $domain; ?>/Vista/Facturacion/"><i class="fa fa-edit fa-fw"></i>Facturación</a>
                         </li>
                         <li id="menu-mantenimientos">
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> Mantenimientos<span class="fa arrow"></span></a>
