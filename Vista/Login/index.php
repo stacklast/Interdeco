@@ -36,13 +36,14 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
 
 </head>
 
-<body>
-    <div class="container">
+<body style="background:url('<?php echo $domain; ?>/img/bg.jpg');">
+    <div class="container" >
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
+            <img src="<?php echo $domain; ?>/img/logo.png" alt="">
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Por favor Autentificarse</h3>
+                        <h2 class="panel-title">Autentificación</h1>
                     </div>
                     <div class="panel-body">
                         <form role="form">

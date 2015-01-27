@@ -238,7 +238,7 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
                         </li>
                         <li>
                             <a class="active" href="<?php echo $domain; ?>/"><i class="fa fa-dashboard fa-fw"></i> Inicio</a>
-                        </li>>
+                        </li>
                         <li>
                             <a href="<?php echo $domain; ?>/Vista/Facturacion/"><i class="fa fa-edit fa-fw"></i>Facturación</a>
                         </li>
@@ -259,6 +259,15 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
                                 </li>
                                 <li>
                                     <a href="#">Planes y Programas</a>
+                                </li>
+                                <li>
+                                    <a href="#">Perfiles</a>
+                                </li>
+                                <li>
+                                    <a href="#">Recursos</a>
+                                </li>
+                                <li>
+                                    <a href="#">Extras</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
