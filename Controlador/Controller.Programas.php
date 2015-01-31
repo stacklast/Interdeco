@@ -15,11 +15,14 @@ include ('funciones.php');
  */
 @$ProgramasDAO = new ClsDAO_Programas();
 @$id 	      = NoInjection($_POST['id']);
-@$empleado 	  = NoInjection($_POST['empleado']);
-@$alias 	  = NoInjection($_POST['alias']);
-@$password 	  = EncriptarMD5_SALT($_POST['password']);
-@$email 	  = NoInjection($_POST['email']);
-@$fecha       = NoInjection($_POST['fecha']);
+@$detalle 	  = NoInjection($_POST['detalle']);
+@$participante= NoInjection($_POST['participante']);
+@$nombre 	  = NoInjection($_POST['nombre']);
+@$dias        = NoInjection($_POST['dias']);
+@$semanas     = NoInjection($_POST['semanas']);
+@$fechainicio = NoInjection($_POST['fechainicio']);
+@$fechafinal  = NoInjection($_POST['fechafinal']);
+@$tarifa      = NoInjection($_POST['tarifa']);
 @$recordar 	  = $_POST['recordar'];
 /**
  * $procesar Para realizar accion
@@ -28,11 +31,11 @@ include ('funciones.php');
 @$procesar 	= NoInjection($_POST['accion']);
 if(isset($procesar)){
 	if($procesar == "InsertarPrograma"){
-		 $insertar= array("".$empleado."","".$alias."","".$password."","".$email."","".$fecha."");
+		 $insertar= array("".$detalle."","".$participante."","".$nombre."","".$dias."","".$semanas."","".$fechainicio."","".$fechafinal."","".$tarifa."");
 		echo $ProgramasDAO->InsertarPrograma($insertar);
 	}
 	if($procesar == "ModificarPrograma"){
-		$modificar= array("".$empleado."","".$alias."","".$password."","".$email."","".$fecha."");
+		$modificar= array("".$detalle."","".$participante."","".$nombre."","".$dias."","".$semanas."","".$fechainicio."","".$fechafinal."","".$tarifa."");
 		echo $ProgramasDAO->ModificarPrograma($id,$modificar);
 	}
 	if($procesar == "EliminarPrograma"){
@@ -40,6 +43,6 @@ if(isset($procesar)){
 	}
 }
 else{
-	echo "Se ha Enviado una petición Errónea: Controller.Usuarios.php";
+	echo "Se ha Enviado una petición Errónea: Controller.Programas.php";
 }
 ?>

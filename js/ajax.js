@@ -32,6 +32,13 @@ $(document).ready(function(){
         $('#menu-mantenimientos .nav-second-level').addClass('in');
 	}
 	else 
+	if(nav == 'Programas'){
+		$('#menu-inicio').removeClass('active');
+		$('#menu-programas').addClass('active');
+		$('#menu-programas').addClass('active');
+        $('#menu-mantenimientos .nav-second-level').addClass('in');
+	}
+	else 
 	if(nav == 'Facturacion'){
 		$('#menu-inicio').removeClass('active');
 		$('#menu-facturacion').addClass('active');

@@ -258,7 +258,7 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
                                     <a id="menu-participantes" href="<?php echo $domain; ?>/Vista/Mantenimiento/Participantes/">Participantes</a>
                                 </li>
                                 <li>
-                                    <a id="menu-programas" href="#">Planes y Programas</a>
+                                    <a id="menu-programas" href="<?php echo $domain; ?>/Vista/Mantenimiento/Programas/">Planes y Programas</a>
                                 </li>
                                 <li>
                                     <a id="menu-extras" href="#">Extras</a>
