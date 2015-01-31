@@ -308,7 +308,10 @@
                   <div class="form-group col-md-4">
                     <label for="inputEmail3" class="col-sm-4 control-label">Agente</label>
                     <div class="col-sm-8">
-                      <input type="text" class="form-control" id="agente" name="agente" placeholder="Agente">
+                      <select class="form-control" id="agente" name="agente">
+                          <option value="Elizabeth Gallardo">Elizabeth Gallardo</option>
+                          <option value="Santiago Benavides">Santiago Benavides</option>
+                      </select>
                     </div>
                   </div>
                   <div class="form-group col-md-4">
@@ -320,7 +323,11 @@
                   <div class="form-group col-md-4">
                     <label for="inputEmail3" class="col-sm-4 control-label">Asentamiento</label>
                     <div class="col-sm-8">
-                      <input type="text" class="form-control" id="asentamiento" name="asentamiento" placeholder="Asentamiento">
+                      <select class="form-control" id="asentamiento" name="asentamiento" >
+                          <option value="Hotel Andino">Hotel Andino</option>
+                          <option value="Hotel Vista Amazonas">Hotel Vista Amazonas</option>
+                          <option value="Hotel Plaza">Hotel Plaza</option>
+                      </select>
                     </div>
                   </div>
                   <div class="form-group col-md-12">

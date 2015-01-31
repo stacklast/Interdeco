@@ -72,8 +72,6 @@ function dependencia_provincia()
 			});
 			return false;
 }
-
-
 	//solo numeros
 	(function(a){a.fn.validCampoFranz=function(b){a(this).on({keypress:function(a){var c=a.which,d=a.keyCode,e=String.fromCharCode(c).toLowerCase(),f=b;(-1!=f.indexOf(e)||9==d||37!=c&&37==d||39==d&&39!=c||8==d||46==d&&46!=c)&&161!=c||a.preventDefault()}})}})(jQuery);
 	$('#ruc').validCampoFranz('0123456789');
@@ -210,20 +208,19 @@ function dependencia_provincia()
 		var fechana = $("#fechana").val();
 		var nacionalidad = $("#nacionalidad").val();
 		var direccion = $("#direccion").val();
-		var pais = $("#pais").val();
-		var provincia = $("#provincia").val();
+		var pais = $("#pais option:selected").html();
+		var provincia = $("#provincia option:selected").html();
 		var ciudad = $("#ciudad option:selected").html();
 		var zip = $("#zip").val();
 		var telefono = $("#telefono").val();
 		var email = $("#email").val();
 		var estado = $("#estado").val();
-		var agente = $("#agente").val();
+		var agente = $("#agente option:selected").html();
 		var infovuelo = $("#infovuelo").val();
-		var asentamiento = $("#asentamiento").val();
+		var asentamiento = $("#asentamiento option:selected").html();
 		var comentarios = $("#comentario").val();
 		var datosString = $("#participantes").serialize();
 		var dato = '&accion=' + accion+'&id=' + id+'&ciudad=' + ciudad;
-		
 		if(nombre == ""){
 			$("#nombre").focus();
 			alert('(*)Campo Obligatorio: Ingrese nombre');
@@ -335,7 +332,6 @@ function dependencia_provincia()
 			    	else if (response == "Exito"){
 			    		location.reload(true);
 			    		 alert("Los datos del Participante han sido Modificados con Exito");
-			    		 
 			    	}
 			    	else{
 			    		alert(response);
@@ -371,7 +367,6 @@ function dependencia_provincia()
 		var comentarios = $("#comentario").val();
 		var datosString = $("#participantes").serialize();
 		var dato = '&accion=' + accion+'&id=' + id+'&ciudad=' + ciudad;
-		
 		if(nombre == ""){
 			$("#nombre").focus();
 			alert('(*)Campo Obligatorio: Ingrese nombre');
@@ -483,7 +478,6 @@ function dependencia_provincia()
 			    	else if (response == "Exito"){
 			    		location.reload(true);
 			    		 alert("Los datos del Participante han sido Agregado con Exito");
-			    		 
 			    	}
 			    	else{
 			    		alert(response);
@@ -546,7 +540,6 @@ function dependencia_provincia()
 		HabilitarCamposCompania();
 		$("#resultados-busqueda").hide();
 	});
-
 	$("#buscarParticipante").click(function(){
 		$("#participantes").hide();
 		$("#resultados-busqueda").show();
@@ -559,7 +552,6 @@ function dependencia_provincia()
 	$("#limpiarParticipante").click(function(){
 		limpiarParticipante();
 	});   
-
 /**
  *  Mantenimiento de la tabla emp_empleados
  * 
@@ -896,7 +888,6 @@ function dependencia_provincia()
 	$("#limpiarEmpleado").click(function(){
 		limpiarEmpleado();
 	});   
-
 /**
  *  Mantenimiento de la tabla com_compania
  * 
