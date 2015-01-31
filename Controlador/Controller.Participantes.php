@@ -17,6 +17,7 @@ include ('funciones.php');
 
 @$id 	      	= NoInjection($_POST['id']);
 @$compania 	  	= NoInjection($_POST['compania']);
+@$fecha 	  	= NoInjection($_POST['fecha']);
 @$nombre 	  	= NoInjection($_POST['nombre']);
 @$apellido    	= NoInjection($_POST['apellido']);
 @$genero      	= NoInjection($_POST['genero']);
@@ -33,7 +34,7 @@ include ('funciones.php');
 @$estado  		= NoInjection($_POST['estado']);
 @$agente  		= NoInjection($_POST['agente']);
 @$infovuelo  	= NoInjection($_POST['infovuelo']);
-@$asentamiento  = NoInjection($_POST['asentamiento']);
+@$hospedaje     = NoInjection($_POST['hospedaje']);
 @$comentario  	= NoInjection($_POST['comentario']);
 /**
  * $procesar Para realizar accion
@@ -42,17 +43,17 @@ include ('funciones.php');
 @$procesar 	= NoInjection($_POST['accion']);
 if(isset($procesar)){
 	if($procesar == "InsertarParticipante"){
-		 $insertar= array("".$compania."","".$nombre."","".$apellido."","".$genero."","".$fechana."",
+		 $insertar= array("".$compania."","".$fecha."","".$nombre."","".$apellido."","".$genero."","".$fechana."",
 		 	"".$pasarporte."","".$nacionalidad."","".$direccion."","".$pais."","".$provincia."",
 		 	"".$ciudad."","".$zip."","".$telefono."","".$email."","".$estado."","".$agente."",
-		 	"".$infovuelo."","".$asentamiento."","".$comentario."");
+		 	"".$infovuelo."","".$hospedaje."","".$comentario."");
 		echo $ParticipantesDAO->InsertarParticipante($insertar);
 	}
 	if($procesar == "ModificarParticipante"){
-		$modificar= array("".$compania."","".$nombre."","".$apellido."","".$genero."","".$fechana."",
+		$modificar= array("".$compania."","".$fecha."","".$nombre."","".$apellido."","".$genero."","".$fechana."",
 		 	"".$pasarporte."","".$nacionalidad."","".$direccion."","".$pais."","".$provincia."",
 		 	"".$ciudad."","".$zip."","".$telefono."","".$email."","".$estado."","".$agente."",
-		 	"".$infovuelo."","".$asentamiento."","".$comentario."");
+		 	"".$infovuelo."","".$hospedaje."","".$comentario."");
 		echo $ParticipantesDAO->ModificarParticipante($id,$modificar);
 	}
 	if($procesar == "EliminarParticipante"){
@@ -60,6 +61,6 @@ if(isset($procesar)){
 	}
 }
 else{
-	echo "Se ha Enviado una petición Errónea: Controller.Usuarios.php";
+	echo "Se ha Enviado una petición Errónea: Controller.Participantes.php";
 }
 ?>

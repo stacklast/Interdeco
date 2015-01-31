@@ -53,6 +53,7 @@
                                         <tr>
                                             <th>PAR_ID</th>
                                             <th>COM_ID</th>
+                                            <th>Fecha</th>
                                             <th>Nombre</th>
                                             <th>Apellido</th>
                                             <th>Género</th>
@@ -78,7 +79,7 @@
                                   <?php 
                                      $consulta=array();
                                       $bd=Db::getInstance();
-								      $sql="SELECT `PAR_ID`, `COM_ID`, `PAR_NOMBRE`, `PAR_APELLIDO`, `PAR_GENERO`, `PAR_FECHA_NACIMIENTO`, `PAR_NUMERO_PASAPORTE`, `PAR_NACIONALIDAD`, `PAR_DIRECCION`, `PAR_PAIS`, `PAR_PROVINCIA_ESTADO`, `PAR_CIUDAD`, `PAR_ZIP_POSTAL`, `PAR_TELEFONO`, `PAR_EMAIL`, `PAR_ESTADO`, `PAR_AGENTE`, `PAR_INFO_VUELO`, `PAR_ASENTAMIENTO`, `PAR_COMENTARIOS` FROM `par_participantes`";
+								     $sql="SELECT `PAR_ID`, `COM_ID`, `PAR_FECHA`, `PAR_NOMBRE`, `PAR_APELLIDO`, `PAR_GENERO`, `PAR_FECHA_NACIMIENTO`, `PAR_NUMERO_PASAPORTE`, `PAR_NACIONALIDAD`, `PAR_DIRECCION`, `PAR_PAIS`, `PAR_PROVINCIA_ESTADO`, `PAR_CIUDAD`, `PAR_ZIP_POSTAL`, `PAR_TELEFONO`, `PAR_EMAIL`, `PAR_ESTADO`, `PAR_AGENTE`, `PAR_INFO_VUELO`, `PAR_HOSPEDAJE`, `PAR_COMENTARIOS` FROM `par_participantes`";
 								      $res=$bd->ejecutar($sql);
 								      //mysql_fetch_assoc se utiliza para trabajar con array multidimensional
 								      while($reg=mysql_fetch_assoc($res))
@@ -95,6 +96,10 @@
                                             <td>
                                             	<?php echo $consulta[$i]["COM_ID"];?>
                                             	<input type="hidden" id="COM_ID<?php echo $i+1; ?>" value="<?php echo $consulta[$i]["COM_ID"];?>">
+                                            </td>
+                                            <td>
+                                                <?php echo $consulta[$i]["PAR_FECHA"];?>
+                                                <input type="hidden" id="PAR_FECHA<?php echo $i+1; ?>" value="<?php echo $consulta[$i]["PAR_FECHA"];?>">
                                             </td>
                                             <td>
                                             	<?php echo $consulta[$i]["PAR_NOMBRE"];?>
@@ -161,8 +166,8 @@
                                             	<input type="hidden" id="PAR_INFO_VUELO<?php echo $i+1; ?>" value="<?php echo $consulta[$i]["PAR_INFO_VUELO"];?>">
                                             </td>
                                             <td class="center">
-                                            	<?php echo $consulta[$i]["PAR_ASENTAMIENTO"];?>
-                                            	<input type="hidden" id="PAR_ASENTAMIENTO<?php echo $i+1; ?>" value="<?php echo $consulta[$i]["PAR_ASENTAMIENTO"];?>">
+                                            	<?php echo $consulta[$i]["PAR_HOSPEDAJE"];?>
+                                            	<input type="hidden" id="PAR_HOSPEDAJE<?php echo $i+1; ?>" value="<?php echo $consulta[$i]["PAR_HOSPEDAJE"];?>">
                                             </td>
                                             <td class="center">
                                             	<?php echo $consulta[$i]["PAR_COMENTARIOS"];?>
@@ -201,6 +206,12 @@
                     <option value="<?php echo $reg[$i]["COM_ID"];?>"><?php echo $reg[$i]["COM_NOMBRE"];?></option>
                      <?php } ?>
                     </select>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="inputEmail3" class="col-sm-4 control-label">Fecha</label>
+                    <div class="col-sm-8">
+                      <input type="date" class="form-control" id="fecha" name="fecha"  value="<?php echo date('y/m/d h:m:s'); ?>" readonly="readonly">
                     </div>
                   </div>
 				  <div class="form-group col-md-4">

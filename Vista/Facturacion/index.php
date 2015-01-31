@@ -1,4 +1,5 @@
 <?php include ('../header.php') ?>
+<input type="hidden" id="navegacion" value="Facturacion">
 	<div class="row">
 		<div class="col-md-12">
 	    	<div class="page-header" style="text-align:center;">

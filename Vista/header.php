@@ -237,10 +237,10 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a class="active" href="<?php echo $domain; ?>/"><i class="fa fa-dashboard fa-fw"></i> Inicio</a>
+                            <a id="menu-inicio" class="active" href="<?php echo $domain; ?>/"><i class="fa fa-dashboard fa-fw"></i> Inicio</a>
                         </li>
                         <li>
-                            <a href="<?php echo $domain; ?>/Vista/Facturacion/"><i class="fa fa-edit fa-fw"></i>Facturación</a>
+                            <a id="menu-facturacion" href="<?php echo $domain; ?>/Vista/Facturacion/"><i class="fa fa-edit fa-fw"></i>Facturación</a>
                         </li>
                         <li id="menu-mantenimientos">
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> Mantenimientos<span class="fa arrow"></span></a>
@@ -258,28 +258,28 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
                                     <a id="menu-participantes" href="<?php echo $domain; ?>/Vista/Mantenimiento/Participantes/">Participantes</a>
                                 </li>
                                 <li>
-                                    <a href="#">Planes y Programas</a>
+                                    <a id="menu-programas" href="#">Planes y Programas</a>
                                 </li>
                                 <li>
-                                    <a href="#">Perfiles</a>
+                                    <a id="menu-extras" href="#">Extras</a>
                                 </li>
                                 <li>
-                                    <a href="#">Recursos</a>
+                                    <a id="menu-perfiles" href="#">Perfiles</a>
                                 </li>
                                 <li>
-                                    <a href="#">Extras</a>
+                                    <a id="menu-recursos" href="#">Recursos</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-files-o fa-fw"></i>Reportes<span class="fa arrow"></span></a>
+                            <a id="menu-reportes" href="#"><i class="fa fa-files-o fa-fw"></i>Reportes<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">Facturas</a>
+                                    <a id="menu-reportes-facturas"href="#">Facturas</a>
                                 </li>
                                 <li>
-                                    <a href="#">Participantes</a>
+                                    <a id="menu-reportes-participates" href="#">Participantes</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

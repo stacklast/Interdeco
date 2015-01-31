@@ -1,78 +1,110 @@
-
 $(document).ready(function(){
-
- $.datepicker.regional['es'] = {
- closeText: 'Cerrar',
- prevText: '<Ant',
- nextText: 'Sig>',
- currentText: 'Hoy',
- monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
- monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
- dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
- dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
- dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
- weekHeader: 'Sm',
- dateFormat: 'yy-mm-dd',
- firstDay: 1,
- isRTL: false,
- changeYear: true, // para que se pueda escoger el año
- yearRange: '-65:+0',//rango de fechas
- showMonthAfterYear: false,
- yearSuffix: ''
- };
- $.datepicker.setDefaults($.datepicker.regional['es']);
-
-	$(".date-picker").datepicker();
-$(".date-picker").on("change", function () {
-    var id = $(this).attr("id");
-    var val = $("label[for='" + id + "']").text();
-    $("#msg").text(val + " changed");
-});
+	/**
+	 * Menu de Navegación Lateral
+	 * 
+	 */
 	var nav = $('#navegacion').val();
-
+	if(nav == 'Usuarios'){
+		$('#menu-inicio').removeClass('active');
+		$('#menu-mantenimientos').addClass('active');
+		$('#menu-usuarios').addClass('active');
+        $('#menu-mantenimientos .nav-second-level').addClass('in');
+	}   
+	else 
+	if(nav == 'Companias'){
+		$('#menu-inicio').removeClass('active');
+		$('#menu-mantenimientos').addClass('active');
+		$('#menu-companias').addClass('active');
+        $('#menu-mantenimientos .nav-second-level').addClass('in');
+	}
+	else 
+	if(nav == 'Empleados'){
+		$('#menu-inicio').removeClass('active');
+		$('#menu-empleados').addClass('active');
+		$('#menu-empleados').addClass('active');
+        $('#menu-mantenimientos .nav-second-level').addClass('in');
+	}
+	else 
+	if(nav == 'Participantes'){
+		$('#menu-inicio').removeClass('active');
+		$('#menu-participantes').addClass('active');
+		$('#menu-participantes').addClass('active');
+        $('#menu-mantenimientos .nav-second-level').addClass('in');
+	}
+	else 
+	if(nav == 'Facturacion'){
+		$('#menu-inicio').removeClass('active');
+		$('#menu-facturacion').addClass('active');
+	}
+	/**
+	 * Manejo de Fecha cambio de idioma y rangos
+	 */
+	 $.datepicker.regional['es'] = {
+	 closeText: 'Cerrar',
+	 prevText: '<Ant',
+	 nextText: 'Sig>',
+	 currentText: 'Hoy',
+	 monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+	 monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+	 dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+	 dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+	 dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+	 weekHeader: 'Sm',
+	 dateFormat: 'yy-mm-dd',
+	 firstDay: 1,
+	 isRTL: false,
+	 changeYear: true, // para que se pueda escoger el año
+	 yearRange: '-65:+0',//rango de fechas
+	 showMonthAfterYear: false,
+	 yearSuffix: ''
+	 };
+	$.datepicker.setDefaults($.datepicker.regional['es']);
+	$(".date-picker").datepicker();
+	$(".date-picker").on("change", function () {
+	    var id = $(this).attr("id");
+	    var val = $("label[for='" + id + "']").text();
+	    $("#msg").text(val + " changed");
+	});
+	/**
+	 * Dinamico de Ciudad, Pais, Distrito o Provincia
+	 * 
+	 */
 	$("#pais").change(function(){dependencia_ciudad();});
 	$("#ciudad").change(function(){dependencia_provincia();});
-function dependencia_ciudad()
-{
-	var code = $("#pais").val();
-	var datos = "code="+code+"&combo=ciudad";
-	$.ajax({
-			    type: "POST",
-			    url: "/Github/Interdeco/Modelo/DAO/Cls.DAO.Combos.php",
-			    data: datos,
-			    success: function(response) {
-			    	
+	function dependencia_ciudad(){
+		var code = $("#pais").val();
+		var datos = "code="+code+"&combo=ciudad";
+		$.ajax({
+				type: "POST",
+				url: "/Github/Interdeco/Modelo/DAO/Cls.DAO.Combos.php",
+				data: datos,
+				success: function(response) {
 						//alert(response);
-						$('#ciudad').append(response);			
-					
-			    },
-			    error: function(response) {
-			    	
-			    }
-			});
-			return false;
-}
-function dependencia_provincia()
-{
-	var code = $("#ciudad").val();
-	var datos = "code="+code+"&combo=distrito";
-	$.ajax({
-			    type: "POST",
-			    url: "/Github/Interdeco/Modelo/DAO/Cls.DAO.Combos.php",
+						$('#ciudad').append(response);
+				},
+				error: function(response) {
+				}
+		});
+		return false;
+	}
+	function dependencia_provincia(){
+		var code = $("#ciudad").val();
+		var datos = "code="+code+"&combo=distrito";
+		$.ajax({
+				type: "POST",
+				url: "/Github/Interdeco/Modelo/DAO/Cls.DAO.Combos.php",
 			    data: datos,
-			    success: function(response) {
-			    	
-						//alert(response);
-						$('#provincia').val(response);			
-					
-			    },
-			    error: function(response) {
-			    	alert(response);
-			    }
-			});
-			return false;
-}
-	//solo numeros
+				success: function(response) {
+						$('#provincia').val(response);				
+				},
+				error: function(response) {
+				    }
+		});
+				return false;
+	}
+	/**
+	 * validacion de campos para solo números
+	 */
 	(function(a){a.fn.validCampoFranz=function(b){a(this).on({keypress:function(a){var c=a.which,d=a.keyCode,e=String.fromCharCode(c).toLowerCase(),f=b;(-1!=f.indexOf(e)||9==d||37!=c&&37==d||39==d&&39!=c||8==d||46==d&&46!=c)&&161!=c||a.preventDefault()}})}})(jQuery);
 	$('#ruc').validCampoFranz('0123456789');
 	$('#telefono').validCampoFranz('0123456789');
@@ -80,33 +112,11 @@ function dependencia_provincia()
 	$('#telefax').validCampoFranz('0123456789');
 	$('#zip').validCampoFranz('0123456789');
 	
-	if(nav == 'Usuarios'){
-		$('#menu-mantenimientos').addClass('active');
-		$('#menu-usuarios').addClass('active');
-        $('#menu-mantenimientos .nav-second-level').addClass('in');
-	}   
-	else 
-	if(nav == 'Companias'){
-		$('#menu-mantenimientos').addClass('active');
-		$('#menu-companias').addClass('active');
-        $('#menu-mantenimientos .nav-second-level').addClass('in');
-	}
-	else 
-	if(nav == 'Empleados'){
-		$('#menu-empleados').addClass('active');
-		$('#menu-empleados').addClass('active');
-        $('#menu-mantenimientos .nav-second-level').addClass('in');
-	}
-	else 
-	if(nav == 'Participantes'){
-		$('#menu-participantes').addClass('active');
-		$('#menu-participantes').addClass('active');
-        $('#menu-mantenimientos .nav-second-level').addClass('in');
-	}
-/**
- *  Mantenimiento de la tabla par_participantes
- * 
- */
+	
+	/**
+	 *  Mantenimiento de la tabla par_participantes
+	 *  EDITAR
+	 */
     var total = $("#totalregistrosParticipante").val();
 	for (var i = 1; i <= total; i++) {
 		var aux = i;
@@ -114,6 +124,7 @@ function dependencia_provincia()
 		function editarParticipante(event){
 			id = $('#PAR_ID'+event.data.param1).val();
 			compania = $('#COM_ID'+event.data.param1).val();
+			fecha = $('#PAR_FECHA'+event.data.param1).val();
 			nombre = $('#PAR_NOMBRE'+event.data.param1).val();
 			apellido = $('#PAR_APELLIDO'+event.data.param1).val();
 			genero = $('#PAR_GENERO'+event.data.param1).val();
@@ -168,6 +179,10 @@ function dependencia_provincia()
 			$('#myModal').modal('show');
 		}
 	};
+	/**
+	 *  Mantenimiento de la tabla par_participantes
+	 *  ELIMINAR
+	 */
 	$('#eliminarParticipante').click(function() {
 		var accion = "EliminarParticipante";
 	 	var id = $("#identificador").val();
@@ -179,7 +194,6 @@ function dependencia_provincia()
 			    success: function(response) {
 			    	$('#myModal').modal('hide');
 			    	limpiarCompania();
-			    	//alert(response);
 			    	if(response == 1){
 			    		alert("No se ha podido Eliminar el registro del Participante");
 			    	}
@@ -196,8 +210,12 @@ function dependencia_provincia()
 			    	alert(response);
 			    }
 			});
-			return false;
+		return false;
     });
+    /**
+	 *  Mantenimiento de la tabla par_participantes
+	 *  MODIFICAR
+	 */
 	$("#modificarParticipante").click(function(){
 		var accion = "ModificarParticipante";
 		var id = $("#id").val();
@@ -325,7 +343,6 @@ function dependencia_provincia()
 			    data: datos,
 			    success: function(response) {
 			    	limpiarParticipante();
-			    	alert(response);
 			    	if(response == 1){
 			    		alert("No se ha podido Modificar los datos del Participante");
 			    	}
@@ -338,12 +355,15 @@ function dependencia_provincia()
 			    	}
 			    },
 			    error: function(response) {
-			    	//alert(response);
 			    }
 			});
 			return false;
 		}
 	});
+	/**
+	 *  Mantenimiento de la tabla par_participantes
+	 *  AGREGAR
+	 */
 	$("#agregarParticipante").click(function(){
 		var accion = "InsertarParticipante";
 		var id = $("#id").val();
@@ -464,14 +484,12 @@ function dependencia_provincia()
 		}
 		else{
 			datos = datosString+dato;
-			//alert(datos);
 			$.ajax({
 			    type: "POST",
 			    url: "/Github/Interdeco/Controlador/Controller.Participantes.php",
 			    data: datos,
 			    success: function(response) {
 			    	limpiarParticipante();
-			    	//alert(response);
 			    	if(response == 1){
 			    		alert("No se ha podido Agregar los datos del Participante");
 			    	}
@@ -484,12 +502,15 @@ function dependencia_provincia()
 			    	}
 			    },
 			    error: function(response) {
-			    	//alert(response);
 			    }
 			});
 			return false;
 		}
 	});
+	/**
+	 *  Mantenimiento de la tabla par_participantes
+	 *  FUNCIONES
+	 */
     function HabilitarCamposParticipante(){
 		$("#id").prop('disabled', true);
 		$("#compania").prop('disabled', false);
@@ -532,6 +553,10 @@ function dependencia_provincia()
 		$("#asentamiento").val('');
 		$("#comentario").val('');
 	}
+	/**
+	 *  Mantenimiento de la tabla par_participantes
+	 *  EVENTOS BOTONES
+	 */
 	$("#nuevoParticipante").click(function(){
 		$("#participantes").show();
 		$("#div-limpiar").show();
@@ -552,10 +577,10 @@ function dependencia_provincia()
 	$("#limpiarParticipante").click(function(){
 		limpiarParticipante();
 	});   
-/**
- *  Mantenimiento de la tabla emp_empleados
- * 
- */
+	/**
+	 *  Mantenimiento de la tabla emp_empleados
+	 * 
+	 */
     var total = $("#totalregistrosEmpleado").val();
 	for (var i = 1; i <= total; i++) {
 		var aux = i;
@@ -647,7 +672,6 @@ function dependencia_provincia()
 		var telefax = $("#telefax").val();
 		var datosString = $("#empleados").serialize();
 		var dato = '&accion=' + accion+'&id=' + id;
-		
 		if(nombre == ""){
 			$("#nombre").focus();
 			alert('(*)Campo Obligatorio: Ingrese nombre');
@@ -709,28 +733,24 @@ function dependencia_provincia()
 		}
 		else{
 			datos = datosString+dato;
-			//alert(datos);
 			$.ajax({
 			    type: "POST",
 			    url: "/Github/Interdeco/Controlador/Controller.Empleados.php",
 			    data: datos,
 			    success: function(response) {
 			    	limpiarEmpleado();
-			    	//alert(response);
 			    	if(response == 1){
 			    		alert("No se ha podido Modificar los datos del Empleado");
 			    	}
 			    	else if (response == "Exito"){
 			    		location.reload(true);
 			    		 alert("Los datos del Empleado han sido Modificados con Exito");
-			    		 
 			    	}
 			    	else{
 			    		alert(response);
 			    	}
 			    },
 			    error: function(response) {
-			    	//alert(response);
 			    }
 			});
 			return false;
@@ -752,7 +772,6 @@ function dependencia_provincia()
 		var telefax = $("#telefax").val();
 		var datosString = $("#empleados").serialize();
 		var dato = '&accion=' + accion+'&id=' + id;
-		
 		if(nombre == ""){
 			$("#nombre").focus();
 			alert('(*)Campo Obligatorio: Ingrese nombre');
@@ -814,7 +833,6 @@ function dependencia_provincia()
 		}
 		else{
 			datos = datosString+dato;
-			//alert(datos);
 			$.ajax({
 			    type: "POST",
 			    url: "/Github/Interdeco/Controlador/Controller.Empleados.php",
@@ -834,7 +852,6 @@ function dependencia_provincia()
 			    	}
 			    },
 			    error: function(response) {
-			    	//alert(response);
 			    }
 			});
 			return false;
@@ -875,7 +892,6 @@ function dependencia_provincia()
 		HabilitarCamposCompania();
 		$("#resultados-busqueda").hide();
 	});
-
 	$("#buscarEmpleado").click(function(){
 		$("#empleados").hide();
 		$("#resultados-busqueda").show();
@@ -938,7 +954,6 @@ function dependencia_provincia()
 			    success: function(response) {
 			    	$('#myModal').modal('hide');
 			    	limpiarCompania();
-			    	//alert(response);
 			    	if(response == 1){
 			    		alert("No se ha podido Eliminar el registro de la Compania");
 			    	}
@@ -973,7 +988,6 @@ function dependencia_provincia()
 		var datosString = $("#companias").serialize();
 		var dato = '&accion=' + accion+'&id=' + id;
 		var validacion_email = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
-		
 		if(nombre == ""){
 			$("#nombre").focus();
 			alert('(*)Campo Obligatorio: Ingrese nombre');
@@ -1013,21 +1027,18 @@ function dependencia_provincia()
 			$('#error').html('');
 			$('.ajaxgif').removeClass('hide');
 			datos = datosString+dato;
-			//alert(datos);
 			$.ajax({
 			    type: "POST",
 			    url: "/Github/Interdeco/Controlador/Controller.Companias.php",
 			    data: datos,
 			    success: function(response) {
 			    	limpiarUsuario();
-			    	//alert(response);
 			    	if(response == 1){
 			    		alert("No se ha podido Modificar los datos de la Compania");
 			    	}
 			    	else if (response == "Exito"){
 			    		location.reload(true);
 			    		 alert("Los datos de la COmpania han sido Modificados con Exito");
-			    		 
 			    	}
 			    	else{
 			    		alert(response);
@@ -1036,7 +1047,6 @@ function dependencia_provincia()
 			        $('.msg').text('Mensaje enviado!').addClass('msg_ok').animate({ 'right' : '130px' }, 300);  
 			    },
 			    error: function(response) {
-			    	//alert(response);
 			        $('.ajaxgif').hide();
 			        $('.msg').text('Hubo un error!').addClass('msg_error').animate({ 'right' : '130px' }, 300);                 
 			    }
@@ -1056,7 +1066,6 @@ function dependencia_provincia()
 		var datosString = $("#companias").serialize();
 		var dato = '&accion=' + accion+'&id=' + id;
 		var validacion_email = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
-		
 		if(nombre == ""){
 			$("#nombre").focus();
 			alert('(*)Campo Obligatorio: Ingrese nombre');
@@ -1101,14 +1110,12 @@ function dependencia_provincia()
 			    data: datos,
 			    success: function(response) {
 			    	limpiarCompania();
-			    	//alert(response);
 			    	if(response == 1){
 			    		alert("No se ha podido Agregar los datos de la Compania");
 			    	}
 			    	else if (response == "Exito"){
 			    		location.reload(true);
 			    		 alert("Los datos de la Compania han sido Agregados con Exito");
-			    		 
 			    	}
 			    	else{
 			    		alert(response);
@@ -1160,7 +1167,6 @@ function dependencia_provincia()
 	$("#limpiarCompania").click(function(){
 		limpiarCompania();
 	});   
-
 /**
  *  Mantenimiento de la tabla usu_usuario
  * 
@@ -1243,7 +1249,6 @@ function dependencia_provincia()
 		var datosString = $("#usuarios").serialize();
 		var dato = '&accion=' + accion+'&id=' + id;
 		var validacion_email = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
-		
 		if(email == "" || !validacion_email.test(email)){
 			$("#email").focus();
 			alert('(*)Campo Obligatorio: Ingrese su email');
@@ -1265,21 +1270,18 @@ function dependencia_provincia()
 			$('#error').html('');
 			$('.ajaxgif').removeClass('hide');
 			datos = datosString+dato;
-			//alert(datos);
 			$.ajax({
 			    type: "POST",
 			    url: "/Github/Interdeco/Controlador/Controller.Usuarios.php",
 			    data: datos,
 			    success: function(response) {
 			    	limpiarUsuario();
-			    	//alert(response);
 			    	if(response == 1){
 			    		alert("No se ha podido Modificar los datos del Usuario");
 			    	}
 			    	else if (response == "Exito"){
 			    		location.reload(true);
 			    		 alert("Los datos del  Usuario han sido Modificados con Exito");
-			    		 
 			    	}
 			    	else{
 			    		alert(response);
@@ -1288,7 +1290,6 @@ function dependencia_provincia()
 			        $('.msg').text('Mensaje enviado!').addClass('msg_ok').animate({ 'right' : '130px' }, 300);  
 			    },
 			    error: function(response) {
-			    	//alert(response);
 			        $('.ajaxgif').hide();
 			        $('.msg').text('Hubo un error!').addClass('msg_error').animate({ 'right' : '130px' }, 300);                 
 			    }
@@ -1307,7 +1308,6 @@ function dependencia_provincia()
 		var datosString = $("#usuarios").serialize();
 		var dato = '&accion=' + accion;
 		var validacion_email = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
-		
 		 if(email == "" || !validacion_email.test(email)){
 			$("#email").focus();
 			alert('(*)Campo Obligatorio: Ingrese su email');
@@ -1335,14 +1335,12 @@ function dependencia_provincia()
 			$('#error').html('');
 			$('.ajaxgif').removeClass('hide');
 			datos = datosString+dato;
-			//alert(datos);
 			$.ajax({
 			    type: "POST",
 			    url: "/Github/Interdeco/Controlador/Controller.Usuarios.php",
 			    data: datos,
 			    success: function(response) {
 			    	limpiarUsuario();
-			    	//alert(response);
 			    	if(response == 1){
 			    		alert("No se ha podido Agregar el Usuario");
 			    	}
@@ -1380,7 +1378,6 @@ function dependencia_provincia()
 		$("#alias").val('');
 		$("#password").val('');
 		$("#email").val('');
-		//$("#fecha").val('');
 	}
 	$("#nuevoUsuario").click(function(){
 		$("#usuarios").show();
@@ -1390,7 +1387,6 @@ function dependencia_provincia()
 		HabilitarCamposUsuario();
 		$("#resultados-busqueda").hide();
 	});
-
 	$("#buscarUsuario").click(function(){
 		$("#usuarios").hide();
 		$("#resultados-busqueda").show();
@@ -1434,7 +1430,6 @@ function dependencia_provincia()
 			$('#error').html('');
 			$('.ajaxgif').removeClass('hide');
 			var datos = '&email=' + email + '&password=' + password + '&accion=' + accion + '&recordar='+check;
-			//alert(datos);
 			$.ajax({
 			    type: "POST",
 			    url: "/Github/Interdeco/Controlador/Controller.Usuarios.php",
@@ -1469,7 +1464,6 @@ function dependencia_provincia()
         validarCaptcha();
     });
     function validarCaptcha() {
-        //alert('Captcha');
         var code = $('#code').val();
         var param = 'code=' + code;
         $.ajax({
@@ -1477,7 +1471,6 @@ function dependencia_provincia()
                 url: "validate_captcha.php",
                 data: param,
                 success: function(msg) {
-                //alert(msg);
                     if (msg == '1') {
                     alert('Captcha correcto');
                     } 
