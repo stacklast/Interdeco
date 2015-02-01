@@ -39,7 +39,6 @@ class ClsDAO_Programas
 		$this->_tablaProgramas =new SQLConection ('pro_programas');
 		$fields = $this->_tablaProgramas->fields =array (
 		              array ('private', 'PRO_ID', "' '"),
-		              array ('public', 'DET_ID'),
 		              array ('public', 'PAR_ID'),
 		              array ('public', 'PRO_NOMBRE'),
 		              array ('public', 'PRO_DIAS'),

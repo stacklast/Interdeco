@@ -52,7 +52,6 @@
                                     <thead>
                                         <tr>
                                             <th>PRO_ID</th>
-                                            <th>DET_ID</th>
                                             <th>PAR_ID</th>
                                             <th>Nombre</th>
                                             <th>Dias</th>
@@ -66,7 +65,7 @@
                                   <?php 
                                      $consulta=array();
                                       $bd=Db::getInstance();
-								      $sql="SELECT `PRO_ID`, `DET_ID`, `PAR_ID`, `PRO_NOMBRE`, `PRO_DIAS`, `PRO_SEMANAS`, `PRO_FECHA_INICIO`, `PRO_FECHA_FINALIZACION`, `PRO_TARIFA` FROM `pro_programas`";
+								      $sql="SELECT `PRO_ID`, `PAR_ID`, `PRO_NOMBRE`, `PRO_DIAS`, `PRO_SEMANAS`, `PRO_FECHA_INICIO`, `PRO_FECHA_FINALIZACION`, `PRO_TARIFA` FROM `pro_programas`";
 								      $res=$bd->ejecutar($sql);
 								      //mysql_fetch_assoc se utiliza para trabajar con array multidimensional
 								      while($reg=mysql_fetch_assoc($res))
@@ -79,10 +78,6 @@
                                             <td class="center">
                                             	<?php echo $consulta[$i]["PRO_ID"];?>
                                             	<input type="hidden" id="PRO_ID<?php echo $i+1; ?>" value="<?php echo $consulta[$i]["PRO_ID"];?>">
-                                            </td>
-                                            <td>
-                                            	<?php echo $consulta[$i]["DET_ID"];?>
-                                            	<input type="hidden" id="DET_ID<?php echo $i+1; ?>" value="<?php echo $consulta[$i]["DET_ID"];?>">
                                             </td>
                                             <td>
                                             	<?php echo $consulta[$i]["PAR_ID"];?>
@@ -132,12 +127,6 @@
 				    <label for="inputEmail3" class="col-sm-4 control-label">ID</label>
 				    <div class="col-sm-8">
 				      <input type="tel" class="form-control" id="id" name="id" placeholder="ID">
-				    </div>
-				  </div>
-				  <div class="form-group col-md-4">
-				    <label for="inputEmail3" class="col-sm-4 control-label">Detalle</label>
-				    <div class="col-sm-8">
-				      <input type="text" class="form-control" id="detalle" name="detalle" placeholder="Detalle">
 				    </div>
 				  </div>
 				  <div class="form-group col-md-4">

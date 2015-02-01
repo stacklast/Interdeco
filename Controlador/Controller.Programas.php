@@ -15,7 +15,6 @@ include ('funciones.php');
  */
 @$ProgramasDAO = new ClsDAO_Programas();
 @$id 	      = NoInjection($_POST['id']);
-@$detalle 	  = NoInjection($_POST['detalle']);
 @$participante= NoInjection($_POST['participante']);
 @$nombre 	  = NoInjection($_POST['nombre']);
 @$dias        = NoInjection($_POST['dias']);
@@ -31,11 +30,11 @@ include ('funciones.php');
 @$procesar 	= NoInjection($_POST['accion']);
 if(isset($procesar)){
 	if($procesar == "InsertarPrograma"){
-		 $insertar= array("".$detalle."","".$participante."","".$nombre."","".$dias."","".$semanas."","".$fechainicio."","".$fechafinal."","".$tarifa."");
+		 $insertar= array("".$participante."","".$nombre."","".$dias."","".$semanas."","".$fechainicio."","".$fechafinal."","".$tarifa."");
 		echo $ProgramasDAO->InsertarPrograma($insertar);
 	}
 	if($procesar == "ModificarPrograma"){
-		$modificar= array("".$detalle."","".$participante."","".$nombre."","".$dias."","".$semanas."","".$fechainicio."","".$fechafinal."","".$tarifa."");
+		$modificar= array("".$participante."","".$nombre."","".$dias."","".$semanas."","".$fechainicio."","".$fechafinal."","".$tarifa."");
 		echo $ProgramasDAO->ModificarPrograma($id,$modificar);
 	}
 	if($procesar == "EliminarPrograma"){
