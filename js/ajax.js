@@ -119,7 +119,288 @@ $(document).ready(function(){
 	$('#telefax').validCampoFranz('0123456789');
 	$('#zip').validCampoFranz('0123456789');
 	
-	
+	/**
+	 *  Mantenimiento de la tabla pro_programas
+	 *  EDITAR
+	 */
+    var total = $("#totalregistrosPrograma").val();
+	for (var i = 1; i <= total; i++) {
+		var aux = i;
+		$('#EditarPrograma'+aux).click({param1: aux}, editarPrograma);
+		function editarPrograma(event){
+			id = $('#PRO_ID'+event.data.param1).val();
+			participante = $('#PAR_ID'+event.data.param1).val();
+			nombre = $('#PRO_NOMBRE'+event.data.param1).val();
+			dias = $('#PRO_DIAS'+event.data.param1).val();
+			semanas = $('#PRO_SEMANAS'+event.data.param1).val();
+			fechainicio = $('#PRO_FECHA_INICIO'+event.data.param1).val();
+			fechafinal = $('#PRO_FECHA_FINALIZACION'+event.data.param1).val();
+			tarifa = $('#PRO_TARIFA'+event.data.param1).val();
+			$("#id").val(id);
+			$("#participante").val(participante);
+			$("#nombre").val(nombre);
+			$("#dias").val(dias);
+			$("#semanas").val(semanas);
+			$("#fechainicio").val(fechainicio);
+			$("#fechafinal").val(fechafinal);
+			$("#tarifa").val(tarifa);
+			HabilitarCamposPrograma();
+		}
+		$('#EliminarPrograma'+aux).click({param1: aux}, eliminarPrograma);
+		function eliminarPrograma(event){
+			id = $('#PRO_ID'+event.data.param1).val();
+			$("#identificador").val(id);
+			$('#myModalLabel').html('Advertencia!');
+			$('.modal-body').html('<div class="alert alert-warning" role="alert">Está seguro que desea eliminar el Registro?</div>');
+			$('#myModal').modal('show');
+		}
+	};
+	/**
+	 *  Mantenimiento de la tabla pro_programas
+	 *  ELIMINAR
+	 */
+	$('#eliminarPrograma').click(function() {
+		var accion = "EliminarPrograma";
+	 	var id = $("#identificador").val();
+	 	var datos = 'id=' + id+'&accion=' + accion;
+        $.ajax({
+			    type: "POST",
+			    url: "/Github/Interdeco/Controlador/Controller.Programas.php",
+			    data: datos,
+			    success: function(response) {
+			    	$('#myModal').modal('hide');
+			    	limpiarCompania();
+			    	if(response == 1){
+			    		alert("No se ha podido Eliminar el registro del Programa");
+			    	}
+			    	else if (response == "Exito"){
+			    		location.reload(true);
+			    		alert("Los datos del Programa han sido Eliminados con Exito");
+			    	}
+			    	else{
+			    		alert(response);
+			    	}
+			    },
+			    error: function(response) {
+			    	$('#myModal').modal('hide');
+			    	alert(response);
+			    }
+			});
+		return false;
+    });
+    /**
+	 *  Mantenimiento de la tabla pro_programas
+	 *  MODIFICAR
+	 */
+	$("#modificarPrograma").click(function(){
+		var accion = "ModificarPrograma";
+		var id = $("#id").val();
+		var participante = $("#participante  option:selected").html();
+		var nombre = $("#nombre").val();
+		var dias = $("#dias").val();
+		var semanas = $("#semanas").val();
+		var fechainicio = $("#fechainicio").val();
+		var fechafinal = $("#fechafinal").val();
+		var tarifa = $("#tarifa").val();
+		var datosString = $("#programas").serialize();
+		var dato = '&accion=' + accion+'&id=' + id+'&ciudad=' + ciudad;
+		if(nombre == ""){
+			$("#nombre").focus();
+			alert('(*)Campo Obligatorio: Ingrese nombre');
+			return false;
+		}
+		else
+		if(apellido == ""){
+			$("#apellido").focus();
+			alert('(*)Campo Obligatorio: Ingrese apellido');
+			return false;
+		}
+		else
+		if(dias == ""){
+			$("#dias").focus();
+			alert('(*)Campo Obligatorio: Ingrese los dias');
+			return false;
+		}
+		else
+		if(semanas == ""){
+			$("#semanas").focus();
+			alert('(*)Campo Obligatorio: Ingrese semanas');
+			return false;
+		}
+		else
+		if(fechainicio == ""){
+			$("#fechainicio").focus();
+			alert('(*)Campo Obligatorio: Ingrese fechainicio');
+			return false;
+		}
+		else
+		if(fechafinal == ""){
+			$("#fechafinal").focus();
+			alert('(*)Campo Obligatorio: Ingrese fechafinal');
+			return false;
+		}
+		else
+		if(tarifa == ""){
+			$("#tarifa").focus();
+			alert('(*)Campo Obligatorio: Ingrese tarifa');
+			return false;
+		}
+		else{
+			datos = datosString+dato;
+			alert(datos);
+			$.ajax({
+			    type: "POST",
+			    url: "/Github/Interdeco/Controlador/Controller.Programas.php",
+			    data: datos,
+			    success: function(response) {
+			    	limpiarParticipante();
+			    	if(response == 1){
+			    		alert("No se ha podido Modificar los datos del Programa");
+			    	}
+			    	else if (response == "Exito"){
+			    		location.reload(true);
+			    		 alert("Los datos del Programa han sido Modificados con Exito");
+			    	}
+			    	else{
+			    		alert(response);
+			    	}
+			    },
+			    error: function(response) {
+			    }
+			});
+			return false;
+		}
+	});
+	/**
+	 *  Mantenimiento de la tabla pro_programas
+	 *  AGREGAR
+	 */
+	$("#agregarPrograma").click(function(){
+		var accion = "InsertarPrograma";
+		var id = $("#id").val();
+		var participante = $("#participante  option:selected").html();
+		var nombre = $("#nombre").val();
+		var dias = $("#dias").val();
+		var semanas = $("#semanas").val();
+		var fechainicio = $("#fechainicio").val();
+		var fechafinal = $("#fechafinal").val();
+		var tarifa = $("#tarifa").val();
+		var datosString = $("#programas").serialize();
+		var dato = '&accion=' + accion+'&id=' + id+'&ciudad=' + ciudad;
+		if(nombre == ""){
+			$("#nombre").focus();
+			alert('(*)Campo Obligatorio: Ingrese nombre');
+			return false;
+		}
+		else
+		if(apellido == ""){
+			$("#apellido").focus();
+			alert('(*)Campo Obligatorio: Ingrese apellido');
+			return false;
+		}
+		else
+		if(dias == ""){
+			$("#dias").focus();
+			alert('(*)Campo Obligatorio: Ingrese los dias');
+			return false;
+		}
+		else
+		if(semanas == ""){
+			$("#semanas").focus();
+			alert('(*)Campo Obligatorio: Ingrese semanas');
+			return false;
+		}
+		else
+		if(fechainicio == ""){
+			$("#fechainicio").focus();
+			alert('(*)Campo Obligatorio: Ingrese fechainicio');
+			return false;
+		}
+		else
+		if(fechafinal == ""){
+			$("#fechafinal").focus();
+			alert('(*)Campo Obligatorio: Ingrese fechafinal');
+			return false;
+		}
+		else
+		if(tarifa == ""){
+			$("#tarifa").focus();
+			alert('(*)Campo Obligatorio: Ingrese tarifa');
+			return false;
+		}
+		else{
+			datos = datosString+dato;
+			$.ajax({
+			    type: "POST",
+			    url: "/Github/Interdeco/Controlador/Controller.Programas.php",
+			    data: datos,
+			    success: function(response) {
+			    	limpiarParticipante();
+			    	if(response == 1){
+			    		alert("No se ha podido Agregar los datos del Programa");
+			    	}
+			    	else if (response == "Exito"){
+			    		location.reload(true);
+			    		 alert("Los datos del Programa han sido Agregado con Exito");
+			    	}
+			    	else{
+			    		alert(response);
+			    	}
+			    },
+			    error: function(response) {
+			    }
+			});
+			return false;
+		}
+	});
+	/**
+	 *  Mantenimiento de la tabla pro_programas
+	 *  FUNCIONES
+	 */
+    function HabilitarCamposPrograma(){
+		$("#id").prop('disabled', true);
+		$("#participante").prop('disabled', false);
+		$("#nombre").prop('disabled', false);
+		$("#dias").prop('disabled', false);
+		$("#semanas").prop('disabled', false);
+		$("#fechainicio").prop('disabled', false);
+		$("#fechafinal").prop('disabled', false);
+		$("#tarifa").prop('disabled', false);
+	}
+	function limpiarPrograma(){
+		$("#id").val('');
+		$('#participante').prop('selectedIndex',0);
+		$("#nombre").val('');
+		$("#dias").val('');
+		$("#semanas").val('');
+		$("#fechainicio").val('');
+		$("#fechafinal").val('');
+		$("#tarifa").val('');
+	}
+	/**
+	 *  Mantenimiento de la tabla pro_programas
+	 *  EVENTOS BOTONES
+	 */
+	$("#nuevoPrograma").click(function(){
+		$("#programas").show();
+		$("#div-limpiar").show();
+		$("#div-modificar").hide();
+		limpiarPrograma();
+		HabilitarCamposPrograma();
+		$("#resultados-busqueda").hide();
+	});
+	$("#buscarPrograma").click(function(){
+		$("#programas").hide();
+		$("#resultados-busqueda").show();
+	});
+	$("#cancelarPrograma").click(function(){
+		limpiarPrograma();
+		$("#programas").hide();
+		$("#resultados-busqueda").show();
+	});
+	$("#limpiarPrograma").click(function(){
+		limpiarPrograma();
+	});   	
 	/**
 	 *  Mantenimiento de la tabla par_participantes
 	 *  EDITAR

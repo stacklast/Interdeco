@@ -12,6 +12,7 @@ require ('/../Conf.class.php');/*Incluimos el fichero de la clase Conf*/
 require ('/../Db.class.php');/*Incluimos el fichero de la clase Db*/
 class ClsDAO_Combos
 {   
+   private $_participante;
    private $_empleado;
    private $_compania;
    private $_pais;
@@ -22,13 +23,30 @@ class ClsDAO_Combos
 
       public function __construct()
       { 
+         $this->_participante=array();
          $this->_empleado=array();
          $this->_compania=array();
          $this->_distrito=array();
          $this->_ciudad=array();
          $this->_pais=array();
       }
-
+/**
+  *  Obtener Participantes
+  */
+   public function Get_Participante()
+   {
+    $bd=Db::getInstance();
+      $sql="SELECT PRO_ID, PRO_NOMBRE FROM pro_programas ORDER BY PRO_ID ASC";
+      $res=$bd->ejecutar($sql);
+      //mysql_fetch_assoc se utiliza para trabajar con array multidimensional
+      while($reg=mysql_fetch_assoc($res))
+      {
+         //recibe cada uno de los registros que tiene la tabla pro_programas
+         $this->_participante[]=$reg;   
+      }   
+ 
+      return $this->_participante;       
+   }
  /**
   *  Obtener Empleados
   */
@@ -40,7 +58,7 @@ class ClsDAO_Combos
       //mysql_fetch_assoc se utiliza para trabajar con array multidimensional
       while($reg=mysql_fetch_assoc($res))
       {
-         //recibe cada uno de los registros que tiene la tabla tipo_equipo
+         //recibe cada uno de los registros que tiene la tabla emp_empleados
          $this->_empleado[]=$reg;   
       }   
  
@@ -57,7 +75,7 @@ class ClsDAO_Combos
       //mysql_fetch_assoc se utiliza para trabajar con array multidimensional
       while($reg=mysql_fetch_assoc($res))
       {
-         //recibe cada uno de los registros que tiene la tabla tipo_equipo
+         //recibe cada uno de los registros que tiene la tabla com_compania
          $this->_compania[]=$reg;   
       }   
       return $this->_compania;       
@@ -73,7 +91,7 @@ class ClsDAO_Combos
       //mysql_fetch_assoc se utiliza para trabajar con array multidimensional
       while($reg=mysql_fetch_assoc($res))
       {
-         //recibe cada uno de los registros que tiene la tabla tipo_equipo
+         //recibe cada uno de los registros que tiene la tabla dpa_pais
          $this->_pais[]=$reg;   
       }   
       return $this->_pais;       
@@ -89,7 +107,7 @@ class ClsDAO_Combos
       //mysql_fetch_assoc se utiliza para trabajar con array multidimensional
       while($reg=mysql_fetch_assoc($res))
       {
-         //recibe cada uno de los registros que tiene la tabla tipo_equipo
+         //recibe cada uno de los registros que tiene la tabla dci_ciudad
          $this->_distrito[]=$reg;   
       }   
       return $this->_distrito;       
@@ -105,7 +123,7 @@ class ClsDAO_Combos
       //mysql_fetch_assoc se utiliza para trabajar con array multidimensional
       while($reg=mysql_fetch_assoc($res))
       {
-         //recibe cada uno de los registros que tiene la tabla tipo_equipo
+         //recibe cada uno de los registros que tiene la tabla dci_ciudad
          $this->_ciudad[]=$reg;   
       }   
       return $this->_ciudad;       

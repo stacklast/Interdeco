@@ -22,7 +22,6 @@ include ('funciones.php');
 @$fechainicio = NoInjection($_POST['fechainicio']);
 @$fechafinal  = NoInjection($_POST['fechafinal']);
 @$tarifa      = NoInjection($_POST['tarifa']);
-@$recordar 	  = $_POST['recordar'];
 /**
  * $procesar Para realizar accion
  * @var string Valor 

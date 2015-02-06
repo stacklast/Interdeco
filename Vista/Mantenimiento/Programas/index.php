@@ -121,7 +121,7 @@
                                 </table>
                                <input type="hidden" id="totalregistrosPrograma" value="<?php echo count($consulta); ?>">
 			    </div>	   	
-				<form class="form-horizontal" id="Programas" name="Programas" style="display:none;">
+				<form class="form-horizontal" id="programas" name="programas" style="display:none;">
 		    	<div class="col-md-12">
 		    	  <div class="form-group col-md-4">
 				    <label for="inputEmail3" class="col-sm-4 control-label">ID</label>
@@ -132,7 +132,14 @@
 				  <div class="form-group col-md-4">
 				    <label for="inputEmail3" class="col-sm-4 control-label">Participante</label>
 				    <div class="col-sm-8">
-				      <input type="tel" class="form-control" id="participante" name="participante" placeholder="Participante">
+				      <select id="participante" name="participante" class="form-control">
+                    <?php
+                    $participante = new ClsDAO_Combos();
+                    $reg = $participante->Get_Participante();
+                     for($i=0; $i<count($reg); $i++) { ?>    
+                    <option value="<?php echo $reg[$i]["PAR_ID"];?>"><?php echo $reg[$i]["PAR_NOMBRE"];?></option>
+                     <?php } ?>
+                    </select>
 				    </div>
 				  </div>
 				  <div class="form-group col-md-4">
