@@ -1731,6 +1731,8 @@ $(document).ready(function(){
 			    		$("#password").focus().after("<div class='alert alert-warning' role='alert'>Su contraseña es incorrecta</div>");;
 			    	}
 			    	else if(response == 3){
+			    		$('#myModal').modal();
+			    		$('#myModal').modal('show');
 			    		$('#error').html("su contraseña  y correo electrónico son  incorrectos");
 			    	}
 			    	else{

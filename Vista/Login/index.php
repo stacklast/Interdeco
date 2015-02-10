@@ -5,7 +5,6 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
 <html lang="es">
 
 <head>
-
     <meta name="robots" content="noindex">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,6 +36,23 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
 </head>
 
 <body style="background:url('<?php echo $domain; ?>/img/bg.jpg');">
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Advertencia!</h4>
+      </div>
+      <div class="modal-body">
+        Los 2 Datos ingresados son Incorrectos      
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
     <div class="container" >
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
