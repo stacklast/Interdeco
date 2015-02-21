@@ -19,8 +19,7 @@ class ClsDAO_Combos
    private $_distrito;
    private $_ciudad;
    public  $_code;
-
-
+   
       public function __construct()
       { 
          $this->_participante=array();

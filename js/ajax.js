@@ -118,7 +118,6 @@ $(document).ready(function(){
 	$('#celular').validCampoFranz('0123456789');
 	$('#telefax').validCampoFranz('0123456789');
 	$('#zip').validCampoFranz('0123456789');
-	
 	/**
 	 *  Mantenimiento de la tabla pro_programas
 	 *  EDITAR
@@ -1613,12 +1612,6 @@ $(document).ready(function(){
 			alert('(*)Campo Obligatorio: Ingrese cooperativa');
 			return false;
 		}
-		else 
-		if(rol == ""){
-			$("#rol").focus();
-			alert('(*)Campo Obligatorio: Ingrese rol');
-			return false;
-		}
 		else{
 			$('#error').html('');
 			$('.ajaxgif').removeClass('hide');
@@ -1660,7 +1653,6 @@ $(document).ready(function(){
 		$("#fecha").prop('disabled', false);
 	}
 	function limpiarUsuario(){
-		
 		$("#id").val('');
 		$('#empleado').prop('selectedIndex',0);
 		$("#alias").val('');
@@ -1723,7 +1715,7 @@ $(document).ready(function(){
 			    url: "/Github/Interdeco/Controlador/Controller.Usuarios.php",
 			    data: datos,
 			    success: function(response) {
-			    	alert(response);
+			    	//alert(response);
 			    	if(response == 1){
 			    		$("#email").focus().after("<div class='alert alert-warning' role='alert'>Su correo electrónico es inválido</div>");
 			    	}
