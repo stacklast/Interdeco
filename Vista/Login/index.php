@@ -35,7 +35,7 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
 
 </head>
 
-<body style="background:url('<?php echo $domain; ?>/img/bg.jpg');">
+<body style="background:url('<?php echo $domain; ?>/img/bg.jpg');background-size:cover; background-repeat:no-repeat;">
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
