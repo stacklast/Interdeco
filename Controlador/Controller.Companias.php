@@ -7,7 +7,7 @@
  * 	#file  : Controller.Companias.php
  * 	#DATOS : Provienen del archivo Jquery (..js/ajax.js)
  */
-include ('../Modelo/DAO/Cls.DAO.Companias.php'); //incluimos Clase  DAO de Usuarios
+/include ('../Modelo/DAO/Cls.DAO.Companias.php'); //incluimos Clase  DAO de Usuarios
 include ('funciones.php');
 /**
  * $CompaniasDAO variable para instanciar clase
