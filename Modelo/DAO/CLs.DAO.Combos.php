@@ -12,6 +12,7 @@ require ('/../Conf.class.php');/*Incluimos el fichero de la clase Conf*/
 require ('/../Db.class.php');/*Incluimos el fichero de la clase Db*/
 class ClsDAO_Combos
 {   
+   private $_paquete;
    private $_participante;
    private $_empleado;
    private $_compania;
@@ -94,6 +95,22 @@ class ClsDAO_Combos
          $this->_pais[]=$reg;   
       }   
       return $this->_pais;       
+   }
+/**
+  *  Obtener Paquetes Turisticos
+  */
+   public function Get_Paquete()
+   {
+      $bd=Db::getInstance();
+      $sql="SELECT `PAQ_ID`, `PAQ_NOMBRE` FROM `paq_paquetes` ORDER BY PAQ_ID ASC";
+      $res=$bd->ejecutar($sql);
+      //mysql_fetch_assoc se utiliza para trabajar con array multidimensional
+      while($reg=mysql_fetch_assoc($res))
+      {
+         //recibe cada uno de los registros que tiene la tabla dpa_pais
+         $this->_paquete[]=$reg;   
+      }   
+      return $this->_paquete;       
    }
 /**
   *  Obtener Paises

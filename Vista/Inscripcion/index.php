@@ -1,3 +1,5 @@
+
+<?php include ('../../Modelo/DAO/Cls.DAO.Combos.php'); //incluimos Clase  DAO de Usuarios ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -98,7 +100,14 @@
 					    	<label for="">Zip/Postal</label>
 					    </div>
 					    <div class="form-group col-md-10">
-					    	<input type="tel" class="form-control" id="pasaporte" placeholder="">
+					    	 <select id="pais" name="pais" class="form-control">
+		                    <?php
+		                    $pais = new ClsDAO_Combos();
+		                    $reg = $pais->Get_Pais();
+		                     for($i=0; $i<count($reg); $i++) { ?>    
+		                    <option value="<?php echo $reg[$i]["PA_CODIGO"];?>"><?php echo $reg[$i]["PA_NOMBRE"];?></option>
+		                     <?php } ?>
+		                    </select>
 					    	<label for="">Country</label>
 					    </div>
 					  </div>
@@ -108,14 +117,14 @@
 					<div class="col-md-6">
 					  <div class="form-group">
 					    <label for="nombre">Contact Phone number</label>
-					    <input type="tel" class="form-control" id="pasaporte" placeholder="">
+					    <input type="tel" class="form-control" id="telefono" placeholder="">
 					  </div>
 					</div>
 					 <div class="col-md-6">
 					 	<div class="form-group">
-					    <label for="apellido">Email</label>
-					    <input type="text" class="form-control" id="nacionalidad" placeholder="">
-					  </div>
+					    	<label for="apellido">Email</label>
+					    	<input type="text" class="form-control" id="email" placeholder="">
+					    </div>
 					 </div>
 				</div>
 
@@ -126,12 +135,44 @@
 				<br>
 					<div class="form-group">
 						<label for="">Medical Condition or Diet</label>
-						<textarea class="form-control" name="" id="" rows="6"></textarea>
+						<textarea class="form-control" name="" id="condicion-medica" rows="6">
+							
+						</textarea>
 					</div>
+				</div>
+				<div class="col-md-12">
+					<label for="apellido">Emergency Contact Name</label>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+					    	<input type="text" class="form-control" id="email" placeholder="">
+					    	<label for="apellido">First Name</label>
+					    </div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+					    	<input type="text" class="form-control" id="email" placeholder="">
+					    	<label for="apellido">Last Name</label>
+					    </div>
+				</div>
+				<div class="col-md-12">
+					<div class="col-md-6">
+					  <div class="form-group">
+					    <label for="nombre">Contact Phone number</label>
+					    <input type="tel" class="form-control" id="telefono" placeholder="">
+					  </div>
+					</div>
+					 <div class="col-md-6">
+					 	<div class="form-group">
+					    	<label for="apellido">Email</label>
+					    	<input type="text" class="form-control" id="email" placeholder="">
+					    </div>
+					 </div>
 				</div>
 				<div class="col-md-12 bg-primary text-center">
 					<h1>Program Details</h1>
 				</div>
+				
 				<div class="col-md-12 bg-primary text-center">
 					<h1>Extras/Add Ons</h1>
 				</div>
