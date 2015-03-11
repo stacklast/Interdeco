@@ -1715,7 +1715,7 @@ $(document).ready(function(){
 			    url: "/Github/Interdeco/Controlador/Controller.Usuarios.php",
 			    data: datos,
 			    success: function(response) {
-			    	//alert(response);
+			    	alert(response);
 			    	if(response == 1){
 			    		$("#email").focus().after("<div class='alert alert-warning' role='alert'>Su correo electrónico es inválido</div>");
 			    	}
