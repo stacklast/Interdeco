@@ -29,13 +29,13 @@
 					<div class="col-md-6">
 					  <div class="form-group">
 					    <label for="nombre">First Name</label>
-					    <input type="text" class="form-control" id="nombre" placeholder="Jane Doe">
+					    <input type="text" class="form-control" id="nombre" placeholder="Name">
 					  </div>
 					</div>
 					 <div class="col-md-6">
 					 	<div class="form-group">
 					    <label for="apellido">Last Name</label>
-					    <input type="text" class="form-control" id="apellido" placeholder="Jane Doe">
+					    <input type="text" class="form-control" id="apellido" placeholder="Last Name">
 					  </div>
 					 </div>
 				</div>
@@ -46,12 +46,12 @@
 						  	<label for="genero">Genre</label>
 						  	<div class="checkbox">
 							    <label>
-							      <input type="checkbox" id="genero"> Male
+							      <input name="genero" type="checkbox" id="genero" value="M"> Male
 							    </label>
 							  </div>
 							  <div class="checkbox">
 							    <label>
-							      <input type="checkbox" id="genero"> Female
+							      <input name="genero" type="checkbox" id="genero" value="F"> Female
 							    </label>
 							  </div>
 						  </div>
@@ -85,19 +85,6 @@
 					  <div class="form-group">
 					    <label for="direccion">Home Address</label>
 					    <input type="text" class="form-control form-group" id="direccion" placeholder="">
-					    <input type="text" class="form-control form-group" id="direccion" placeholder="">
-					    <div class=" form-group col-md-4">
-					    	<input type="tel" class="form-control" id="pasaporte" placeholder="">
-					    	<label for="">City</label>
-					    </div>
-					    <div class="form-group col-md-4">
-					    	<input type="tel" class="form-control" id="provincia" placeholder="">
-					    	<label for="">State/Province</label>
-					    </div>
-					    <div class="form-group col-md-4">
-					    	<input type="tel" class="form-control" id="postal" placeholder="">
-					    	<label for="">Zip/Postal</label>
-					    </div>
 					    <div class="form-group col-md-10">
 					    	 <select id="pais" name="pais" class="form-control">
 		                    <?php
@@ -109,19 +96,31 @@
 		                    </select>
 					    	<label for="">Country</label>
 					    </div>
+					    <div class="form-group col-md-4">
+					    	<input type="tel" class="form-control" id="provincia" placeholder="">
+					    	<label for="">State/Province</label>
+					    </div>
+					    <div class=" form-group col-md-4">
+					    	<input type="tel" class="form-control" id="ciudad" placeholder="">
+					    	<label for="">City</label>
+					    </div>
+					    <div class="form-group col-md-4">
+					    	<input type="tel" class="form-control" id="postal" placeholder="">
+					    	<label for="">Zip/Postal</label>
+					    </div>
 					  </div>
 					  </div>
 				</div>
 				<div class="col-md-12">
 					<div class="col-md-6">
 					  <div class="form-group">
-					    <label for="nombre">Contact Phone number</label>
+					    <label for="telefono">Contact Phone number</label>
 					    <input type="tel" class="form-control" id="telefono" placeholder="">
 					  </div>
 					</div>
 					 <div class="col-md-6">
 					 	<div class="form-group">
-					    	<label for="apellido">Email</label>
+					    	<label for="email">Email</label>
 					    	<input type="text" class="form-control" id="email" placeholder="">
 					    </div>
 					 </div>
@@ -133,8 +132,8 @@
 				<div class="col-md-12">
 				<br>
 					<div class="form-group">
-						<label for="">Medical Condition or Diet</label>
-						<textarea class="form-control" name="" id="condicion-medica" rows="6">
+						<label for="condicionmedica">Medical Condition or Diet</label>
+						<textarea class="form-control" name="" id="condicionmedica" rows="6">
 							
 						</textarea>
 					</div>
@@ -238,30 +237,30 @@
 				<br>
 					<div class="col-md-6">
 						<div class="form-group">
-						  	<label for="apellido">Extra nights</label>
+						  	<label for="extranoche">Extra nights</label>
 						  	<div class="checkbox">
 							    <label>
-							      <input type="checkbox" id="genero"> Si
+							      <input type="checkbox" id="extranoche"> Si
 							    </label>
 							  </div>
 							  <div class="checkbox">
 							    <label>
-							      <input type="checkbox" id="genero"> No
+							      <input type="checkbox" id="extranoche"> No
 							    </label>
 							  </div>
 						  </div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
-						  	<label for="apellido">Transfers That Are Not Included</label>
+						  	<label for="transferencia">Transfers That Are Not Included</label>
 						  	<div class="checkbox">
 							    <label>
-							      <input type="checkbox" id="genero"> Si
+							      <input type="checkbox" id="transferencia"> Si
 							    </label>
 							  </div>
 							  <div class="checkbox">
 							    <label>
-							      <input type="checkbox" id="genero"> No
+							      <input type="checkbox" id="transferencia"> No
 							    </label>
 							  </div>
 						  </div>
@@ -270,15 +269,15 @@
 				<div class="col-md-12">
 					<div class="col-md-6">
 						<div class="form-group">
-						  	<label for="apellido">International Travel Insurance</label>
+						  	<label for="insurence">International Travel Insurance</label>
 						  	<div class="checkbox">
 							    <label>
-							      <input type="checkbox" id="genero"> Si
+							      <input type="checkbox" id="insurence"> Si
 							    </label>
 							  </div>
 							  <div class="checkbox">
 							    <label>
-							      <input type="checkbox" id="genero"> No
+							      <input type="checkbox" id="insurence"> No
 							    </label>
 							  </div>
 						  </div>
@@ -315,8 +314,8 @@
 				<div class="col-md-12">
 					<div class="col-md-10">
 						<div class="form-group">
-							<label for="nombre-escuela">Name of School / University / College / Company</label>
-							<input type="text" name="nombre-escuela" id="nombre-escuela" class="form-control">
+							<label for="nombre_escuela">Name of School / University / College / Company</label>
+							<input type="text" name="nombre_escuela" id="nombre_escuela" class="form-control">
 						</div>
 					</div>
 				</div>
@@ -351,8 +350,8 @@
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
-							<label for="otra-red">Another Social Network?</label>
-							<input type="text" name="otra-red" id="otra-red" class="form-control">
+							<label for="otra_red">Another Social Network?</label>
+							<input type="text" name="otra_red" id="otra_red" class="form-control">
 						</div>
 					</div>
 				</div>
@@ -369,7 +368,7 @@
 					    <label for="exampleInputEmail2">Please if you agree, click on the box below.</label>
 					    <div class="checkbox">
 							<label>
-								<input type="checkbox" id="linkedIn"> I have read and agree with the terms and conditions sheet that is attached to this Form.
+								<input type="checkbox" id="condiciones"> I have read and agree with the terms and conditions sheet that is attached to this Form.
 						    </label>
 						</div>
 					  </div>

@@ -1,5 +1,8 @@
 <?php include ('header.php') ?>
             <div class="row">
+                <div class="col-lg-12" style="background:#428bca;">
+                    <img src="../img/logo.png" alt="" class="img-responsive" style="margin:0 auto;">
+                </div>
                 <div class="col-lg-12">
                     <h1 class="page-header">Sistema de Facturación <small>Planes Turísticos</small></h1>
                 </div>

@@ -21,12 +21,12 @@
 </div>
 	<div class="row">
 		<div class="col-md-12">
-	    	<div class="page-header" style="text-align:center;">
+	    	<div class="page-header" style="text-align:center;background:#ED7E00;color:#ffffff;">
 			  <h1>Usuarios <small>Mantenimiento</small></h1>
 			</div>
 	    </div>
 	</div>
-	<div>
+	<div class="col-md-12" style="padding-bottom:10px;">
 		<div class="col-md-12">
 			<div class="form-group col-md-3">
 			    <div class="col-sm-10">
