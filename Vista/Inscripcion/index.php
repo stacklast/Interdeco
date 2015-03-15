@@ -44,14 +44,14 @@
 					<div class="col-md-6">
 						<div class="form-group">
 						  	<label for="genero">Genre</label>
-						  	<div class="checkbox">
+						  	<div class="radio">
 							    <label>
-							      <input name="genero" type="checkbox" id="genero" value="M"> Male
+							      <input name="genero" type="radio" id="genero" value="M"> Male
 							    </label>
 							  </div>
-							  <div class="checkbox">
+							  <div class="radio">
 							    <label>
-							      <input name="genero" type="checkbox" id="genero" value="F"> Female
+							      <input name="genero" type="radio" id="genero" value="F"> Female
 							    </label>
 							  </div>
 						  </div>
@@ -194,9 +194,8 @@
 					</div>
 				</div>
 				<div class="col-md-6">
-				
 					<div class="form-group">
-					<label for="paquete2">Program 2</label>
+						<label for="paquete2">Program 2</label>
 					    	 <select id="paquete2" name="paquete2" class="form-control">
 		                    <?php
 		                    $pais = new ClsDAO_Combos();
@@ -206,7 +205,7 @@
 		                     <?php } ?>
 		                    </select>
 					    	
-					    </div>
+					 </div>
 				</div>
 				<div class="col-md-6">
 					<div class="form-group">
@@ -233,55 +232,133 @@
 				<div class="col-md-12 bg-primary text-center" style="border-radius:8px;">
 					<h1>Extras/Add Ons</h1>
 				</div>
+					<div class="col-md-12">
+					<br>
+						<label for="extranoche">Extra nights</label>
+						
+						  	<div class="col-md-12">
+							  	<div class="form-group">
+							  		<div class="radio-inline">
+								    <label>
+								      <input name="extranoche" type="radio" id="extranoche" value="si"> Yes
+								    </label>
+								  </div>
+								  <div class="radio-inline">
+								    <label>
+								      <input name="extranoche" type="radio" id="extranoche" value="no"> No
+								    </label>
+								  </div>
+							  	</div>
+						  	</div>
+						  	<div class="col-md-6">
+							  	<div class="form-group">
+							  		<label for="lugar">Where?</label>
+							  		<select name="lugar" id="lugar" class="form-control">
+							  			<option value="Quito">Quito</option>
+							  			<option value="Galapagos Sta. Cruz">Galapagos Sta. Cruz</option>
+							  			<option value="Galapagos Cristobal">Galapagos Cristobal</option>
+							  			<option value="Galapagos Isabela">Galapagos Isabela</option>
+							  		</select>
+							  	</div>
+							 </div>
+							 <div class="col-md-6">
+							  	<div class="form-group">
+							  		<label for="cantidad">How Many?</label>
+							  		<input type="text" id="cantidad" class="form-control">
+							  	</div>
+						  	</div>
+						  	<div class="col-md-12">
+						  		<div class="form-group">
+						  			<label for="hospedaje">Place</label>
+						  			<div class="radio-inline">
+									  <label>
+									    <input type="radio" name="hospedaje" id="hospedaje" value="Hostel" checked>Hostel
+									  </label>
+									</div>
+									<div class="radio-inline">
+									  <label>
+									    <input type="radio" name="hospedaje" id="hospedaje" value="Hotel">Hotel
+									  </label>
+									</div>
+									<div class="radio-inline">
+									  <label>
+									    <input type="radio" name="hospedaje" id="hospedaje" value="Host Family">Family
+									  </label>
+									</div>
+						  		</div>
+						  	</div>
+						  	<div class="col-md-12">
+						  	<div class="form-group">
+						  		<label for="fechas">Dates When Needed</label>
+						  	</div>
+							  	<div class="col-md-6">
+							  		<div class="form-group">
+										<label for="desde">From</label>
+											<input type="date" class="form-control date-picker" id="desde" name="desde" placeholder="year/month/day">
+									    <label for="date-picker" class="input-group-addon btn"><span class="glyphicon glyphicon-calendar"></span>
+						  			</div>
+							  	</div>
+							  	<div class="col-md-6">
+							  		<div class="form-group">
+										<label for="hasta">To</label>
+											<input type="date" class="form-control date-picker" id="hasta" name="hasta" placeholder="year/month/day">
+								    	<label for="date-picker" class="input-group-addon btn"><span class="glyphicon glyphicon-calendar"></span>
+						  			</div>
+							  	</div>
+						  	</div>
+					</div>
+					<div class="col-md-12">
+						<div class="form-group">
+							<label for="transferencia">Transfers That Are Not Included</label>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group">
+						  	<div class="radio-inline">
+							    <label>
+							      <input type="radio" name="transferencia" id="transferencia" value="si"> Yes
+							    </label>
+							  </div>
+							  <div class="radio-inline">
+							    <label>
+							      <input type="radio" name="transferencia" id="transferencia" value="no"> No
+							    </label>
+							  </div>
+						  </div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<label for="cantidadtransporte">How Many?</label>
+								<input type="text" id="cantidadtransporte" class="form-control">
+							</div>
+							<div class="form-group">
+								<label for="desdetransporte">From</label>
+								<input type="text" id="desdetransporte" class="form-control">
+							</div>
+							<div class="form-group">
+								<label for="hastatransporte">To</label>
+								<input type="text" id="hastatransporte" class="form-control">
+							</div>
+						</div>
+					</div>
+
 				<div class="col-md-12">
-				<br>
-					<div class="col-md-6">
-						<div class="form-group">
-						  	<label for="extranoche">Extra nights</label>
-						  	<div class="checkbox">
-							    <label>
-							      <input type="checkbox" id="extranoche"> Si
-							    </label>
-							  </div>
-							  <div class="checkbox">
-							    <label>
-							      <input type="checkbox" id="extranoche"> No
-							    </label>
-							  </div>
-						  </div>
+					<div class="form-group">
+						<label for="insurence">International Travel Insurance</label>
 					</div>
-					<div class="col-md-6">
-						<div class="form-group">
-						  	<label for="transferencia">Transfers That Are Not Included</label>
-						  	<div class="checkbox">
+				    <div class="col-md-12">
+				    	<div class="form-group">
+						  	<div class="radio-inline">
 							    <label>
-							      <input type="checkbox" id="transferencia"> Si
+							      <input type="radio" id="insurence" value="si"> Yes
 							    </label>
 							  </div>
-							  <div class="checkbox">
+							  <div class="radio-inline">
 							    <label>
-							      <input type="checkbox" id="transferencia"> No
+							      <input type="radio" id="insurence" value="no"> No
 							    </label>
-							  </div>
-						  </div>
-					</div>
-				</div>
-				<div class="col-md-12">
-					<div class="col-md-6">
-						<div class="form-group">
-						  	<label for="insurence">International Travel Insurance</label>
-						  	<div class="checkbox">
-							    <label>
-							      <input type="checkbox" id="insurence"> Si
-							    </label>
-							  </div>
-							  <div class="checkbox">
-							    <label>
-							      <input type="checkbox" id="insurence"> No
-							    </label>
-							  </div>
-						  </div>
-					</div>
+							</div>
+						</div>
+				    </div>
 				</div>
 				<div class="col-md-12 bg-primary text-center">
 					<h1>Personal Details</h1>
@@ -355,8 +432,47 @@
 						</div>
 					</div>
 				</div>
+				<div class="col-md-12">
+					<div class="col-md-10">
+						<div class="form-group">
+							<label for="encuentro">In which website you found Lead Adventures? (If Google, do you remember the search terms?)?</label>
+							<textarea class="form-control" rows="3" id="encuentro"></textarea>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="col-md-10">
+						<div class="form-group">
+							<label for="comparacion">Why did you choose Lead Adventures? Did you compare us first? With who?</label>
+							<textarea class="form-control" rows="3" id="comparacion"></textarea>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="col-md-12">
+						<div class="form-group">
+						  	<label for="trip">How did you fund your trip?</label>
+						  	<div class="radio">
+							    <label>
+							      <input type="radio" id="trip" value="Parents"> Parents
+							    </label>
+							  </div>
+							  <div class="radio">
+							    <label>
+							      <input type="radio" id="trip" value="Own Savings"> Own Savings
+							    </label>
+							  </div>
+							  <div class="radio">
+							    <label>
+							      <input type="radio" id="trip" value="Other Organizations"> Other Organizations
+							    </label>
+							  </div>
+						  </div>
+					</div>
+				</div>
 				<div class="col-md-12 bg-primary text-center" style="border-radius:8px;">
 					<h1>Terms & Conditions</h1>
+					<small>Here you are our Terms & Conditions.</small>
 				</div>
 				  <div class="col-md-12">
 					  <br>

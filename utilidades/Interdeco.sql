@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     10/02/2015 18:26:10                          */
+/* Created on:     14/03/2015 17:02:14                          */
 /*==============================================================*/
 
 
@@ -20,19 +20,17 @@ drop table if exists DPA_PAIS;
 
 drop table if exists EMP_EMPLEADOS;
 
-drop table if exists EXT_EXTRAS;
+drop table if exists EXT_NOCHES_EXTRAS;
+
+drop table if exists EXT_TRANSPORTE;
 
 drop table if exists FAC_CABECERA;
 
-drop table if exists FEC_FECHA;
-
 drop table if exists HOT_HOTELES;
-
-drop table if exists PAQUETES_X_EXTRAS;
 
 drop table if exists PAQ_PAQUETES;
 
-drop table if exists PARTICIPANTES_PAQUETES;
+drop table if exists PAR_PAQ;
 
 drop table if exists PAR_PARTICIPANTES;
 
@@ -41,6 +39,8 @@ drop table if exists PERFIL_X_RECURSOS;
 drop table if exists PER_PERFIL;
 
 drop table if exists REC_RECURSOS;
+
+drop table if exists TAR_TARIFA;
 
 drop table if exists USU_USUARIO;
 
@@ -173,15 +173,32 @@ create table EMP_EMPLEADOS
 );
 
 /*==============================================================*/
-/* Table: EXT_EXTRAS                                            */
+/* Table: EXT_NOCHES_EXTRAS                                     */
 /*==============================================================*/
-create table EXT_EXTRAS
+create table EXT_NOCHES_EXTRAS
 (
-   EXT_ID               int not null auto_increment,
-   EXT_NOMBRE           varchar(100),
-   EXT_DESCRIPCI_ON     varchar(100),
-   EXT_TARIFA           varchar(25),
-   primary key (EXT_ID)
+   EXT_NE_ID            int not null auto_increment,
+   PAR_ID               int,
+   EXT_NE_LUGAR         varchar(100),
+   EXT_NE_CANTIDAD      varchar(25),
+   EXT_NE_HOSPEDAJE     varchar(100),
+   EXT_VALOR            varchar(5),
+   EXT_FECHAINICIO      date,
+   EXT_FECHAFIN         date,
+   primary key (EXT_NE_ID)
+);
+
+/*==============================================================*/
+/* Table: EXT_TRANSPORTE                                        */
+/*==============================================================*/
+create table EXT_TRANSPORTE
+(
+   EXT_TRA_ID           int not null auto_increment,
+   PAR_ID               int,
+   EXT_TRA_CANTIDAD     varchar(100),
+   EXT_TRA_DESDE        varchar(100),
+   EXT_TRA_HASTA        varchar(100),
+   primary key (EXT_TRA_ID)
 );
 
 /*==============================================================*/
@@ -203,17 +220,6 @@ create table FAC_CABECERA
 );
 
 /*==============================================================*/
-/* Table: FEC_FECHA                                             */
-/*==============================================================*/
-create table FEC_FECHA
-(
-   FEC_ID               int not null auto_increment,
-   PAQ_ID               int,
-   FECHAS_VIAJE         date,
-   primary key (FEC_ID)
-);
-
-/*==============================================================*/
 /* Table: HOT_HOTELES                                           */
 /*==============================================================*/
 create table HOT_HOTELES
@@ -224,30 +230,19 @@ create table HOT_HOTELES
 );
 
 /*==============================================================*/
-/* Table: PAQUETES_X_EXTRAS                                     */
-/*==============================================================*/
-create table PAQUETES_X_EXTRAS
-(
-   PAQ_ID               int not null,
-   EXT_ID               int not null,
-   primary key (PAQ_ID, EXT_ID)
-);
-
-/*==============================================================*/
 /* Table: PAQ_PAQUETES                                          */
 /*==============================================================*/
 create table PAQ_PAQUETES
 (
    PAQ_ID               int not null auto_increment,
    PAQ_NOMBRE           varchar(100),
-   PAQ_PRECIO           varchar(15),
    primary key (PAQ_ID)
 );
 
 /*==============================================================*/
-/* Table: PARTICIPANTES_PAQUETES                                */
+/* Table: PAR_PAQ                                               */
 /*==============================================================*/
-create table PARTICIPANTES_PAQUETES
+create table PAR_PAQ
 (
    PAR_ID               int not null,
    PAQ_ID               int not null,
@@ -262,6 +257,8 @@ create table PAR_PARTICIPANTES
    PAR_ID               int not null auto_increment,
    COM_ID               int,
    PAR_FECHA            date,
+   PAR_FECHAINICIO      date,
+   PAR_FECHAFIN         date,
    PAR_NOMBRE           varchar(100),
    PAR_APELLIDO         varchar(100),
    PAR_GENERO           char(1),
@@ -280,6 +277,8 @@ create table PAR_PARTICIPANTES
    PAR_INFO_VUELO       varchar(200),
    PAR_HOSPEDAJE        varchar(100),
    PAR_COMENTARIOS      varchar(300),
+   PAR_SEGURO_DE_VIAJE  char(2),
+   PAR_TICKET_AEREO     varchar(2),
    primary key (PAR_ID)
 );
 
@@ -288,13 +287,14 @@ create table PAR_PARTICIPANTES
 /*==============================================================*/
 create table PERFIL_X_RECURSOS
 (
+   PR_ID                int not null auto_increment,
    PER_ID               int not null,
    REC_ID               int,
    PR_CONSULTAR         char(1),
    PR_AGREGAR           char(1),
    PR_EDITAR            char(1),
    PR_ELIMINAR          char(1),
-   primary key (PER_ID)
+   primary key (PR_ID)
 );
 
 /*==============================================================*/
@@ -317,6 +317,19 @@ create table REC_RECURSOS
    REC_NOMBRE           varchar(100),
    REC_FECHAREGIRSTRO   datetime,
    primary key (REC_ID)
+);
+
+/*==============================================================*/
+/* Table: TAR_TARIFA                                            */
+/*==============================================================*/
+create table TAR_TARIFA
+(
+   TAR_ID               int not null auto_increment,
+   PAQ_ID               int,
+   TAR_DIAS             varchar(50),
+   TAR_SEMANAS          varchar(50),
+   TAR_VALOR            varchar(50),
+   primary key (TAR_ID)
 );
 
 /*==============================================================*/
@@ -355,25 +368,22 @@ alter table DET_DETALLE_FACTURA add constraint FK_FAC_X_DET foreign key (FAC_ID)
 alter table EMP_EMPLEADOS add constraint FK_COM_EMP foreign key (COM_ID)
       references COM_COMPANIA (COM_ID) on delete restrict on update restrict;
 
+alter table EXT_NOCHES_EXTRAS add constraint FK_PAR_EXT_NE foreign key (PAR_ID)
+      references PAR_PARTICIPANTES (PAR_ID) on delete restrict on update restrict;
+
+alter table EXT_TRANSPORTE add constraint FK_PAR_EXT_TRA foreign key (PAR_ID)
+      references PAR_PARTICIPANTES (PAR_ID) on delete restrict on update restrict;
+
 alter table FAC_CABECERA add constraint FK_PAR_FAC foreign key (PAR_ID)
       references PAR_PARTICIPANTES (PAR_ID) on delete restrict on update restrict;
 
 alter table FAC_CABECERA add constraint FK_RELATIONSHIP_11 foreign key (COM_ID)
       references COM_COMPANIA (COM_ID) on delete restrict on update restrict;
 
-alter table FEC_FECHA add constraint FK_RELATIONSHIP_12 foreign key (PAQ_ID)
-      references PAQ_PAQUETES (PAQ_ID) on delete restrict on update restrict;
-
-alter table PAQUETES_X_EXTRAS add constraint FK_PAQUETES_X_EXTRAS foreign key (PAQ_ID)
-      references PAQ_PAQUETES (PAQ_ID) on delete restrict on update restrict;
-
-alter table PAQUETES_X_EXTRAS add constraint FK_PAQUETES_X_EXTRAS2 foreign key (EXT_ID)
-      references EXT_EXTRAS (EXT_ID) on delete restrict on update restrict;
-
-alter table PARTICIPANTES_PAQUETES add constraint FK_RELATIONSHIP_14 foreign key (PAR_ID)
+alter table PAR_PAQ add constraint FK_PAR_PAQ foreign key (PAR_ID)
       references PAR_PARTICIPANTES (PAR_ID) on delete restrict on update restrict;
 
-alter table PARTICIPANTES_PAQUETES add constraint FK_RELATIONSHIP_15 foreign key (PAQ_ID)
+alter table PAR_PAQ add constraint FK_PAR_PAQ2 foreign key (PAQ_ID)
       references PAQ_PAQUETES (PAQ_ID) on delete restrict on update restrict;
 
 alter table PAR_PARTICIPANTES add constraint FK_COM_PAR foreign key (COM_ID)
@@ -384,6 +394,9 @@ alter table PERFIL_X_RECURSOS add constraint FK_PER_PER_REC foreign key (PER_ID)
 
 alter table PERFIL_X_RECURSOS add constraint FK_REC_INTER_PER foreign key (REC_ID)
       references REC_RECURSOS (REC_ID) on delete restrict on update restrict;
+
+alter table TAR_TARIFA add constraint FK_PAQ_TAR foreign key (PAQ_ID)
+      references PAQ_PAQUETES (PAQ_ID) on delete restrict on update restrict;
 
 alter table USU_USUARIO add constraint FK_EMP_USU foreign key (EMP_ID)
       references EMP_EMPLEADOS (EMP_ID) on delete restrict on update restrict;

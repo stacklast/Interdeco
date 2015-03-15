@@ -21,14 +21,18 @@ $(document).ready(function () {
 		var apellidocontacto = $("#apellidocontacto").val();
 		var emailcontacto = $("#emailcontacto").val();
 
-		
+		//paquetes x participantes
 		var paquete = $("#paquete").val();
 		var semanas = $("#semanas").val();
 		var paquete2 = $("#paquete2").val();
 		var semanas2 = $("#semanas2").val();
-		var telefonocontacto = $("#telefonocontacto").val();
-		var telefonocontacto = $("#telefonocontacto").val();
-		var telefonocontacto = $("#telefonocontacto").val();
+		
+		//tabla par_participantes
+		var fechainicio = $("#fechainicio").val();
+		var fechafinalizacion = $("#fechafinalizacion").val();
+
+		//ext_noches_extras
+		var extranoche = $('input[name="extranoche"]:checked').val();//si o no
 		var telefonocontacto = $("#telefonocontacto").val();
 		var telefonocontacto = $("#telefonocontacto").val();
 		var telefonocontacto = $("#telefonocontacto").val();
