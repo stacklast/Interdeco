@@ -12,7 +12,7 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
     <meta name="description" content="Sistema de Facturación Electrónica de Planes Turísticos">
     <meta name="author" content="Edwin Benalcázar Espín <softwareywebsoluciones@gmail.com>">
 
-    <title>Sistema Interdeco</title>
+    <title>Autentificación Sistema Interdeco</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo $domain; ?>/css/bootstrap.min.css" rel="stylesheet">
@@ -32,27 +32,46 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    <style>
+    .cargando {
+    width: 100%;height: 100%;
+    overflow: hidden; 
+    top: 0px;
+    left: 0px;
+    z-index: 10000;
+    text-align: center;
+    position:absolute; 
+    background-color: #000000;
+    opacity:0.6;
+    filter:alpha(opacity=40);
+    }
+    .cargando img{
+        margin: 15em auto;
+    }
+    </style>
 </head>
 
 <body style="background:url('<?php echo $domain; ?>/img/bg.jpg');background-size:cover; background-repeat:no-repeat;">
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Advertencia!</h4>
-      </div>
-      <div class="modal-body">
-        Los 2 Datos ingresados son Incorrectos      
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+    <div id="bloquea" class="cargando hide">
+        <img src="images/cargando.gif">
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Advertencia!</h4>
+          </div>
+          <div class="modal-body">
+            Los 2 Datos ingresados son Incorrectos      
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-info" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
     <div class="container" >
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
@@ -66,7 +85,6 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
                             <fieldset>
                                 <div class="form-group">
                                     <input id="email" class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
-
                                 </div>
                                 <div class="form-group">
                                     <input id="password" class="form-control" placeholder="Password" name="password" type="password" value="">

@@ -26,6 +26,8 @@ include ('funciones.php');
  * $procesar Para realizar accion
  * @var string Valor 
  */
+
+sleep(1);//2segundos
 @$procesar 	= NoInjection($_POST['accion']);
 if(isset($procesar)){
  	if($procesar == "login"){

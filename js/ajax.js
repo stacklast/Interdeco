@@ -1685,6 +1685,7 @@ $(document).ready(function(){
  * 
  */
 	$("#login").click(function(){
+		$('#bloquea').removeClass('hide');
 		$(".alert").remove();
 		var accion = "login";
 		var capcha = $("#code").val();
@@ -1693,50 +1694,54 @@ $(document).ready(function(){
 		var check = $("#recordar:checked").val();//:checked para recoger el valor solo si ha sido seleccionado
 		var validacion_email = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
 		if(email == "" || !validacion_email.test(email)){
+			$('#bloquea').addClass('hide');
 			$("#email").focus().after("<div class='alert alert-warning' role='alert'><strong>(*)Campo Obligatorio!:</strong>Ingrese su correo electrónico</div>");
 			return false;
 		}
 		else 
 		if(password == ""){
+			$('#bloquea').addClass('hide');
 			$("#password").focus().after("<div class='alert alert-warning' role='alert'><strong>(*)Campo Obligatorio!:</strong>Ingrese la contraseña</div>");;
 			return false;
 		}
 		else if(capcha == "")
 		{
+			$('#bloquea').addClass('hide');
 			$("#code").focus().after("<div class='alert alert-warning' role='alert'><strong>(*)Campo Obligatorio!:</strong>Ingrese Captcha</div>");;
 			return false;
 		}
 		else{
 			$('#error').html('');
-			$('.ajaxgif').removeClass('hide');
 			var datos = '&email=' + email + '&password=' + password + '&accion=' + accion + '&recordar='+check;
 			$.ajax({
 			    type: "POST",
 			    url: "/Github/Interdeco/Controlador/Controller.Usuarios.php",
 			    data: datos,
 			    success: function(response) {
-			    	alert(response);
+			    	$('#bloquea').addClass('hide');
+			    	//alert(response);
 			    	if(response == 1){
 			    		$("#email").focus().after("<div class='alert alert-warning' role='alert'>Su correo electrónico es inválido</div>");
 			    	}
 			    	else if (response == 2){
 			    		$("#password").focus().after("<div class='alert alert-warning' role='alert'>Su contraseña es incorrecta</div>");;
 			    	}
-			    	else if(response == 3){
+			    	else if(response == 3){//contraseña  y correo electrónico son  incorrectos
+			    		$('#bloquea').addClass('hide');
 			    		$('#myModal').modal();
 			    		$('#myModal').modal('show');
-			    		$('#error').html("su contraseña  y correo electrónico son  incorrectos");
 			    	}
 			    	else{
+			    		$('#bloquea').addClass('hide');
 			    		location.href = "/Github/Interdeco/Vista/";
 			    	}
-			        $('.ajaxgif').hide();
-			        $('.msg').text('Mensaje enviado!').addClass('msg_ok').animate({ 'right' : '130px' }, 300);  
 			    },
 			    error: function(response) {
-			    	alert(response);
-			        $('.ajaxgif').hide();
-			        $('.msg').text('Hubo un error!').addClass('msg_error').animate({ 'right' : '130px' }, 300);                 
+			    	//alert(response);
+			    	$('#bloquea').addClass('hide');
+			    	$('.modal-body').html(response);
+			        $('#myModal').modal();
+			    	$('#myModal').modal('show');
 			    }
 			});
 			return false;
