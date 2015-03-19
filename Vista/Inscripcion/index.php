@@ -8,6 +8,7 @@
 	<title></title>
 	<!-- Bootstrap Core CSS -->
     <link href="../../css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 <body style="background:url('../../img/bg.jpg');background-size:cover;background-repeat:no-repeat;">
 <div class="container">
@@ -315,12 +316,12 @@
 							<div class="form-group">
 						  	<div class="radio-inline">
 							    <label>
-							      <input type="radio" name="transferencia" id="transferencia" value="si"> Yes
+							      <input type="radio" name="transferencia" name="transferencia" id="transferencia" value="si"> Yes
 							    </label>
 							  </div>
 							  <div class="radio-inline">
 							    <label>
-							      <input type="radio" name="transferencia" id="transferencia" value="no"> No
+							      <input type="radio" name="transferencia" name="transferencia" id="transferencia" value="no"> No
 							    </label>
 							  </div>
 						  </div>
@@ -349,12 +350,12 @@
 				    	<div class="form-group">
 						  	<div class="radio-inline">
 							    <label>
-							      <input type="radio" id="insurence" value="si"> Yes
+							      <input type="radio" name="insurence" id="insurence" value="si"> Yes
 							    </label>
 							  </div>
 							  <div class="radio-inline">
 							    <label>
-							      <input type="radio" id="insurence" value="no"> No
+							      <input type="radio" name="insurence" id="insurence" value="no"> No
 							    </label>
 							</div>
 						</div>
@@ -410,17 +411,17 @@
 						  	<label for="apellido">Do you use?</label>
 						  	<div class="checkbox">
 							    <label>
-							      <input type="checkbox" id="facebook"> Facebook
+							      <input type="checkbox" name="facebook" id="facebook"> Facebook
 							    </label>
 							  </div>
 							  <div class="checkbox">
 							    <label>
-							      <input type="checkbox" id="twitter"> Twitter
+							      <input type="checkbox" name="twitter" id="twitter"> Twitter
 							    </label>
 							  </div>
 							  <div class="checkbox">
 							    <label>
-							      <input type="checkbox" id="linkedIn"> LinkedIn
+							      <input type="checkbox" name="linkedIn" id="linkedIn"> LinkedIn
 							    </label>
 							  </div>
 						  </div>
@@ -454,17 +455,17 @@
 						  	<label for="trip">How did you fund your trip?</label>
 						  	<div class="radio">
 							    <label>
-							      <input type="radio" id="trip" value="Parents"> Parents
+							      <input type="radio" name="trip" id="trip" value="Parents"> Parents
 							    </label>
 							  </div>
 							  <div class="radio">
 							    <label>
-							      <input type="radio" id="trip" value="Own Savings"> Own Savings
+							      <input type="radio" id="trip" name="trip" value="Own Savings"> Own Savings
 							    </label>
 							  </div>
 							  <div class="radio">
 							    <label>
-							      <input type="radio" id="trip" value="Other Organizations"> Other Organizations
+							      <input type="radio" id="trip" name="trip" value="Other Organizations"> Other Organizations
 							    </label>
 							  </div>
 						  </div>
@@ -484,7 +485,7 @@
 					    <label for="exampleInputEmail2">Please if you agree, click on the box below.</label>
 					    <div class="checkbox">
 							<label>
-								<input type="checkbox" id="condiciones"> I have read and agree with the terms and conditions sheet that is attached to this Form.
+								<input type="checkbox" name="condiciones" id="condiciones"> I have read and agree with the terms and conditions sheet that is attached to this Form.
 						    </label>
 						</div>
 					  </div>

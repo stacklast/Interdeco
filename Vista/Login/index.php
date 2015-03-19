@@ -3,7 +3,6 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
 ?>
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta name="robots" content="noindex">
     <meta charset="utf-8">

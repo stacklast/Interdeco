@@ -43,22 +43,22 @@
 	<div class="row">
 	   	<div class="col-md-12 panel panel-default">
 	   	    <div class="panel-heading">
-                 Registros de Companias
+                 Registros de Compañías
             </div>
             <!-- /.panel-heading -->
 		   	<div class="panel-body">
 		   		<div class="table-responsive" id="resultados-busqueda">
-			      <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+			      <table class="table table-striped table-bordered table-hover" id="dataTables-example" style="display: inline-block;overflow-x: auto;">
                                     <thead>
                                         <tr>
-                                            <th>COM_ID</th>
+                                            <th>Num</th>
                                             <th>Nombre</th>
                                             <th>RUC</th>
                                             <th>Direccion</th>
                                             <th>Teléfono</th>
                                             <th>Email</th>
                                             <th>Web</th>
-                                            <th>Opciones</th>
+                                            <th>Opción</th>
                                         </tr>
                                     </thead>
                                     <tbody>

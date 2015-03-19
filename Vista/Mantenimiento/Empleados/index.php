@@ -52,18 +52,18 @@
                                     <thead>
                                         <tr>
                                             <th>EMP_ID</th>
-                                            <th>COM_ID</th>
+                                            <th>Compañía</th>
                                             <th>Nombre</th>
                                             <th>Apellido</th>
                                             <th>Teléfono</th>
                                             <th>Celular</th>
-                                            <th>Pais</th>
+                                            <th>País</th>
                                             <th>Provincia/Estado</th>
                                             <th>Ciudad</th>
                                             <th>Dirección</th>
                                             <th>Cargo</th>
                                             <th>Telefax</th>
-                                            <th>Opcion</th>
+                                            <th>Opción</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -85,7 +85,14 @@
                                             	<input type="hidden" id="EMP_ID<?php echo $i+1; ?>" value="<?php echo $consulta[$i]["EMP_ID"];?>">
                                             </td>
                                             <td>
-                                            	<?php echo $consulta[$i]["COM_ID"];?>
+                                            	<?php
+                                            	$idcompania = $consulta[$i]["COM_ID"];;
+                                            	$sqlempleado="SELECT `COM_NOMBRE` FROM `com_compania` WHERE `COM_ID` = '$idcompania' ";
+                                            	$resempleado=$bd->ejecutar($sqlempleado);
+                                            	$empleado = mysql_fetch_object($resempleado);
+                                            	$nombre = $empleado->COM_NOMBRE;
+                                            	echo $nombre;
+                                            	?>
                                             	<input type="hidden" id="COM_ID<?php echo $i+1; ?>" value="<?php echo $consulta[$i]["COM_ID"];?>">
                                             </td>
                                             <td>

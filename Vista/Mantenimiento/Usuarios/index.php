@@ -51,13 +51,13 @@
 			      <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
-                                            <th>USU_ID</th>
-                                            <th>EMP_ID</th>
+                                            <th>Num</th>
+                                            <th>Empleado</th>
                                             <th>Alias</th>
                                             <th>Password</th>
                                             <th>Email</th>
                                             <th>Fecha de Registro</th>
-                                            <th>Opciones</th>
+                                            <th>Opción</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -79,7 +79,15 @@
                                             	<input type="hidden" id="USU_ID<?php echo $i+1; ?>" value="<?php echo $consulta[$i]["USU_ID"];?>">
                                             </td>
                                             <td>
-                                            	<?php echo $consulta[$i]["EMP_ID"];?>
+                                            	<?php 
+                                            	$idempleado = $consulta[$i]['EMP_ID'];
+                                            	$sqlempleado="SELECT `EMP_NOMBRE`,`EMP_APELLIDO` FROM `emp_empleados` WHERE `EMP_ID` = '$idempleado' ";
+                                            	$resempleado=$bd->ejecutar($sqlempleado);
+                                            	$empleado = mysql_fetch_object($resempleado);
+                                            	$nombre = $empleado->EMP_NOMBRE;
+                                            	$apellido = $empleado->EMP_APELLIDO;
+                                            	echo $nombre." ".$apellido;
+                                            	?>
                                             	<input type="hidden" id="EMP_ID<?php echo $i+1; ?>" value="<?php echo $consulta[$i]["EMP_ID"];?>">
                                             </td>
                                             <td>
