@@ -30,13 +30,13 @@
 					<div class="col-md-6">
 					  <div class="form-group">
 					    <label for="nombre">First Name</label>
-					    <input type="text" class="form-control" id="nombre" placeholder="Name">
+					    <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Name">
 					  </div>
 					</div>
 					 <div class="col-md-6">
 					 	<div class="form-group">
 					    <label for="apellido">Last Name</label>
-					    <input type="text" class="form-control" id="apellido" placeholder="Last Name">
+					    <input type="text" name="apellido" class="form-control" id="apellido" placeholder="Last Name">
 					  </div>
 					 </div>
 				</div>
@@ -70,13 +70,13 @@
 					<div class="col-md-6">
 					  <div class="form-group">
 					    <label for="pasaporte">Passport Number</label>
-					    <input type="tel" class="form-control" id="pasaporte" placeholder="">
+					    <input type="tel" class="form-control" name="pasaporte" id="pasaporte" placeholder="">
 					  </div>
 					</div>
 					 <div class="col-md-6">
 					 	<div class="form-group">
 					    <label for="nacionalidad">Nacionality</label>
-					    <input type="text" class="form-control" id="nacionalidad" placeholder="">
+					    <input type="text" class="form-control" name="nacionalidad" id="nacionalidad" placeholder="">
 					  </div>
 					 </div>
 				</div>
@@ -85,7 +85,7 @@
 				    <div class="col-md-12">
 					  <div class="form-group">
 					    <label for="direccion">Home Address</label>
-					    <input type="text" class="form-control form-group" id="direccion" placeholder="">
+					    <input type="text" class="form-control form-group" name="direccion" id="direccion" placeholder="">
 					    <div class="form-group col-md-10">
 					    	 <select id="pais" name="pais" class="form-control">
 		                    <?php
@@ -98,15 +98,15 @@
 					    	<label for="">Country</label>
 					    </div>
 					    <div class="form-group col-md-4">
-					    	<input type="tel" class="form-control" id="provincia" placeholder="">
+					    	<input type="tel" class="form-control" name="provincia" id="provincia" placeholder="">
 					    	<label for="">State/Province</label>
 					    </div>
 					    <div class=" form-group col-md-4">
-					    	<input type="tel" class="form-control" id="ciudad" placeholder="">
+					    	<input type="tel" class="form-control" name="ciudad" id="ciudad" placeholder="">
 					    	<label for="">City</label>
 					    </div>
 					    <div class="form-group col-md-4">
-					    	<input type="tel" class="form-control" id="postal" placeholder="">
+					    	<input type="tel" class="form-control" name="postal" id="postal" placeholder="">
 					    	<label for="">Zip/Postal</label>
 					    </div>
 					  </div>
@@ -116,13 +116,13 @@
 					<div class="col-md-6">
 					  <div class="form-group">
 					    <label for="telefono">Contact Phone number</label>
-					    <input type="tel" class="form-control" id="telefono" placeholder="">
+					    <input type="tel" class="form-control" name="telefono" id="telefono" placeholder="">
 					  </div>
 					</div>
 					 <div class="col-md-6">
 					 	<div class="form-group">
 					    	<label for="email">Email</label>
-					    	<input type="text" class="form-control" id="email" placeholder="">
+					    	<input type="text" class="form-control" name="email" id="email" placeholder="">
 					    </div>
 					 </div>
 				</div>
@@ -134,37 +134,37 @@
 				<br>
 					<div class="form-group">
 						<label for="condicionmedica">Medical Condition or Diet</label>
-						<textarea class="form-control" name="" id="condicionmedica" rows="6">
+						<textarea class="form-control" name="condicionmedica" id="condicionmedica" rows="6">
 							
 						</textarea>
 					</div>
 				</div>
 				<div class="col-md-12">
-					<label for="apellido">Emergency Contact Name</label>
+					<label for="emergencia">Emergency Contact Name</label>
 				</div>
 				<div class="col-md-6">
 					<div class="form-group">
-					    	<input type="text" class="form-control" id="nombrecontacto" placeholder="">
-					    	<label for="apellido">First Name</label>
+					    	<input type="text" class="form-control" name="nombrecontacto" id="nombrecontacto" placeholder="">
+					    	<label for="nombrecontacto">First Name</label>
 					    </div>
 				</div>
 				<div class="col-md-6">
 					<div class="form-group">
-					    	<input type="text" class="form-control" id="apellidocontacto" placeholder="">
-					    	<label for="apellido">Last Name</label>
+					    	<input type="text" class="form-control" name="apellidocontacto" id="apellidocontacto" placeholder="">
+					    	<label for="apellidocontacto">Last Name</label>
 					    </div>
 				</div>
 				<div class="col-md-12">
 					<div class="col-md-6">
 					  <div class="form-group">
 					    <label for="nombre">Contact Phone number</label>
-					    <input type="tel" class="form-control" id="telefonocontacto" placeholder="">
+					    <input type="tel" class="form-control" name="telefonocontacto" id="telefonocontacto" placeholder="">
 					  </div>
 					</div>
 					 <div class="col-md-6">
 					 	<div class="form-group">
 					    	<label for="apellido">Email</label>
-					    	<input type="text" class="form-control" id="emailcontacto" placeholder="">
+					    	<input type="text" class="form-control" name="emailcontacto" id="emailcontacto" placeholder="">
 					    </div>
 					 </div>
 				</div>
@@ -191,13 +191,14 @@
 				<div class="col-md-6">
 					<div class="form-group">
 						<label for="semanas"># Days/Weeks for Program 1</label>
-						<input type="text" class="form-control" id="semanas" placeholder="">
+						<input type="text" class="form-control" name="semanas" id="semanas" placeholder="">
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="form-group">
 						<label for="paquete2">Program 2</label>
 					    	 <select id="paquete2" name="paquete2" class="form-control">
+					    	 <option value="SelectProgram2"> Select Program</option>
 		                    <?php
 		                    $pais = new ClsDAO_Combos();
 		                    $reg = $pais->Get_Paquete();
@@ -211,7 +212,7 @@
 				<div class="col-md-6">
 					<div class="form-group">
 						<label for="semanas2"># Days/Weeks for Program 2</label>
-						<input type="text" class="form-control" id="semanas2" placeholder="">
+						<input type="text" class="form-control" name="semanas2" id="semanas2" placeholder="">
 					</div>
 				</div>
 				<div class="col-md-12">
@@ -265,7 +266,7 @@
 							 <div class="col-md-6">
 							  	<div class="form-group">
 							  		<label for="cantidad">How Many?</label>
-							  		<input type="text" id="cantidad" class="form-control">
+							  		<input type="text" name="cantidad" id="cantidad" class="form-control">
 							  	</div>
 						  	</div>
 						  	<div class="col-md-12">
@@ -329,15 +330,15 @@
 						<div class="col-md-12">
 							<div class="form-group">
 								<label for="cantidadtransporte">How Many?</label>
-								<input type="text" id="cantidadtransporte" class="form-control">
+								<input type="text" id="cantidadtransporte" name="cantidadtransporte" class="form-control">
 							</div>
 							<div class="form-group">
 								<label for="desdetransporte">From</label>
-								<input type="text" id="desdetransporte" class="form-control">
+								<input type="text" id="desdetransporte" name="desdetransporte" class="form-control">
 							</div>
 							<div class="form-group">
 								<label for="hastatransporte">To</label>
-								<input type="text" id="hastatransporte" class="form-control">
+								<input type="text" id="hastatransporte" name="hastatransporte" class="form-control">
 							</div>
 						</div>
 					</div>
@@ -356,6 +357,25 @@
 							  <div class="radio-inline">
 							    <label>
 							      <input type="radio" name="insurence" id="insurence" value="no"> No
+							    </label>
+							</div>
+						</div>
+				    </div>
+				</div>
+				<div class="col-md-12">
+					<div class="form-group">
+						<label for="ticketaereo">Travel Ticket</label>
+					</div>
+				    <div class="col-md-12">
+				    	<div class="form-group">
+						  	<div class="radio-inline">
+							    <label>
+							      <input type="radio" name="ticketaereo" id="ticketaereo" value="si"> Yes
+							    </label>
+							  </div>
+							  <div class="radio-inline">
+							    <label>
+							      <input type="radio" name="ticketaereo" id="ticketaereo" value="no"> No
 							    </label>
 							</div>
 						</div>
@@ -411,17 +431,17 @@
 						  	<label for="apellido">Do you use?</label>
 						  	<div class="checkbox">
 							    <label>
-							      <input type="checkbox" name="facebook" id="facebook"> Facebook
+							      <input type="checkbox" name="facebook" id="facebook" value="Facebook"> Facebook
 							    </label>
 							  </div>
 							  <div class="checkbox">
 							    <label>
-							      <input type="checkbox" name="twitter" id="twitter"> Twitter
+							      <input type="checkbox" name="twitter" id="twitter" value="Twitter"> Twitter
 							    </label>
 							  </div>
 							  <div class="checkbox">
 							    <label>
-							      <input type="checkbox" name="linkedIn" id="linkedIn"> LinkedIn
+							      <input type="checkbox" name="linkedIn" id="linkedIn" value="LinkedIn"> LinkedIn
 							    </label>
 							  </div>
 						  </div>
@@ -437,7 +457,7 @@
 					<div class="col-md-10">
 						<div class="form-group">
 							<label for="encuentro">In which website you found Lead Adventures? (If Google, do you remember the search terms?)?</label>
-							<textarea class="form-control" rows="3" id="encuentro"></textarea>
+							<textarea class="form-control" name="encuentro" rows="3" id="encuentro"></textarea>
 						</div>
 					</div>
 				</div>
@@ -445,7 +465,7 @@
 					<div class="col-md-10">
 						<div class="form-group">
 							<label for="comparacion">Why did you choose Lead Adventures? Did you compare us first? With who?</label>
-							<textarea class="form-control" rows="3" id="comparacion"></textarea>
+							<textarea class="form-control" name="comparacion" rows="3" id="comparacion"></textarea>
 						</div>
 					</div>
 				</div>

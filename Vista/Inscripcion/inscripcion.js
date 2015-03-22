@@ -34,7 +34,8 @@ $(document).ready(function () {
 	 * Proceso de Inscripción
 	 */
 	$('#envioaplicacion').click(function(){
-		var datosString = $("#aplicationform").serialize();
+
+		var accion = "Inscripcion";
 		//tabla par_participantes
 		var nombre = $("#nombre").val();
 		var apellido = $("#apellido").val();
@@ -49,8 +50,8 @@ $(document).ready(function () {
 		var postal = $("#postal").val();
 		var telefono = $("#telefono").val();
 		var email = $("#email").val();
-		var segurodeviaje = $('input[name="insurence"]:checked').val();
-
+		var insurence = $('input[name="insurence"]:checked').val();//segurodeviaje
+		var ticketaereo = $('input[name="ticketaereo"]:checked').val();
 		//tabla cem_contactos_emergencia
 		var condicionmedica = $("#condicionmedica").val();
 		var nombrecontacto = $("#nombrecontacto").val();
@@ -91,17 +92,18 @@ $(document).ready(function () {
 		var estudios = $("#estudios").val();
 		var nombre_escuela = $("#nombre_escuela").val();
 		var trabajo = $("#trabajo").val();
-			var facebook = $('input[name="facebook"]:checked').val();
-			var twitter = $('input[name="twitter"]:checked').val();
-			var linkedIn = $('input[name="linkedIn"]:checked').val();
-			var otra_red = $("#otra_red").val();
+		var facebook = $('input[name="facebook"]:checked').val();
+		var twitter = $('input[name="twitter"]:checked').val();
+		var linkedIn = $('input[name="linkedIn"]:checked').val();
+		var otra_red = $("#otra_red").val();
 		var redessociales = facebook +" "+twitter+" "+linkedIn+" "+otra_red;
 		var encuentro = $("#encuentro").val();
 		var comparacion = $("#comparacion").val();
 		var trip = $('input[name="trip"]:checked').val();
 		var condiciones = $('input[name="condiciones"]:checked').val();
 		var validacion_email = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
-		datos = datosString;
+		var datosString = $("#aplicationform").serialize();
+		datos = datosString+"&redessociales = "+redessociales+"&accion="+accion;
 		alert(datos);
 		if(nombre == ""){
 			$("#nombre").focus();
@@ -121,7 +123,7 @@ $(document).ready(function () {
 		else{
 			$.ajax({
 			    type: "POST",
-			    url: "/Github/Interdeco/Controlador/Controller.Inscripción.php",
+			    url: "/Github/Interdeco/Controlador/Controller.Inscripcion.php",
 			    data: datos,
 			    success: function(response) {
 				   alert(response);

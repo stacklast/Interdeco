@@ -17,28 +17,28 @@ include ('seguridad.php');
 
 // Tabla Participantes
 @$compania 	  	= NoInjection($_POST['compania']);
-@$fecha 	  	= NoInjection($_POST['fecha']);
+@$fecha 	  	= date('Y-m-d');
 @$fechainicio 	= NoInjection($_POST['fechainicio']);
-@$fechafin 	  	= NoInjection($_POST['fechafin']);
+@$fechafin 	  	= NoInjection($_POST['fechafinalizacion']);
 @$nombre 	  	= NoInjection($_POST['nombre']);
 @$apellido    	= NoInjection($_POST['apellido']);
 @$genero      	= NoInjection($_POST['genero']);
 @$fechana	  	= NoInjection($_POST['fechana']);
-@$pasarporte  	= NoInjection($_POST['pasarporte']);
+@$pasaporte  	= NoInjection($_POST['pasaporte']);
 @$nacionalidad  = NoInjection($_POST['nacionalidad']);
 @$direccion     = NoInjection($_POST['direccion']);
 @$pais  		= NoInjection($_POST['pais']);
 @$provincia     = NoInjection($_POST['provincia']);
 @$ciudad        = NoInjection($_POST['ciudad']);
-@$zip  			= NoInjection($_POST['zip']);
+@$zip  			= NoInjection($_POST['postal']);
 @$telefono      = NoInjection($_POST['telefono']);
 @$email  		= NoInjection($_POST['email']);
-@$estado  		= NoInjection($_POST['estado']);
-@$agente  		= NoInjection($_POST['agente']);
-@$infovuelo  	= NoInjection($_POST['infovuelo']);
+@$estado  		= "I";
+@$agente  		= "Sin Asignar";
+@$infovuelo  	= "Contactar Cliente";
 @$hospedaje     = NoInjection($_POST['hospedaje']);
-@$comentario  	= NoInjection($_POST['comentario']);
-@$segurodeviaje = NoInjection($_POST['segurodeviaje']);
+@$comentario  	= "No existen comentarios";
+@$segurodeviaje = NoInjection($_POST['insurence']);
 @$ticketaereo  	= NoInjection($_POST['ticketaereo']);
 
 //Tabla Intermedia Paquetes por Participantes
@@ -46,11 +46,13 @@ include ('seguridad.php');
 @$paquete2  	= NoInjection($_POST['paquete2']);
 
 //Tabla Transporte
+@$transferencia      = NoInjection($_POST['transferencia']);
 @$cantidadtransporte = NoInjection($_POST['cantidadtransporte']);
 @$desdetransporte  	 = NoInjection($_POST['desdetransporte']);
 @$hastatransporte  	 = NoInjection($_POST['hastatransporte']);
 
 //Tabla Noches Extras
+@$extranoche  	= NoInjection($_POST['extranoche']);
 @$lugar  	    = NoInjection($_POST['lugar']);
 @$cantidad  	= NoInjection($_POST['cantidad']);
 @$hospedaje  	= NoInjection($_POST['hospedaje']);
@@ -82,11 +84,48 @@ include ('seguridad.php');
 @$procesar 	= NoInjection($_POST['accion']);
 if(isset($procesar)){
 	if($procesar == "Inscripcion"){
-		 $InsertarParticipante = array("".$compania."","".$fecha."",,"".$fechainicio."","".$fechafin."""".$nombre."","".$apellido."","".$genero."","".$fechana."",
-		 	"".$pasarporte."","".$nacionalidad."","".$direccion."","".$pais."","".$provincia."",
+
+		 $InsertarParticipante = array("1","".$fecha."","".$fechainicio."",
+		 	"".$fechafin."","".$nombre."","".$apellido."","".$genero."","".$fechana."",
+		 	"".$pasaporte."","".$nacionalidad."","".$direccion."","".$pais."","".$provincia."",
 		 	"".$ciudad."","".$zip."","".$telefono."","".$email."","".$estado."","".$agente."",
-		 	"".$infovuelo."","".$hospedaje."","".$comentario."","".$segurodeviaje."","".$ticketaereo."");
-		echo $InscripcionDAO->InsertarParticipante($InsertarParticipante);
+		 	"".$infovuelo."","".$hospedaje."","".$comentario."","".$segurodeviaje."",
+		 	"".$ticketaereo."");
+		@$idparticipante =  $InscripcionDAO->InsertarParticipante($InsertarParticipante,$email,$pasaporte);
+		echo "idparticipante = "+$idparticipante;
+		$InsertarPar_Paq = array("".$idparticipante."","".$paquete."");
+		echo "paquete = "+$InscripcionDAO->InsertarPar_Paq($InsertarPar_Paq);
+
+		if($condicionmedica != " " or $nombrecontacto != " " or $apellidocontacto != " "
+			or $telefonocontacto != " " or $emailcontacto != " "){
+			$InsertarContactoEmergencia = array("".$idparticipante."","".$condicionmedica."",
+				"".$nombrecontacto."","".$apellidocontacto."","".$telefonocontacto."",
+				"".$emailcontacto."");
+			$InscripcionDAO->InsertarContactoEmergencia($InsertarContactoEmergencia);
+		}
+		if($ocupacion != " " or $intereses != " " or $estudios != " "or $nombre_escuela != " "
+		 or $trabajo != " " or $redessociales != " " or $encuentro != " " or $comparacion != " " or $trip != " "){
+			$InsertarDetallesPersonales = array("".$idparticipante."","".$ocupacion."","".$intereses."",
+				"".$estudios."","".$nombre_escuela."","".$trabajo."","".$redessociales."","".$encuentro."",
+				"".$comparacion."","".$trip."");
+			$InscripcionDAO->InsertarDetallesPersonales($InsertarDetallesPersonales);
+		}
+
+		if($paquete2 != "SelectProgram2"){
+			$InsertarPar_Paq2 = array("".$idparticipante."","".$paquete2."");
+			$InscripcionDAO->InsertarPar_Paq($InsertarPar_Paq2);
+		}
+		if($transferencia == "si"){
+			$InsertarTransporte = array("".$idparticipante."","".$cantidadtransporte."",
+				"".$desdetransporte."","".$hastatransporte."");
+			$InscripcionDAO->InsertarTransporte($InsertarTransporte);
+		}
+		if($extranoche == "si"){
+			$InsertarNochesExtras = array("".$idparticipante."","".$lugar."","".$cantidad."",
+				"".$hospedaje."","".$desde."","".$hasta."");
+			$InscripcionDAO->InsertarNochesExtras($InsertarNochesExtras);
+		}
+		echo "Datos Ingresados";
 	}
 }
 else{

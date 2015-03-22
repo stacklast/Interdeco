@@ -25,6 +25,7 @@ class ClsDAO_Inscripcion
 	private  $_tablaDetallesPersonales;//Objeto
 	private  $_resultado;// bool true false
 	private  $_consulta; //array();
+	private  $_idParticipante;
 
 	/**
 	 * [__construct constructor para instanciar tabla a utilizar]
@@ -71,6 +72,7 @@ class ClsDAO_Inscripcion
 				);  //instanciamos base de datos
 		$this->_tablaPar_Paq =new SQLConection ('par_paq');
 		$fields = $this->_tablaPar_Paq->fields =array (
+					  array ('private', 'Fecha', "'".date('Y-m-d')."'"),
 		              array ('public', 'PAR_ID'),
 		              array ('public', 'PAQ_ID')
 				);  //instanciamos base de datos
@@ -119,17 +121,24 @@ class ClsDAO_Inscripcion
 				);  //instanciamos base de datos
 	}
 	/**
-	 * InsertarUsuario 
-	 * @param 	array(); Ingresamos Array de Datos de los campos de tabla USU_USUARIOS
+	 * InsertarParticipante 
+	 * @param 	array(); Ingresamos Array de Datos de los campos de tabla PAR_PARTICIPANTES
 	 * @return  string Mensaje de Validacion
 	 */
-	public function InsertarParticipante($arrayDatos)
+	public function InsertarParticipante($arrayDatos,$email,$pasaporte)
 	{
 		try{
 			 $this->_resultado = $this->_tablaParticipantes->insertRecord($arrayDatos);
 			if($this->_resultado)
 			{
-				return 'Exito';
+				$this->_consulta = $this->_tablaParticipantes->getRecords("PAR_EMAIL='$email' AND PAR_NUMERO_PASAPORTE = '$pasaporte' ",false,1);
+				if($this->_consulta)
+				{
+					 $this->_idParticipante = $this->_consulta[0]['PAR_ID'];
+
+					 return $this->_idParticipante;
+				}
+				
 			}
 			else
 			{
@@ -140,8 +149,8 @@ class ClsDAO_Inscripcion
 		}
 	}
 	/**
-	 * InsertarUsuario 
-	 * @param 	array(); Ingresamos Array de Datos de los campos de tabla USU_USUARIOS
+	 * InsertarPar_Paq 
+	 * @param 	array(); Ingresamos Array de Datos de los campos de tabla PAR_PAQ
 	 * @return  string Mensaje de Validacion
 	 */
 	public function InsertarPar_Paq($arrayDatos)
@@ -161,8 +170,8 @@ class ClsDAO_Inscripcion
 		}
 	}
 	/**
-	 * InsertarUsuario 
-	 * @param 	array(); Ingresamos Array de Datos de los campos de tabla USU_USUARIOS
+	 * InsertarTransporte 
+	 * @param 	array(); Ingresamos Array de Datos de los campos de tabla TRA_TRANSPORTE
 	 * @return  string Mensaje de Validacion
 	 */
 	public function InsertarTransporte($arrayDatos)
@@ -182,8 +191,8 @@ class ClsDAO_Inscripcion
 		}
 	}
 	/**
-	 * InsertarUsuario 
-	 * @param 	array(); Ingresamos Array de Datos de los campos de tabla USU_USUARIOS
+	 * InsertarNochesExtras 
+	 * @param 	array(); Ingresamos Array de Datos de los campos de tabla ext_noches_extras
 	 * @return  string Mensaje de Validacion
 	 */
 	public function InsertarNochesExtras($arrayDatos)
@@ -203,8 +212,8 @@ class ClsDAO_Inscripcion
 		}
 	}
 	/**
-	 * InsertarUsuario 
-	 * @param 	array(); Ingresamos Array de Datos de los campos de tabla USU_USUARIOS
+	 * InsertarContactoEmergencia 
+	 * @param 	array(); Ingresamos Array de Datos de los campos de tabla cem_contactos_emergencia
 	 * @return  string Mensaje de Validacion
 	 */
 	public function InsertarContactoEmergencia($arrayDatos)
@@ -224,8 +233,8 @@ class ClsDAO_Inscripcion
 		}
 	}
 	/**
-	 * InsertarUsuario 
-	 * @param 	array(); Ingresamos Array de Datos de los campos de tabla USU_USUARIOS
+	 * InsertarDetallesPersonales 
+	 * @param 	array(); Ingresamos Array de Datos de los campos de tabla dep_detalles_personales
 	 * @return  string Mensaje de Validacion
 	 */
 	public function InsertarDetallesPersonales($arrayDatos)
