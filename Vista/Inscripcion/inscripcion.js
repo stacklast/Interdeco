@@ -50,9 +50,11 @@ $(document).ready(function () {
 		var telefono = $("#telefono").val();
 		var email = $("#email").val();
 		var segurodeviaje = $('input[name="insurence"]:checked').val();
+
 		//tabla cem_contactos_emergencia
 		var condicionmedica = $("#condicionmedica").val();
 		var nombrecontacto = $("#nombrecontacto").val();
+		var telefonocontacto = $("#telefonocontacto").val();
 		var apellidocontacto = $("#apellidocontacto").val();
 		var emailcontacto = $("#emailcontacto").val();
 
@@ -75,10 +77,13 @@ $(document).ready(function () {
 		var hasta = $("#hasta").val();
 
 		//ext_transporte
-		var transferencia = $('input[name="transferencia"]:checked').val();
-		var cantidadtransporte = $("#cantidadtransporte").val();
-		var desdetransporte = $("#desdetransporte").val();
-		var hastatransporte = $("#hastatransporte").val();
+		var transferencia = $('input[name="transferencia"]:checked').val();//si o no
+		if(transferencia!= " ")
+		{
+			var cantidadtransporte = $("#cantidadtransporte").val();
+			var desdetransporte = $("#desdetransporte").val();
+			var hastatransporte = $("#hastatransporte").val();
+		}
 
 		//dep_detalles_personales
 		var ocupacion = $("#ocupacion").val();
@@ -86,10 +91,11 @@ $(document).ready(function () {
 		var estudios = $("#estudios").val();
 		var nombre_escuela = $("#nombre_escuela").val();
 		var trabajo = $("#trabajo").val();
-		var facebook = $('input[name="facebook"]:checked').val();
-		var twitter = $('input[name="twitter"]:checked').val();
-		var linkedIn = $('input[name="linkedIn"]:checked').val();
-		var otra_red = $("#otra_red").val();
+			var facebook = $('input[name="facebook"]:checked').val();
+			var twitter = $('input[name="twitter"]:checked').val();
+			var linkedIn = $('input[name="linkedIn"]:checked').val();
+			var otra_red = $("#otra_red").val();
+		var redessociales = facebook +" "+twitter+" "+linkedIn+" "+otra_red;
 		var encuentro = $("#encuentro").val();
 		var comparacion = $("#comparacion").val();
 		var trip = $('input[name="trip"]:checked').val();

@@ -412,6 +412,8 @@ $(document).ready(function(){
 			id = $('#PAR_ID'+event.data.param1).val();
 			compania = $('#COM_ID'+event.data.param1).val();
 			fecha = $('#PAR_FECHA'+event.data.param1).val();
+			fechainicio = $('#PAR_FECHAINICIO'+event.data.param1).val();
+			fechafin = $('#PAR_FECHAFIN'+event.data.param1).val();
 			nombre = $('#PAR_NOMBRE'+event.data.param1).val();
 			apellido = $('#PAR_APELLIDO'+event.data.param1).val();
 			genero = $('#PAR_GENERO'+event.data.param1).val();
@@ -430,6 +432,8 @@ $(document).ready(function(){
 			infovuelo = $('#PAR_INFO_VUELO'+event.data.param1).val();
 			asentamiento = $('#PAR_ASENTAMIENTO'+event.data.param1).val();
 			comentario = $('#PAR_COMENTARIOS'+event.data.param1).val();
+			segurodeviaje = $('#PAR_SEGURO_DE_VIAJE'+event.data.param1).val();
+			ticketaereo = $('#PAR_TICKET_AEREO'+event.data.param1).val();
 			$("#id").val(id);
 			$("#compania").val(compania);
 			$("#nombre").val(nombre);
@@ -437,6 +441,8 @@ $(document).ready(function(){
 			$("#genero").val(genero);
 			$("#pasaporte").val(pasaporte);
 			$("#fechana").val(fechana);
+			$("#fechainicio").val(fechainicio);
+			$("#fechafin").val(fechafin);
 			$("#nacionalidad").val(nacionalidad);
 			$("#direccion").val(direccion);
 			$("#pais").val(pais);
@@ -450,6 +456,8 @@ $(document).ready(function(){
 			$("#infovuelo").val(infovuelo);
 			$("#asentamiento").val(asentamiento);
 			$("#comentario").val(comentario);
+			$("#segurodeviaje").val(segurodeviaje);
+			$("#ticketaereo").val(ticketaereo);
 			$("#resultados-busqueda").hide();
 			$("#div-agregar").hide();
 			$("#div-limpiar").hide();
@@ -509,6 +517,8 @@ $(document).ready(function(){
 		var compania = $("#compania").val();
 		var nombre = $("#nombre").val();
 		var apellido = $("#apellido").val();
+		var fechainicio = $("fechainicio").val();
+		var fechafin = $("fechafin").val();
 		var pasaporte = $("#pasaporte").val();
 		var fechana = $("#fechana").val();
 		var nacionalidad = $("#nacionalidad").val();
@@ -524,8 +534,23 @@ $(document).ready(function(){
 		var infovuelo = $("#infovuelo").val();
 		var asentamiento = $("#asentamiento option:selected").html();
 		var comentarios = $("#comentario").val();
+		var segurodeviaje = $("#segurodeviaje").val();
+		var ticketaereo = $("#ticketaereo").val();
 		var datosString = $("#participantes").serialize();
 		var dato = '&accion=' + accion+'&id=' + id+'&ciudad=' + ciudad;
+		
+		if(fechainicio == ""){
+			$("#fechainicio").focus();
+			alert('(*)Campo Obligatorio: Ingrese fechana');
+			return false;
+		}
+		else
+		if(fechafin == ""){
+			$("#fechafin").focus();
+			alert('(*)Campo Obligatorio: Ingrese fechana');
+			return false;
+		}
+		else
 		if(nombre == ""){
 			$("#nombre").focus();
 			alert('(*)Campo Obligatorio: Ingrese nombre');
@@ -621,6 +646,18 @@ $(document).ready(function(){
 			alert('(*)Campo Obligatorio: Ingrese la comentarios');
 			return false;
 		}
+		else 
+		if(segurodeviaje == ""){
+			$("#segurodeviaje").focus();
+			alert('(*)Campo Obligatorio: Ingrese la comentarios');
+			return false;
+		}
+		else 
+		if(ticketaereo == ""){
+			$("#ticketaereo").focus();
+			alert('(*)Campo Obligatorio: Ingrese la comentarios');
+			return false;
+		}
 		else{
 			datos = datosString+dato;
 			alert(datos);
@@ -655,6 +692,8 @@ $(document).ready(function(){
 		var accion = "InsertarParticipante";
 		var id = $("#id").val();
 		var compania = $("#compania").val();
+		var fechainicio = $("fechainicio").val();
+		var fechafin = $("fechafin").val();
 		var nombre = $("#nombre").val();
 		var apellido = $("#apellido").val();
 		var pasaporte = $("#pasaporte").val();
@@ -672,8 +711,22 @@ $(document).ready(function(){
 		var infovuelo = $("#infovuelo").val();
 		var asentamiento = $("#asentamiento").val();
 		var comentarios = $("#comentario").val();
+		var segurodeviaje = $("#segurodeviaje").val();
+		var ticketaereo = $("#ticketaereo").val();
 		var datosString = $("#participantes").serialize();
 		var dato = '&accion=' + accion+'&id=' + id+'&ciudad=' + ciudad;
+		if(fechainicio == ""){
+			$("#fechainicio").focus();
+			alert('(*)Campo Obligatorio: Ingrese fechana');
+			return false;
+		}
+		else
+		if(fechafin == ""){
+			$("#fechafin").focus();
+			alert('(*)Campo Obligatorio: Ingrese fechana');
+			return false;
+		}
+		else
 		if(nombre == ""){
 			$("#nombre").focus();
 			alert('(*)Campo Obligatorio: Ingrese nombre');
@@ -766,6 +819,18 @@ $(document).ready(function(){
 		else 
 		if(comentarios == ""){
 			$("#comentario").focus();
+			alert('(*)Campo Obligatorio: Ingrese la comentarios');
+			return false;
+		}
+		else 
+		if(segurodeviaje == ""){
+			$("#segurodeviaje").focus();
+			alert('(*)Campo Obligatorio: Ingrese la comentarios');
+			return false;
+		}
+		else 
+		if(ticketaereo == ""){
+			$("#ticketaereo").focus();
 			alert('(*)Campo Obligatorio: Ingrese la comentarios');
 			return false;
 		}

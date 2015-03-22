@@ -52,8 +52,10 @@
                                     <thead>
                                         <tr>
                                             <th>PAR_ID</th>
-                                            <th>COM_ID</th>
+                                            <th>Compañía</th>
                                             <th>Fecha</th>
+                                            <th>Fecha de Inicio</th>
+                                            <th>Fecha Fecha de Finalización</th>
                                             <th>Nombre</th>
                                             <th>Apellido</th>
                                             <th>Género</th>
@@ -72,6 +74,8 @@
                                             <th>Info Vuelo</th>
                                             <th>Asentamiento</th>
                                             <th>Comentarios</th>
+                                            <th>Seguro de Viaje</th>
+                                            <th>Ticket Aéreo</th>
                                             <th>Opciones</th>
                                         </tr>
                                     </thead>
@@ -79,7 +83,7 @@
                                   <?php 
                                      $consulta=array();
                                       $bd=Db::getInstance();
-								     $sql="SELECT `PAR_ID`, `COM_ID`, `PAR_FECHA`, `PAR_NOMBRE`, `PAR_APELLIDO`, `PAR_GENERO`, `PAR_FECHA_NACIMIENTO`, `PAR_NUMERO_PASAPORTE`, `PAR_NACIONALIDAD`, `PAR_DIRECCION`, `PAR_PAIS`, `PAR_PROVINCIA_ESTADO`, `PAR_CIUDAD`, `PAR_ZIP_POSTAL`, `PAR_TELEFONO`, `PAR_EMAIL`, `PAR_ESTADO`, `PAR_AGENTE`, `PAR_INFO_VUELO`, `PAR_HOSPEDAJE`, `PAR_COMENTARIOS` FROM `par_participantes`";
+								     $sql="SELECT `PAR_ID`, `COM_ID`, `PAR_FECHA`, `PAR_FECHAINICIO`, `PAR_FECHAFIN`, `PAR_NOMBRE`, `PAR_APELLIDO`, `PAR_GENERO`, `PAR_FECHA_NACIMIENTO`, `PAR_NUMERO_PASAPORTE`, `PAR_NACIONALIDAD`, `PAR_DIRECCION`, `PAR_PAIS`, `PAR_PROVINCIA_ESTADO`, `PAR_CIUDAD`, `PAR_ZIP_POSTAL`, `PAR_TELEFONO`, `PAR_EMAIL`, `PAR_ESTADO`, `PAR_AGENTE`, `PAR_INFO_VUELO`, `PAR_HOSPEDAJE`, `PAR_COMENTARIOS`, `PAR_SEGURO_DE_VIAJE`, `PAR_TICKET_AEREO` FROM `par_participantes`";
 								      $res=$bd->ejecutar($sql);
 								      //mysql_fetch_assoc se utiliza para trabajar con array multidimensional
 								      while($reg=mysql_fetch_assoc($res))
@@ -94,12 +98,27 @@
                                             	<input type="hidden" id="PAR_ID<?php echo $i+1; ?>" value="<?php echo $consulta[$i]["PAR_ID"];?>">
                                             </td>
                                             <td>
-                                            	<?php echo $consulta[$i]["COM_ID"];?>
+                                            	<?php
+                                                $idcompania = $consulta[$i]["COM_ID"];;
+                                                $sqlempleado="SELECT `COM_NOMBRE` FROM `com_compania` WHERE `COM_ID` = '$idcompania' ";
+                                                $resempleado=$bd->ejecutar($sqlempleado);
+                                                $empleado = mysql_fetch_object($resempleado);
+                                                $nombre = $empleado->COM_NOMBRE;
+                                                echo $nombre;
+                                                ?>
                                             	<input type="hidden" id="COM_ID<?php echo $i+1; ?>" value="<?php echo $consulta[$i]["COM_ID"];?>">
                                             </td>
                                             <td>
                                                 <?php echo $consulta[$i]["PAR_FECHA"];?>
                                                 <input type="hidden" id="PAR_FECHA<?php echo $i+1; ?>" value="<?php echo $consulta[$i]["PAR_FECHA"];?>">
+                                            </td>
+                                            <td>
+                                                <?php echo $consulta[$i]["PAR_FECHAINICIO"];?>
+                                                <input type="hidden" id="PAR_FECHAINICIO<?php echo $i+1; ?>" value="<?php echo $consulta[$i]["PAR_FECHAINICIO"];?>">
+                                            </td>
+                                            <td>
+                                                <?php echo $consulta[$i]["PAR_FECHAFIN"];?>
+                                                <input type="hidden" id="PAR_FECHAFIN<?php echo $i+1; ?>" value="<?php echo $consulta[$i]["PAR_FECHAFIN"];?>">
                                             </td>
                                             <td>
                                             	<?php echo $consulta[$i]["PAR_NOMBRE"];?>
@@ -173,6 +192,14 @@
                                             	<?php echo $consulta[$i]["PAR_COMENTARIOS"];?>
                                             	<input type="hidden" id="PAR_COMENTARIOS<?php echo $i+1; ?>" value="<?php echo $consulta[$i]["PAR_COMENTARIOS"];?>">
                                             </td>
+                                            <td class="center">
+                                                <?php echo $consulta[$i]["PAR_SEGURO_DE_VIAJE"];?>
+                                                <input type="hidden" id="PAR_SEGURO_DE_VIAJE<?php echo $i+1; ?>" value="<?php echo $consulta[$i]["PAR_SEGURO_DE_VIAJE"];?>">
+                                            </td>
+                                            <td class="center">
+                                                <?php echo $consulta[$i]["PAR_TICKET_AEREO"];?>
+                                                <input type="hidden" id="PAR_TICKET_AEREO<?php echo $i+1; ?>" value="<?php echo $consulta[$i]["PAR_TICKET_AEREO"];?>">
+                                            </td>
                                             <td>
 								            	<button id="EditarParticipante<?php echo $i+1; ?>" class="btn btn-info btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Editar Registro">
 								            		<span class="glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span>
@@ -212,6 +239,18 @@
                     <label for="inputEmail3" class="col-sm-4 control-label">Fecha</label>
                     <div class="col-sm-8">
                       <input type="date" class="form-control" id="fecha" name="fecha"  value="<?php echo date('y/m/d h:m:s'); ?>" readonly="readonly">
+                    </div>
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="inputEmail3" class="col-sm-4 control-label">Fecha Inicio</label>
+                    <div class="col-sm-8">
+                      <input type="date" class="form-control" id="fecha" name="fechainicio">
+                    </div>
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="inputEmail3" class="col-sm-4 control-label">Fecha Fin</label>
+                    <div class="col-sm-8">
+                      <input type="date" class="form-control" id="fecha" name="fecha">
                     </div>
                   </div>
 				  <div class="form-group col-md-4">
@@ -345,6 +384,24 @@
                     <label for="inputEmail3" class="col-sm-4 control-label">Comentarios</label>
                     <div class="col-sm-8">
                       <textarea rows="5"  type="text" class="form-control" id="comentario" name="comentario" placeholder="Comentarios"></textarea>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-12">
+                    <label for="inputEmail3" class="col-sm-4 control-label">Seguro de Viaje</label>
+                    <div class="col-sm-8">
+                      <select name="segurodeviaje" id="segurodeviaje">
+                          <option value="SI">SI</option>
+                          <option value="NO">NO</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-12">
+                    <label for="inputEmail3" class="col-sm-4 control-label">Ticket Aéreo</label>
+                    <div class="col-sm-8">
+                      <select name="ticketaereo" id="ticketaereo">
+                          <option value="SI">SI</option>
+                          <option value="NO">NO</option>
+                      </select>
                     </div>
                   </div>
 		    	<div class="form-group"></div>

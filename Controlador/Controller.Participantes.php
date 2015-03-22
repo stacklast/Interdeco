@@ -18,6 +18,8 @@ include ('seguridad.php');
 @$id 	      	= NoInjection($_POST['id']);
 @$compania 	  	= NoInjection($_POST['compania']);
 @$fecha 	  	= NoInjection($_POST['fecha']);
+@$fechainicio 	= NoInjection($_POST['fechainicio']);
+@$fechafin 	  	= NoInjection($_POST['fechafin']);
 @$nombre 	  	= NoInjection($_POST['nombre']);
 @$apellido    	= NoInjection($_POST['apellido']);
 @$genero      	= NoInjection($_POST['genero']);
@@ -36,6 +38,8 @@ include ('seguridad.php');
 @$infovuelo  	= NoInjection($_POST['infovuelo']);
 @$hospedaje     = NoInjection($_POST['hospedaje']);
 @$comentario  	= NoInjection($_POST['comentario']);
+@$segurodeviaje = NoInjection($_POST['segurodeviaje']);
+@$ticketaereo  	= NoInjection($_POST['ticketaereo']);
 /**
  * $procesar Para realizar accion
  * @var string Valor 
@@ -43,17 +47,17 @@ include ('seguridad.php');
 @$procesar 	= NoInjection($_POST['accion']);
 if(isset($procesar)){
 	if($procesar == "InsertarParticipante"){
-		 $insertar= array("".$compania."","".$fecha."","".$nombre."","".$apellido."","".$genero."","".$fechana."",
+		 $insertar= array("".$compania."","".$fecha."",,"".$fechainicio."","".$fechafin."""".$nombre."","".$apellido."","".$genero."","".$fechana."",
 		 	"".$pasarporte."","".$nacionalidad."","".$direccion."","".$pais."","".$provincia."",
 		 	"".$ciudad."","".$zip."","".$telefono."","".$email."","".$estado."","".$agente."",
-		 	"".$infovuelo."","".$hospedaje."","".$comentario."");
+		 	"".$infovuelo."","".$hospedaje."","".$comentario."","".$segurodeviaje."","".$ticketaereo."");
 		echo $ParticipantesDAO->InsertarParticipante($insertar);
 	}
 	if($procesar == "ModificarParticipante"){
-		$modificar= array("".$compania."","".$fecha."","".$nombre."","".$apellido."","".$genero."","".$fechana."",
+		$modificar= array("".$compania."","".$fecha."",,"".$fechainicio."","".$fechafin."""".$nombre."","".$apellido."","".$genero."","".$fechana."",
 		 	"".$pasarporte."","".$nacionalidad."","".$direccion."","".$pais."","".$provincia."",
 		 	"".$ciudad."","".$zip."","".$telefono."","".$email."","".$estado."","".$agente."",
-		 	"".$infovuelo."","".$hospedaje."","".$comentario."");
+		 	"".$infovuelo."","".$hospedaje."","".$comentario."","".$segurodeviaje."","".$ticketaereo."");
 		echo $ParticipantesDAO->ModificarParticipante($id,$modificar);
 	}
 	if($procesar == "EliminarParticipante"){

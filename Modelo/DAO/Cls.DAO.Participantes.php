@@ -41,6 +41,8 @@ class ClsDAO_Participantes
 		              array ('private', 'PAR_ID', "' '"),
 		              array ('public', 'COM_ID'),
 		              array ('public', 'PAR_FECHA'),
+		              array ('public', 'PAR_FECHAINICIO'),
+		              array ('public', 'PAR_FECHAFIN'),
 		              array ('public', 'PAR_NOMBRE'),
 		              array ('public', 'PAR_APELLIDO'),
 		              array ('public', 'PAR_GENERO'),
@@ -58,7 +60,9 @@ class ClsDAO_Participantes
 		              array ('public', 'PAR_AGENTE'),
 		              array ('public', 'PAR_INFO_VUELO'),
 		              array ('public', 'PAR_HOSPEDAJE'),
-		              array ('public', 'PAR_COMENTARIOS')
+		              array ('public', 'PAR_COMENTARIOS'),
+		              array ('public', 'PAR_SEGURO_DE_VIAJE'),
+		              array ('public', 'PAR_TICKET_AEREO')
 				);  //instanciamos base de datos
 	}
 	/**
