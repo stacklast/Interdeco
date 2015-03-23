@@ -48,7 +48,7 @@
             <!-- /.panel-heading -->
 		   	<div class="panel-body">
 		   		<div class="table-responsive" id="resultados-busqueda">
-			      <table class="table table-striped table-bordered table-hover" id="dataTables-example" style="display: inline-block;overflow-x: auto;">
+			      <table class="table table-striped table-bordered table-hover" id="dataTables-example" style="display: inline-block;overflow-x: auto;overflow-y: scroll;height: 18em;">
                                     <thead>
                                         <tr>
                                             <th>PAR_ID</th>
