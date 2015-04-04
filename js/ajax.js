@@ -43,6 +43,11 @@ $(document).ready(function(){
 		$('#menu-inicio').removeClass('active');
 		$('#menu-facturacion').addClass('active');
 	}
+	else 
+	if(nav == 'Pago'){
+		$('#menu-inicio').removeClass('active');
+		$('#menu-pago').addClass('active');
+	}
 	/**
 	 * Manejo de Fecha cambio de idioma y rangos
 	 */

@@ -1,8 +1,8 @@
         </div>
-        <!-- /#page-wrapper -->   
+        <!-- /#page-wrapper -->
 
    </div>
-   <!-- /#wrapper -->   
+   <!-- /#wrapper -->
    <!-- jQuery Version 1.11.0 -->
     <script src="/github/Interdeco/js/jquery-1.11.0.js"></script>
 
@@ -15,6 +15,7 @@
 
     <!-- jQuery usuarios.ajax -->
     <script src="/github/Interdeco/js/ajax.js"></script>
+    <script src="/github/Interdeco/Vista/Facturacion/facturacion.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="/github/Interdeco/js/bootstrap.min.js"></script>

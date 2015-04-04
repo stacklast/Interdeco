@@ -4,8 +4,14 @@ if (!isset($_SESSION['usuario']) && !isset($_SESSION['usuario']) !='')
 if (!isset($_SESSION['password']) && !isset($_SESSION['password']) !='')
 {
   echo '<script>location.href = "/GitHub/Interdeco/Vista/Login/";</script>';
-} 
+}
 $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
+
+$path = $_SERVER['PHP_SELF'];
+$file = dirname($path);
+if ( strpos($file, '/') !== FALSE )
+ $file = array_pop(explode('/', $file));
+echo $file;
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -52,7 +58,7 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
 
 </head>
 <body>
- 
+
 <noscript>
     <h2>Para ver esta pagina web se requiere JavaScript.<br>Se aborto la carga de la pagina.</h2>
 </noscript>
@@ -243,7 +249,7 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
                             <a id="menu-inscripcion" href="<?php echo $domain; ?>/Vista/Inscripcion/" target="_blank"><i class="fa fa-edit fa-fw"></i>Inscripción</a>
                         </li>
                         <li>
-                            <a id="menu-pago" href="<?php echo $domain; ?>/Vista/Pago/" target="_blank"><i class="glyphicon glyphicon-usd"> </i>Pago de Clientes</a>
+                            <a id="menu-pago" href="<?php echo $domain; ?>/Vista/Pago/"><i class="glyphicon glyphicon-usd"> </i>Pago de Clientes</a>
                         </li>
                         <li>
                             <a id="menu-facturacion" href="<?php echo $domain; ?>/Vista/Facturacion/"><i class="fa fa-edit fa-fw"></i>Facturación</a>
@@ -278,6 +284,36 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+                        <li id="menu-comprobantes">
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i> Comprobantes Electrónicos<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a id="menu-factura" href="<?php echo $domain; ?>/Vista/Mantenimiento/Facturacion/">Facturacion</a>
+                                </li>
+                                <li>
+                                    <a id="menu-companias" href="<?php echo $domain; ?>/Vista/Mantenimiento/Companias/">Nota de Crédito</a>
+                                </li>
+                                <li>
+                                    <a id="menu-empleados" href="<?php echo $domain; ?>/Vista/Mantenimiento/Empleados/">Nota de Débito</a>
+                                </li>
+                                <li>
+                                    <a id="menu-participantes" href="<?php echo $domain; ?>/Vista/Mantenimiento/Participantes/">Guía de Remisión</a>
+                                </li>
+                                <li>
+                                    <a id="menu-programas" href="<?php echo $domain; ?>/Vista/Mantenimiento/Programas/">Comprobante de Retención</a>
+                                </li>
+                                <li>
+                                    <a id="menu-extras" href="#">Extras</a>
+                                </li>
+                                <li>
+                                    <a id="menu-perfiles" href="#">Perfiles</a>
+                                </li>
+                                <li>
+                                    <a id="menu-recursos" href="#">Recursos</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
                         <li>
                             <a id="menu-reportes" href="#"><i class="fa fa-files-o fa-fw"></i>Reportes<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -298,4 +334,3 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
         </nav>
 
         <div id="page-wrapper">
-        

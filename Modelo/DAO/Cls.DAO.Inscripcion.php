@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  *	@package Interdeco
  *	@subpackage Modelo
@@ -36,7 +36,7 @@ class ClsDAO_Inscripcion
 		 * $bd variable que instancia la conexion a BD
 		 * @var objeto
 		 */
-		$bd=Db::getInstance();	
+		$bd=Db::getInstance();
 		/**
 		 * $this->tablaUsuarios instancia al objeto de manipulacion de BD
 		 * @var SQLConection
@@ -121,7 +121,7 @@ class ClsDAO_Inscripcion
 				);  //instanciamos base de datos
 	}
 	/**
-	 * InsertarParticipante 
+	 * InsertarParticipante
 	 * @param 	array(); Ingresamos Array de Datos de los campos de tabla PAR_PARTICIPANTES
 	 * @return  string Mensaje de Validacion
 	 */
@@ -138,7 +138,6 @@ class ClsDAO_Inscripcion
 
 					 return $this->_idParticipante;
 				}
-				
 			}
 			else
 			{
@@ -149,7 +148,7 @@ class ClsDAO_Inscripcion
 		}
 	}
 	/**
-	 * InsertarPar_Paq 
+	 * InsertarPar_Paq
 	 * @param 	array(); Ingresamos Array de Datos de los campos de tabla PAR_PAQ
 	 * @return  string Mensaje de Validacion
 	 */
@@ -170,7 +169,7 @@ class ClsDAO_Inscripcion
 		}
 	}
 	/**
-	 * InsertarTransporte 
+	 * InsertarTransporte
 	 * @param 	array(); Ingresamos Array de Datos de los campos de tabla TRA_TRANSPORTE
 	 * @return  string Mensaje de Validacion
 	 */
@@ -191,7 +190,7 @@ class ClsDAO_Inscripcion
 		}
 	}
 	/**
-	 * InsertarNochesExtras 
+	 * InsertarNochesExtras
 	 * @param 	array(); Ingresamos Array de Datos de los campos de tabla ext_noches_extras
 	 * @return  string Mensaje de Validacion
 	 */
@@ -212,7 +211,7 @@ class ClsDAO_Inscripcion
 		}
 	}
 	/**
-	 * InsertarContactoEmergencia 
+	 * InsertarContactoEmergencia
 	 * @param 	array(); Ingresamos Array de Datos de los campos de tabla cem_contactos_emergencia
 	 * @return  string Mensaje de Validacion
 	 */
@@ -233,7 +232,7 @@ class ClsDAO_Inscripcion
 		}
 	}
 	/**
-	 * InsertarDetallesPersonales 
+	 * InsertarDetallesPersonales
 	 * @param 	array(); Ingresamos Array de Datos de los campos de tabla dep_detalles_personales
 	 * @return  string Mensaje de Validacion
 	 */

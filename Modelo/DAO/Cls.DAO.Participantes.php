@@ -66,7 +66,7 @@ class ClsDAO_Participantes
 				);  //instanciamos base de datos
 	}
 	/**
-	 * InsertarUsuario 
+	 * Función InsertarUsuario 
 	 * @param 	array(); Ingresamos Array de Datos de los campos de tabla USU_USUARIOS
 	 * @return  string Mensaje de Validacion
 	 */
