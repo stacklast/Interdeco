@@ -63,7 +63,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                  <?php 
+                                  <?php
                                      $consulta=array();
                                       $bd=Db::getInstance();
 								      $sql="SELECT `USU_ID`, `EMP_ID`, `USU_ALIAS`, `USU_PASSWORD`, `USU_EMAIL`, `USU_FECHA_REGISTRO` FROM `usu_usuario`";
@@ -72,16 +72,16 @@
 								      while($reg=mysql_fetch_assoc($res))
 								      {
 								         //recibe cada uno de los registros que tiene la tabla tipo_equipo
-								         $consulta[]=$reg;   
-								      }   
-                                      for($i=0; $i<count($consulta); $i++) { ?>    
+								         $consulta[]=$reg;
+								      }
+                                      for($i=0; $i<count($consulta); $i++) { ?>
                                         <tr class="odd gradeX">
                                             <td class="center">
                                             	<?php echo $consulta[$i]["USU_ID"];?>
                                             	<input type="hidden" id="USU_ID<?php echo $i+1; ?>" value="<?php echo $consulta[$i]["USU_ID"];?>">
                                             </td>
                                             <td>
-                                            	<?php 
+                                            	<?php
                                             	$idempleado = $consulta[$i]['EMP_ID'];
                                             	$sqlempleado="SELECT `EMP_NOMBRE`,`EMP_APELLIDO` FROM `emp_empleados` WHERE `EMP_ID` = '$idempleado' ";
                                             	$resempleado=$bd->ejecutar($sqlempleado);
@@ -111,7 +111,7 @@
                                             <td>
 								            	<button id="EditarUsuario<?php echo $i+1; ?>" class="btn btn-info btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Editar Registro">
 								            		<span class="glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span>
-								            	</button> 
+								            	</button>
 								            	<button id="EliminarUsuario<?php echo $i+1; ?>" class="btn btn-danger btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Eliminar Registro" data-target="#myModal">
 								            		<span class="glyphicon glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span>
 								            	</button>
@@ -137,7 +137,7 @@
 					<?php
 					$empleado = new ClsDAO_Combos();
 					$reg = $empleado->Get_Empleado();
-					 for($i=0; $i<count($reg); $i++) { ?>    
+					 for($i=0; $i<count($reg); $i++) { ?>
 					<option value="<?php echo $reg[$i]["EMP_ID"];?>"><?php echo $reg[$i]["EMP_NOMBRE"]." ".$reg[$i]["EMP_APELLIDO"];?></option>
 					 <?php } ?>
 					</select>
@@ -189,11 +189,11 @@
 				    <div class="col-sm-10">
 				      <a id="cancelarUsuario" type="botton" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span> Cancelar</a>
 				    </div>
-				  </div>	
+				  </div>
 		    	</div>
-				
+
 				</form>
 		   	</div>
 	</div>
-	
+
 <?php include ('../../footer.php') ?>

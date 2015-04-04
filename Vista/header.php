@@ -11,7 +11,7 @@ $path = $_SERVER['PHP_SELF'];
 $file = dirname($path);
 if ( strpos($file, '/') !== FALSE )
  $file = array_pop(explode('/', $file));
-echo $file;
+//echo $file;
 ?>
 <!DOCTYPE html>
 <html lang="es">

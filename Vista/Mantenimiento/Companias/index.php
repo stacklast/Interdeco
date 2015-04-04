@@ -20,14 +20,15 @@
   </div>
 </div>
 	<div class="row">
-		<div class="col-md-12">
-	    	<div class="page-header" style="text-align:center;">
+		<div class="col-md-12 alert alert-warning">
+	    	<div style="text-align:center;">
 			  <h1>Companias <small>Mantenimiento</small></h1>
 			</div>
 	    </div>
 	</div>
-	<div>
-		<div class="col-md-12">
+
+	<div class="row">
+		<div class="col-md-12 alert alert-info">
 			<div class="form-group col-md-3">
 			    <div class="col-sm-10">
 			      <button id="nuevoCompania" type="button" class="btn btn-success"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Nuevo</button>
@@ -40,8 +41,9 @@
 			 </div>
 		</div>
 	</div>
+
 	<div class="row">
-	   	<div class="col-md-12 panel panel-default">
+	   	<div class="panel panel-success">
 	   	    <div class="panel-heading">
                  Registros de Compañías
             </div>
@@ -62,7 +64,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                  <?php 
+                                  <?php
                                      $consulta=array();
                                       $bd=Db::getInstance();
 								      $sql="SELECT `COM_ID`, `COM_NOMBRE`, `COM_RUC`, `COM_DIRECCION`, `COM_TELEFONO`, `COM_EMAIL`, `COM_WEB` FROM `com_compania`";
@@ -71,9 +73,9 @@
 								      while($reg=mysql_fetch_assoc($res))
 								      {
 								         //recibe cada uno de los registros que tiene la tabla tipo_equipo
-								         $consulta[]=$reg;   
-								      }   
-                                      for($i=0; $i<count($consulta); $i++) { ?>    
+								         $consulta[]=$reg;
+								      }
+                                      for($i=0; $i<count($consulta); $i++) { ?>
                                         <tr class="odd gradeX">
                                             <td class="center">
                                             	<?php echo $consulta[$i]["COM_ID"];?>
@@ -106,7 +108,7 @@
                                             <td>
 								            	<button id="EditarCompania<?php echo $i+1; ?>" class="btn btn-info btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Editar Registro">
 								            		<span class="glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span>
-								            	</button> 
+								            	</button>
 								            	<button id="EliminarCompania<?php echo $i+1; ?>" class="btn btn-danger btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Eliminar Registro" data-target="#myModal">
 								            		<span class="glyphicon glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span>
 								            	</button>
@@ -116,7 +118,7 @@
                                     </tbody>
                                 </table>
                                <input type="hidden" id="totalregistrosCompania" value="<?php echo count($consulta); ?>">
-			    </div>	   	
+			    </div>
 				<form class="form-horizontal" id="companias" name="companias" style="display:none;">
 		    	<div class="col-md-12">
 		    	  <div class="form-group col-md-4">
@@ -182,11 +184,11 @@
 				    <div class="col-sm-10">
 				      <a id="cancelarCompania" type="botton" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span> Cancelar</a>
 				    </div>
-				  </div>	
+				  </div>
 		    	</div>
-				
+
 				</form>
 		   	</div>
 	</div>
-	
+
 <?php include ('../../footer.php') ?>

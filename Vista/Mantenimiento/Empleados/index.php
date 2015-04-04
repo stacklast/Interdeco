@@ -20,14 +20,14 @@
   </div>
 </div>
 	<div class="row">
-		<div class="col-md-12">
-	    	<div class="page-header" style="text-align:center;">
+		<div class="col-md-12 alert alert-warning">
+	    	<div style="text-align:center;">
 			  <h1>Empleados <small>Mantenimiento</small></h1>
 			</div>
 	    </div>
 	</div>
-	<div>
-		<div class="col-md-12">
+	<div class="row">
+		<div class="col-md-12 alert alert-info">
 			<div class="form-group col-md-3">
 			    <div class="col-sm-10">
 			      <button id="nuevoEmpleado" type="button" class="btn btn-success"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Nuevo</button>
@@ -41,7 +41,7 @@
 		</div>
 	</div>
 	<div class="row">
-	   	<div class="col-md-12 panel panel-default">
+	   	<div class="col-md-12 panel panel-success">
 	   	    <div class="panel-heading">
                  Registros de Empleados
             </div>
