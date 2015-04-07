@@ -19,6 +19,7 @@
     </div>
   </div>
 </div>
+
 	<div class="row">
 		<div class="col-md-12 alert alert-warning">
 	    	<div style="text-align:center;">

@@ -1,9 +1,9 @@
 <?php include ('../header.php') ?>
-<input type="hidden" id="navegacion" value="Pago">
+<input type="hidden" id="navegacion" value="ActualizaCliente">
 	<div class="row">
 		<div class="col-md-12 alert alert-warning">
 	    	<div style="text-align:center;">
-			  <h1><span class="glyphicon glyphicon-usd" aria-hidden="true"></span>Pago de Clientes</h1>
+			  <h1><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>Actualización de Datos</h1>
 			</div>
 		</div>
 	</div>
@@ -20,7 +20,7 @@
 		</div>
 
 		<div class="panel panel-primary">
-			<div class="panel-heading">Datos para ingresar el pago</div>
+			<div class="panel-heading">Datos para Actualizar</div>
 			<div class="panel-body">
 				<form class="form-horizontal" id="companias" name="companias" style="display:block;">
 		    	<div class="col-md-12">
@@ -33,7 +33,7 @@
 				  <div class="form-group col-md-4">
 				    <label for="inputEmail3" class="col-sm-4 control-label">Cliente</label>
 				    <div class="col-sm-8">
-				      <input type="text" class="form-control" id="participante" name="participante" placeholder="Participante" readonly="readonly">
+				      <input type="text" class="form-control" id="participante" name="participante" placeholder="Participante">
 				    </div>
 				  </div>
 				  <div class="form-group col-md-4">

@@ -214,12 +214,12 @@ if ( strpos($file, '/') !== FALSE )
                         <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i>Perfil de Usuarios</a>
+                        <li><a href="<?php echo $domain; ?>/Vista/Login/MostrarPerfil"><i class="fa fa-user fa-fw"></i>Mi Perfil</a>
                         </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i>Configuracion</a>
+                        <li><a href="<?php echo $domain; ?>/Vista/Login/RegistroUsuarios"><i class="fa fa-gear fa-fw"></i>Configuraciones</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="<?php echo $domain; ?>/Vista/Login/logout.php"><i class="fa fa-sign-out fa-fw"></i> Cerrar Cesión</a>
+                        <li><a href="<?php echo $domain; ?>/Vista/Login/logout.php"><i class="fa fa-sign-out fa-fw"></i>Cerrar Cesión</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -248,11 +248,32 @@ if ( strpos($file, '/') !== FALSE )
                         <li>
                             <a id="menu-inscripcion" href="<?php echo $domain; ?>/Vista/Inscripcion/" target="_blank"><i class="fa fa-edit fa-fw"></i>Inscripción</a>
                         </li>
-                        <li>
-                            <a id="menu-pago" href="<?php echo $domain; ?>/Vista/Pago/"><i class="glyphicon glyphicon-usd"> </i>Pago de Clientes</a>
+                        <li id="menu-clientes">
+                            <a href="#"><i class="glyphicon glyphicon-cog"></i> Clientes<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a id="menu-usuarios" href="<?php echo $domain; ?>/Vista/ActualizarCliente">Actualizar Datos</a>
+                                </li>
+                                <li>
+                                    <a id="menu-pago" href="<?php echo $domain; ?>/Vista/Pago/">Registrar Pago</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
                         </li>
-                        <li>
-                            <a id="menu-facturacion" href="<?php echo $domain; ?>/Vista/Facturacion/"><i class="fa fa-edit fa-fw"></i>Facturación</a>
+                        <li id="menu-comprobantes">
+                            <a href="#"><i class="glyphicon glyphicon-file"></i> Comprobantes Electrónicos<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a id="menu-facturacion" href="<?php echo $domain; ?>/Vista/Facturacion/">Facturacion</a>
+                                </li>
+                                <li>
+                                    <a id="menu-companias" href="<?php echo $domain; ?>/Vista/Mantenimiento/Companias/">Nota de Crédito</a>
+                                </li>
+                                <li>
+                                    <a id="menu-programas" href="<?php echo $domain; ?>/Vista/Mantenimiento/Programas/">Comprobante de Retención</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
                         </li>
                         <li id="menu-mantenimientos">
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> Mantenimientos<span class="fa arrow"></span></a>
@@ -272,45 +293,6 @@ if ( strpos($file, '/') !== FALSE )
                                 <li>
                                     <a id="menu-programas" href="<?php echo $domain; ?>/Vista/Mantenimiento/Programas/">Planes y Programas</a>
                                 </li>
-                                <li>
-                                    <a id="menu-extras" href="#">Extras</a>
-                                </li>
-                                <li>
-                                    <a id="menu-perfiles" href="#">Perfiles</a>
-                                </li>
-                                <li>
-                                    <a id="menu-recursos" href="#">Recursos</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li id="menu-comprobantes">
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> Comprobantes Electrónicos<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a id="menu-factura" href="<?php echo $domain; ?>/Vista/Mantenimiento/Facturacion/">Facturacion</a>
-                                </li>
-                                <li>
-                                    <a id="menu-companias" href="<?php echo $domain; ?>/Vista/Mantenimiento/Companias/">Nota de Crédito</a>
-                                </li>
-                                <li>
-                                    <a id="menu-empleados" href="<?php echo $domain; ?>/Vista/Mantenimiento/Empleados/">Nota de Débito</a>
-                                </li>
-                                <li>
-                                    <a id="menu-participantes" href="<?php echo $domain; ?>/Vista/Mantenimiento/Participantes/">Guía de Remisión</a>
-                                </li>
-                                <li>
-                                    <a id="menu-programas" href="<?php echo $domain; ?>/Vista/Mantenimiento/Programas/">Comprobante de Retención</a>
-                                </li>
-                                <li>
-                                    <a id="menu-extras" href="#">Extras</a>
-                                </li>
-                                <li>
-                                    <a id="menu-perfiles" href="#">Perfiles</a>
-                                </li>
-                                <li>
-                                    <a id="menu-recursos" href="#">Recursos</a>
-                                </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
@@ -321,7 +303,7 @@ if ( strpos($file, '/') !== FALSE )
                                     <a id="menu-reportes-facturas"href="#">Facturas</a>
                                 </li>
                                 <li>
-                                    <a id="menu-reportes-participates" href="#">Participantes</a>
+                                    <a id="menu-reportes-participates" href="#">Clientes</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

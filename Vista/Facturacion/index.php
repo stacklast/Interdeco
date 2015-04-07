@@ -1,4 +1,17 @@
 <?php include ('../header.php') ?>
+<?php include ('../../Modelo/DAO/Cls.DAO.Combos.php'); //incluimos Clase  DAO de Usuarios ?>
+<?php
+	$consulta=array();
+    $bd=Db::getInstance();
+	$sql="SELECT `COM_ID`, `COM_NOMBRE`, `COM_RUC`, `COM_DIRECCION`, `COM_TELEFONO`, `COM_EMAIL`, `COM_WEB` FROM `com_compania`";
+	$res=$bd->ejecutar($sql);
+	//mysql_fetch_assoc se utiliza para trabajar con array multidimensional
+	while($reg=mysql_fetch_assoc($res))
+	{
+		//recibe cada uno de los registros que tiene la tabla tipo_equipo
+		$consulta[]=$reg;
+	}
+ ?>
 <input type="hidden" id="navegacion" value="Facturacion">
 	<div class="row">
 		<div class="col-md-12 alert alert-warning">
@@ -12,10 +25,22 @@
 			<a href="<?php echo $domain; ?>/Vista/Facturacion/XML">GENERACION XML</a>
 		</div>
 
+		<div class="alert alert-success">
+			<h3>Datos de la Empresa:</h3>
+			<?php
+			for($i=0; $i<count($consulta); $i++){
+                echo "<strong>Nombre:</strong>".$consulta[$i]["COM_NOMBRE"]." - <strong>R.U.C.</strong>".$consulta[$i]["COM_RUC"]." - <strong>Teléfono:</strong>".$consulta[$i]["COM_TELEFONO"]."<br>";
+                echo "<strong>Dirección Matriz:</strong>".$consulta[$i]["COM_DIRECCION"]."<br>";
+                echo "<strong>Dirección Sucursal:</strong> NA <br> 
+                <strong>Contribuyente Especial Nro</strong> <br>
+                <strong>OBLIGADO A LLEVAR CONTABILIDAD</strong> SI";
+		   } ?>
+		</div>
+
 		<div class="alert alert-info">
 			<form class="form-inline">
 				<div class="form-group">
-				  <label class="control-label" for="buscarcliente"><h4>Asignar de Cliente:</h4> </label>
+				  <label class="control-label" for="buscarcliente"><h4>Asignar Cliente:</h4> </label>
 				  <input type="email" name="buscarcliente" class="form-control" id="buscarcliente" placeholder="Pasaporte, Cedula ó Email">
 				</div>
 				  <button type="submit" class="btn btn-primary">Buscar <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
@@ -23,10 +48,16 @@
 		</div>
 
 		<div class="panel panel-primary">
-			<div class="panel-heading">Datos para la factura</div>
+			<div class="panel-heading">Comprobación de Datos para la Factura</div>
 			<div class="panel-body">
 				<form class="form-horizontal" id="companias" name="companias" style="display:block;">
 		    	<div class="col-md-12">
+		    		<div class="form-group col-md-4">
+				    <label for="inputPassword3" class="col-sm-4 control-label">Factura Nro.</label>
+				    <div class="col-sm-8">
+				      <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Factura Nro." readonly="readonly">
+				    </div>
+				  </div>
 		    	  <div class="form-group col-md-4">
 				    <label for="inputEmail3" class="col-sm-4 control-label">ID</label>
 				    <div class="col-sm-8">
@@ -34,31 +65,13 @@
 				    </div>
 				  </div>
 				  <div class="form-group col-md-4">
-				    <label for="inputEmail3" class="col-sm-4 control-label">Participante</label>
+				    <label for="inputEmail3" class="col-sm-4 control-label">Clientes</label>
 				    <div class="col-sm-8">
 				      <input type="text" class="form-control" id="participante" name="participante" placeholder="Participante" readonly="readonly">
 				    </div>
 				  </div>
-				  <div class="form-group col-md-4">
-				    <label for="inputEmail3" class="col-sm-4 control-label">Compania</label>
-				    <div class="col-sm-8">
-				      <input type="tel" class="form-control" id="compania" name="compania" placeholder="Compania" readonly="readonly">
-				    </div>
-				  </div>
 				  </div>
 				  <div class="col-md-12">
-				  <div class="form-group col-md-4">
-				    <label for="inputPassword3" class="col-sm-4 control-label">Factura Nro.</label>
-				    <div class="col-sm-8">
-				      <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Factura Nro." readonly="readonly">
-				    </div>
-				  </div>
-				  <div class="form-group col-md-4">
-				    <label for="inputEmail3" class="col-sm-4 control-label">Aut. SRI.</label>
-				    <div class="col-sm-8">
-				      <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="Aut. SRI." readonly="readonly">
-				    </div>
-				  </div>
 				  <div class="form-group col-md-4">
 				    <label for="inputEmail3" class="col-sm-4 control-label">Fecha</label>
 				    <div class="col-sm-8">

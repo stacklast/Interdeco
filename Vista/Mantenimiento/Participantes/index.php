@@ -81,7 +81,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                  <?php 
+                                  <?php
                                      $consulta=array();
                                       $bd=Db::getInstance();
 								     $sql="SELECT `PAR_ID`, `COM_ID`, `PAR_FECHA`, `PAR_FECHAINICIO`, `PAR_FECHAFIN`, `PAR_NOMBRE`, `PAR_APELLIDO`, `PAR_GENERO`, `PAR_FECHA_NACIMIENTO`, `PAR_NUMERO_PASAPORTE`, `PAR_NACIONALIDAD`, `PAR_DIRECCION`, `PAR_PAIS`, `PAR_PROVINCIA_ESTADO`, `PAR_CIUDAD`, `PAR_ZIP_POSTAL`, `PAR_TELEFONO`, `PAR_EMAIL`, `PAR_ESTADO`, `PAR_AGENTE`, `PAR_INFO_VUELO`, `PAR_HOSPEDAJE`, `PAR_COMENTARIOS`, `PAR_SEGURO_DE_VIAJE`, `PAR_TICKET_AEREO` FROM `par_participantes`";
@@ -90,9 +90,9 @@
 								      while($reg=mysql_fetch_assoc($res))
 								      {
 								         //recibe cada uno de los registros que tiene la tabla tipo_equipo
-								         $consulta[]=$reg;   
-								      }   
-                                      for($i=0; $i<count($consulta); $i++) { ?>    
+								         $consulta[]=$reg;
+								      }
+                                      for($i=0; $i<count($consulta); $i++) { ?>
                                         <tr class="odd gradeX">
                                             <td class="center">
                                             	<?php echo $consulta[$i]["PAR_ID"];?>
@@ -204,7 +204,7 @@
                                             <td>
 								            	<button id="EditarParticipante<?php echo $i+1; ?>" class="btn btn-info btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Editar Registro">
 								            		<span class="glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span>
-								            	</button> 
+								            	</button>
 								            	<button id="EliminarParticipante<?php echo $i+1; ?>" class="btn btn-danger btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Eliminar Registro" data-target="#myModal">
 								            		<span class="glyphicon glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span>
 								            	</button>
@@ -214,7 +214,7 @@
                                     </tbody>
                                 </table>
                                <input type="hidden" id="totalregistrosParticipante" value="<?php echo count($consulta); ?>">
-			    </div>	   	
+			    </div>
 				<form class="form-horizontal" id="participantes" name="participantes" style="display:none;">
 		    	<div class="col-md-12">
 		    	  <div class="form-group col-md-4">
@@ -230,7 +230,7 @@
                     <?php
                     $compania = new ClsDAO_Combos();
                     $reg = $compania->Get_Compania();
-                     for($i=0; $i<count($reg); $i++) { ?>    
+                     for($i=0; $i<count($reg); $i++) { ?>
                     <option value="<?php echo $reg[$i]["COM_ID"];?>"><?php echo $reg[$i]["COM_NOMBRE"];?></option>
                      <?php } ?>
                     </select>
@@ -307,7 +307,7 @@
                     <?php
                     $pais = new ClsDAO_Combos();
                     $reg = $pais->Get_Pais();
-                     for($i=0; $i<count($reg); $i++) { ?>    
+                     for($i=0; $i<count($reg); $i++) { ?>
                     <option value="<?php echo $reg[$i]["PA_CODIGO"];?>"><?php echo $reg[$i]["PA_NOMBRE"];?></option>
                      <?php } ?>
                     </select>
@@ -317,7 +317,7 @@
                     <label for="inputEmail3" class="col-sm-4 control-label">Ciudad</label>
                     <div class="col-sm-8">
                        <select name="ciudad" id="ciudad" class="form-control">
-                          
+
                       </select>
                     </div>
                   </div>
@@ -426,11 +426,11 @@
 				    <div class="col-sm-10">
 				      <a id="cancelarParticipante" type="botton" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span> Cancelar</a>
 				    </div>
-				  </div>	
+				  </div>
 		    	</div>
-				
+
 				</form>
 		   	</div>
 	</div>
-	
+
 <?php include ('../../footer.php') ?>
