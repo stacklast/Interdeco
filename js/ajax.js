@@ -1,7 +1,6 @@
 $(document).ready(function(){
 	/**
 	 * Menu de Navegación Lateral
-	 * 
 	 */
 	var nav = $('#navegacion').val();
 	if(nav == 'Usuarios'){

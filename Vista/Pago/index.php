@@ -56,7 +56,7 @@
 				    <label for="inputPassword3" class="col-sm-4 control-label">Descuento</label>
 				    <div class="col-sm-8">
 				      <select name="descuento" id="descuento" class="form-control">
-				      	<option value="0">Ninguno</option>
+				      	<option value="Ninguno">Ninguno</option>
 				      	<option value="5">Estudiantes 5%</option>
 				      </select>
 				    </div>
@@ -86,8 +86,8 @@
 				    	<label for="inputEmail3" class="col-sm-4 control-label">Estado</label>
 				    	<div class="col-sm-8">
 				      		<select name="estado" id="estado" class="form-control">
-				      			<option value="Abonado">Cancelado</option>
-				      			<option value="Abonado">Pendiente</option>
+				      			<option value="Cancelado">Cancelado</option>
+				      			<option value="Pendiente">Pendiente</option>
 				      		</select>
 				 	 	</div>
 		    		</div>

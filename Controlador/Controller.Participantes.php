@@ -14,6 +14,7 @@ include ('seguridad.php');
  * @var ClsDAO_Participantes
  */
 @$ParticipantesDAO = new ClsDAO_Participantes();
+@$variable      = NoInjection($_POST['cliente']);//Actualizacion de Clientes
 
 @$id 	      	= NoInjection($_POST['id']);
 @$compania 	  	= NoInjection($_POST['compania']);
@@ -44,17 +45,20 @@ include ('seguridad.php');
  * $procesar Para realizar accion
  * @var string Valor 
  */
+
 @$procesar 	= NoInjection($_POST['accion']);
+
 if(isset($procesar)){
+
 	if($procesar == "InsertarParticipante"){
-		 $insertar= array("".$compania."","".$fecha."",,"".$fechainicio."","".$fechafin."""".$nombre."","".$apellido."","".$genero."","".$fechana."",
+		 $insertar= array("".$compania."","".$fecha."","".$fechainicio."","".$fechafin."","".$nombre."","".$apellido."","".$genero."","".$fechana."",
 		 	"".$pasarporte."","".$nacionalidad."","".$direccion."","".$pais."","".$provincia."",
 		 	"".$ciudad."","".$zip."","".$telefono."","".$email."","".$estado."","".$agente."",
 		 	"".$infovuelo."","".$hospedaje."","".$comentario."","".$segurodeviaje."","".$ticketaereo."");
 		echo $ParticipantesDAO->InsertarParticipante($insertar);
 	}
 	if($procesar == "ModificarParticipante"){
-		$modificar= array("".$compania."","".$fecha."",,"".$fechainicio."","".$fechafin."""".$nombre."","".$apellido."","".$genero."","".$fechana."",
+		$modificar= array("".$compania."","".$fecha."","".$fechainicio."","".$fechafin."","".$nombre."","".$apellido."","".$genero."","".$fechana."",
 		 	"".$pasarporte."","".$nacionalidad."","".$direccion."","".$pais."","".$provincia."",
 		 	"".$ciudad."","".$zip."","".$telefono."","".$email."","".$estado."","".$agente."",
 		 	"".$infovuelo."","".$hospedaje."","".$comentario."","".$segurodeviaje."","".$ticketaereo."");
@@ -62,6 +66,10 @@ if(isset($procesar)){
 	}
 	if($procesar == "EliminarParticipante"){
 		echo $ParticipantesDAO->EliminarParticipante($id);
+	}
+	if($procesar == "ConsultarParticipante"){
+		
+		echo json_encode($ParticipantesDAO->ConsultarParticipante($variable));
 	}
 }
 else{

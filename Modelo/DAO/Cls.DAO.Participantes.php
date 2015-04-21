@@ -135,5 +135,22 @@ class ClsDAO_Participantes
 			echo "puede agregarse esa compania";
 		}
 	}
+
+	public function ConsultarParticipante($variable)
+	{
+		try{
+			$this->_consulta = $this->_tablaParticipantes->getRecords("PAR_EMAIL='$variable' OR PAR_NUMERO_PASAPORTE = '$variable' ",false,1);
+			if($this->_consulta)
+				{
+					return $this->_consulta;
+				}
+				else
+				{
+					return "1";
+				}
+		}catch (Exception $e){
+			return 'Se ha generado una Exception al Agregar Nuevo Participante: '.$e;
+		}
+	}
 }
 ?>

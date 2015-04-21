@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  *	@package Interdeco
  *	@subpackage Controlador
@@ -33,7 +33,7 @@ include ('seguridad.php');
 @$zip  			= NoInjection($_POST['postal']);
 @$telefono      = NoInjection($_POST['telefono']);
 @$email  		= NoInjection($_POST['email']);
-@$estado  		= "I";
+@$estado  		= "Inscripcion";
 @$agente  		= "Sin Asignar";
 @$infovuelo  	= "Contactar Cliente";
 @$hospedaje     = NoInjection($_POST['hospedaje']);
@@ -79,7 +79,7 @@ include ('seguridad.php');
 
 /**
  * $procesar Para realizar accion
- * @var string Valor 
+ * @var string Valor
  */
 @$procesar 	= NoInjection($_POST['accion']);
 if(isset($procesar)){

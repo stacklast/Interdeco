@@ -41,9 +41,9 @@
 			<form class="form-inline">
 				<div class="form-group">
 				  <label class="control-label" for="buscarcliente"><h4>Asignar Cliente:</h4> </label>
-				  <input type="email" name="buscarcliente" class="form-control" id="buscarcliente" placeholder="Pasaporte, Cedula ó Email">
+				  <input type="text" name="buscarcliente" class="form-control" id="buscarcliente" placeholder="Pasaporte, Cedula ó Email">
 				</div>
-				  <button type="submit" class="btn btn-primary">Buscar <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+				  <button type="submit" class="btn btn-primary" id="busqueda">Buscar <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 		    </form>
 		</div>
 
