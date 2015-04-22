@@ -1,6 +1,25 @@
 <?php include ('../header.php') ?>
 <?php include ('../../Modelo/DAO/Cls.DAO.Combos.php'); //incluimos Clase  DAO de Usuarios ?>
+
 <input type="hidden" id="navegacion" value="ActualizaCliente">
+<!-- Modal -->
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel1"></h4>
+      </div>
+      <div class="modal-body">
+      </div>
+      <div class="modal-footer">
+        <input type="hidden" id="identificador" name="identificador">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 	<div class="row">
 		<div class="col-md-12 alert alert-warning">
 	    	<div style="text-align:center;">
@@ -19,7 +38,7 @@
 		    </form>
 		</div>
 
-		<div class="panel panel-primary">
+		<div class="panel panel-primary" style="display:none;">
 			<div class="panel-heading">Datos para Actualizar</div>
 			<div class="panel-body">
 				<form class="form-horizontal" id="actualizaparticipantes" name="actualizaparticipantes">
@@ -27,7 +46,7 @@
 		    	  <div class="form-group col-md-4">
 				    <label for="inputEmail3" class="col-sm-4 control-label">ID</label>
 				    <div class="col-sm-8">
-				      <input type="tel" class="form-control" id="id" name="id" placeholder="ID">
+				      <input type="tel" class="form-control" id="id" name="id" placeholder="ID" readonly="readonly">
 				    </div>
 				  </div>
                   <div class="form-group col-md-4">
@@ -46,19 +65,19 @@
                   <div class="form-group col-md-4">
                     <label for="inputEmail3" class="col-sm-4 control-label">Fecha</label>
                     <div class="col-sm-8">
-                      <input type="date" class="form-control" id="fecha" name="fecha"  value="<?php echo date('y/m/d h:m:s'); ?>" readonly="readonly">
+                      <input type="date" class="form-control" id="fecha" name="fecha"  readonly="readonly">
                     </div>
                   </div>
                   <div class="form-group col-md-4">
                     <label for="inputEmail3" class="col-sm-4 control-label">Fecha Inicio</label>
                     <div class="col-sm-8">
-                      <input type="date" class="form-control" id="fecha" name="fechainicio">
+                      <input type="date" class="form-control" id="fechainicio" name="fechainicio">
                     </div>
                   </div>
                   <div class="form-group col-md-4">
                     <label for="inputEmail3" class="col-sm-4 control-label">Fecha Fin</label>
                     <div class="col-sm-8">
-                      <input type="date" class="form-control" id="fecha" name="fecha">
+                      <input type="date" class="form-control" id="fechafin" name="fechafin">
                     </div>
                   </div>
 				  <div class="form-group col-md-4">
@@ -90,9 +109,9 @@
                     </div>
 				  </div>
 				  <div class="form-group col-md-4">
-				    <label for="inputEmail3" class="col-sm-4 control-label">Pasarporte</label>
+				    <label for="inputEmail3" class="col-sm-4 control-label">Pasaporte</label>
 				    <div class="col-sm-8">
-				      <input type="text" class="form-control" id="pasarporte" name="pasarporte" placeholder="Pasarporte">
+				      <input type="text" class="form-control" id="pasarporte" name="pasarporte" placeholder="Pasaporte">
 				    </div>
 				  </div>
 				  <div class="form-group col-md-4">
@@ -210,47 +229,19 @@
                       </select>
                     </div>
                   </div>
-		    	<div class="form-group"></div>
-		    	<div  class="col-md-12">
-		    	  <div id="div-agregar" class="form-group col-md-3">
-				    <div class="col-sm-10">
-				      <a id="agregarParticipante" type="botton" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Guardar</a>
-				    </div>
-				  </div>
-				  <div id="div-modificar" class="form-group col-md-3">
-				    <div class="col-sm-10">
-				      <a id="modificarParticipante" type="botton" class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar Registro</a>
-				    </div>
-				  </div>
-				  <div id="div-limpiar" class="form-group col-md-3">
-				    <div class="col-sm-10">
-				      <a id="limpiarParticipante" type="reset" class="btn btn-primary"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Limpiar</a>
-				    </div>
-				  </div>
-				  <div id="div-cancelar" class="form-group col-md-3">
-				    <div class="col-sm-10">
-				      <a id="cancelarParticipante" type="botton" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span> Cancelar</a>
-				    </div>
-				  </div>
-		    	</div>
-
 				</form>
 			</div>
+      </div>
 			<div class="alert alert-info col-md-12">
 			<div class="form-group">
 		    	  <div id="div-agregar" class="form-group col-md-2">
 				    <div class="col-sm-10">
-				      <a id="agregarCompania" type="botton" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Agregar Pago</a>
-				    </div>
-				  </div>
-				  <div id="div-limpiar" class="form-group col-md-2">
-				    <div class="col-sm-10">
-				      <a id="limpiarCompania" type="reset" class="btn btn-info"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Limpiar</a>
+				      <a id="actualizarParticipante" type="botton" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>Actualizar Datos</a>
 				    </div>
 				  </div>
 				  <div id="div-cancelar" class="form-group col-md-2">
 				    <div class="col-sm-10">
-				      <a id="cancelarCompania" type="botton" class="btn btn-danger"><span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span> Cancelar</a>
+				      <a id="cancelarActualizar" type="botton" class="btn btn-danger"><span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span> Cancelar</a>
 				    </div>
 				  </div>
 		    </div>

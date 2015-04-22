@@ -1,4 +1,8 @@
 $(document).ready(function(){
+	$('#cancelarActualizar').click(function(){
+		$('.panel').hide();
+		$('#buscarcliente').val("");
+	});
 
 	$('#BusquedaParticipante').click(function() {
 		var accion = "ConsultarParticipante";
@@ -28,22 +32,23 @@ $(document).ready(function(){
 						$("#apellido").val(miArray[6]);
 						$("#genero").val(miArray[7]);
 						$("#fechana").val(miArray[8]);
-						$("#pasaporte").val(miArray[9]);
+						$("#pasarporte").val(miArray[9]);
 						$("#nacionalidad").val(miArray[10]);
 						$("#direccion").val(miArray[11]);
-						$("#pais option[value="+ miArray[12] +"]").attr("selected",true);
+						$('#pais option[value="+ miArray[12] +"]').attr("selected",true);
 						$("#provincia").val(miArray[13]);
 						$("#ciudad").val(miArray[14]);
 						$("#zip").val(miArray[15]);
 						$("#telefono").val(miArray[16]);
 						$("#email").val(miArray[17]);
 						$("#estado  option[value="+ miArray[18] +"]").attr("selected",true);
-						$("#agente option[value="+ miArray[19] +"]").attr("selected",true);
+						$('#agente  option[value="+ miArray[19] +"]').attr("selected",true);
 						$("#infovuelo").val(miArray[20]);
 						$("#asentamiento option[value="+ miArray[21] +"]").attr("selected",true);
 						$("#comentario").val(miArray[22]);
 						$("#segurodeviaje option[value="+ miArray[23] +"]").attr("selected",true);
 						$("#ticketaereo option[value="+ miArray[24] +"]").attr("selected",true);
+						$('.panel').show();
 							},
 				error: function(response) {
 				}
@@ -54,15 +59,15 @@ $(document).ready(function(){
 	 *  Mantenimiento de la tabla par_participantes
 	 *  MODIFICAR
 	 */
-	$("#modificarParticipante").click(function(){
+	$("#actualizarParticipante").click(function(){
 		var accion = "ModificarParticipante";
 		var id = $("#id").val();
-		var compania = $("#compania").val();
+		var compania = "1";
 		var nombre = $("#nombre").val();
 		var apellido = $("#apellido").val();
 		var fechainicio = $("fechainicio").val();
 		var fechafin = $("fechafin").val();
-		var pasaporte = $("#pasaporte").val();
+		var pasarporte = $("#pasarporte").val();
 		var fechana = $("#fechana").val();
 		var nacionalidad = $("#nacionalidad").val();
 		var direccion = $("#direccion").val();
@@ -79,9 +84,9 @@ $(document).ready(function(){
 		var comentarios = $("#comentario").val();
 		var segurodeviaje = $("#segurodeviaje").val();
 		var ticketaereo = $("#ticketaereo").val();
-		var datosString = $("#participantes").serialize();
+		var datosString = $("#actualizaparticipantes").serialize();
 		var dato = '&accion=' + accion+'&id=' + id+'&ciudad=' + ciudad;
-		
+
 		if(fechainicio == ""){
 			$("#fechainicio").focus();
 			alert('(*)Campo Obligatorio: Ingrese fechana');
@@ -106,8 +111,8 @@ $(document).ready(function(){
 			return false;
 		}
 		else
-		if(pasaporte == ""){
-			$("#pasaporte").focus();
+		if(pasarporte == ""){
+			$("#pasarporte").focus();
 			alert('(*)Campo Obligatorio: Ingrese pasaporte');
 			return false;
 		}
@@ -209,13 +214,15 @@ $(document).ready(function(){
 			    url: "/Github/Interdeco/Controlador/Controller.Participantes.php",
 			    data: datos,
 			    success: function(response) {
-			    	limpiarParticipante();
+			    	$('.panel').hide();
 			    	if(response == 1){
 			    		alert("No se ha podido Modificar los datos del Participante");
 			    	}
 			    	else if (response == "Exito"){
-			    		location.reload(true);
-			    		 alert("Los datos del Participante han sido Modificados con Exito");
+			    		$('#myModalLabel1').html('Mensaje !');
+						$('.modal-body').html('<div class="alert alert-info" role="alert">Los datos del Participante han sido Modificados con Exito</div>');
+						$('#myModal1').modal('show');
+			    		$('.panel').hide();
 			    	}
 			    	else{
 			    		alert(response);

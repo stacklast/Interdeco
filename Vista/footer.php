@@ -17,6 +17,7 @@
     <script src="/github/Interdeco/js/ajax.js"></script>
     <script src="/github/Interdeco/Vista/Facturacion/facturacion.js"></script>
     <script src="/github/Interdeco/Vista/ActualizarCliente/actualizarcliente.js"></script>
+     <script src="/github/Interdeco/Vista/Pago/pago.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="/github/Interdeco/js/bootstrap.min.js"></script>
