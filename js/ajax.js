@@ -501,7 +501,7 @@ $(document).ready(function(){
 			    		alert("Los datos del Participante han sido Eliminados con Exito");
 			    	}
 			    	else{
-			    		alert(response);
+			    		alert("El participante tiene Transacciones y Facturas por ende no puede ser Eliminado");
 			    	}
 			    },
 			    error: function(response) {
@@ -1002,7 +1002,7 @@ $(document).ready(function(){
 			    		alert("Los datos del Empleado han sido Eliminados con Exito");
 			    	}
 			    	else{
-			    		alert(response);
+			    		alert("El Empleado tiene una o mas operaciones dentro del sistema por ende no es posible Eliminarlo");
 			    	}
 			    },
 			    error: function(response) {

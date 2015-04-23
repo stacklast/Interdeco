@@ -132,50 +132,7 @@ class ClsDAO_Facturacion
 		              array ('public', 'EXT_NE_FECHAFIN')
 				);  //instanciamos base de datos
 	}
-	/**
-	 * InsertarParticipante
-	 * @param 	array(); Ingresamos Array de Datos de los campos de tabla PAR_PARTICIPANTES
-	 * @return  string Mensaje de Validacion
-	 */
-	public function ObtenerParticipante($variable)//devuelve  id del participante
-	{
-		try{
-			$this->_consulta = $this->_tablaParticipantes->getRecords("PAR_EMAIL='$variable' OR PAR_NUMERO_PASAPORTE = '$variable' ",false,1);
-				if($this->_consulta)
-				{
-					 $this->_idParticipante = $this->_consulta[0]['PAR_ID'];
 
-					 return $this->_idParticipante;
-				}
-				else
-				{
-					return "1";
-				}
-		}catch (Exception $e){
-			return 'Se ha generado una Exception al Agregar Nuevo Participante: '.$e;
-		}
-	}
-	/**
-	 * InsertarPar_Paq
-	 * @param 	array(); Ingresamos Array de Datos de los campos de tabla PAR_PAQ
-	 * @return  string Mensaje de Validacion
-	 */
-	public function InsertarPar_Paq($arrayDatos)
-	{
-		try{
-			 $this->_resultado = $this->_tablaPar_Paq->insertRecord($arrayDatos);
-			if($this->_resultado)
-			{
-				return 'Exito';
-			}
-			else
-			{
-				return "1";
-			}
-		}catch (Exception $e){
-			return 'Se ha generado una Exception al Agregar Nuevo Participante: '.$e;
-		}
-	}
 	public function ObtenerPaquete($idParticipante)
 	{
 		try{
@@ -201,67 +158,10 @@ class ClsDAO_Facturacion
 					return "1";
 				}
 		}catch (Exception $e){
-			return 'Se ha generado una Exception al Agregar Nuevo Participante: '.$e;
+			return 'Se ha generado una Exception al Obtener Paquete: '.$e;
 		}
 	}
-	public function ConsultarPago($idParticipante)
-	{
-		try{
-			$this->_consulta = $this->_tablaParticipantes->getRecords("PAR_EMAIL='$variable' OR PAR_NUMERO_PASAPORTE = '$variable' ",false,1);
-			if($this->_consulta)
-				{
-					return $this->_consulta;
-				}
-				else
-				{
-					return "1";
-				}
-		}catch (Exception $e){
-			return 'Se ha generado una Exception al Agregar Nuevo Participante: '.$e;
-		}
-	}
-	/**
-	 * InsertarTransporte
-	 * @param 	array(); Ingresamos Array de Datos de los campos de tabla TRA_TRANSPORTE
-	 * @return  string Mensaje de Validacion
-	 */
-	public function InsertarTransporte($arrayDatos)
-	{
-		try{
-			 $this->_resultado = $this->_tablaTransporte->insertRecord($arrayDatos);
-			if($this->_resultado)
-			{
-				return 'Exito';
-			}
-			else
-			{
-				return "1";
-			}
-		}catch (Exception $e){
-			return 'Se ha generado una Exception al Agregar Nuevo Participante: '.$e;
-		}
-	}
-	/**
-	 * InsertarNochesExtras
-	 * @param 	array(); Ingresamos Array de Datos de los campos de tabla ext_noches_extras
-	 * @return  string Mensaje de Validacion
-	 */
-	public function InsertarNochesExtras($arrayDatos)
-	{
-		try{
-			 $this->_resultado = $this->_tablaNochesExtras->insertRecord($arrayDatos);
-			if($this->_resultado)
-			{
-				return 'Exito';
-			}
-			else
-			{
-				return "1";
-			}
-		}catch (Exception $e){
-			return 'Se ha generado una Exception al Agregar Nuevo Participante: '.$e;
-		}
-	}
+
 	public function Modulo11($codigoverificador)
 	{
 		if (is_numeric($codigoverificador)){
@@ -372,11 +272,14 @@ class ClsDAO_Facturacion
 		             break;
 		        }
 		        if ($digitos >=49){
-		            echo "El numero que digitaste tiene $digitos numeros, y como maximo el codigoverificador tiene 48";
+		        	echo "";
+		            //echo "El numero que digitaste tiene $digitos numeros, y como maximo el codigoverificador tiene 48";
 		        }
 		        else {
 		                if ($digitos <=47){
-		                    echo "El numero que digitaste tiene $digitos numeros, y como minimo el codigoverificador tiene 47";                }
+		                	echo "";
+		                    //echo "El numero que digitaste tiene $digitos numeros, y como minimo el codigoverificador tiene 47";                
+		                }
 		                else{
 
 		                     //ahora empieza la multiplicacion
@@ -439,7 +342,7 @@ class ClsDAO_Facturacion
 		                      + $nu36 + $nu37 + $nu38 + $nu39 + $nu40 + $nu41 + $nu42
 		                      + $nu43 + $nu44 + $nu45 + $nu46 + $nu47 + $nu48 ;
 
-		 // echo  $totalsum.'<br>'. $digitos.'<br>';
+		 						// echo  $totalsum.'<br>'. $digitos.'<br>';
 		                            //ahora la divicion
 		                      $totaldiv = $totalsum / 11;
 
@@ -452,15 +355,15 @@ class ClsDAO_Facturacion
 		                      //ahora mostramos el digito
 		                      switch ($totalres){
 		                              case 10:
-				                              $digito = "1";
+				                              return $digito = "1";
 				                              break;
 
 		                              case 11:
-				                              $digito = "0";
+				                              return $digito = "0";
 				                              break;
 
 		                              default:
-				                              $digito = $totalres;
+				                              return $digito = $totalres;
 				                              break;
 		                       }
 

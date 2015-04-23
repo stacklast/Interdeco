@@ -1,13 +1,14 @@
 $(document).ready(function(){
-	$('#cancelarActualizar').click(function(){
+	$('#cancelarFactura').click(function(){
 		$('.panel').hide();
+		$('.botones').hide();
 		$('#buscarclienteFactura').val("");
 	});
 
 	$('#busquedaClienteFactura').click(function() {
 		var accion = "ConsultarParticipante";
 		var cliente = $('#buscarclienteFactura').val();
-		alert(cliente);
+		//alert(cliente);
 		$.ajax({
 				type: "POST",
 				url: "/Github/Interdeco/Controlador/Controller.Participantes.php",
@@ -57,13 +58,14 @@ $(document).ready(function(){
 																	});
 																});
 										                        $("#precioUnitario").val(miArray2[5]);
-										                        $("#descuento").val("0");
+										                        $("#totalDescuento").val("0");
 										                        /*var precioUnitario = $("#precioUnitario").val();
 										                        var descuento = $("#descuento").val();
 										                        var total = precioUnitario;*/
 										                        $("#precioTotalSinImpuesto").val(miArray2[5]);
 
 															$('.panel').show();
+															$('.botones').show();
 													},
 													error: function(response) {
 													}
@@ -80,178 +82,39 @@ $(document).ready(function(){
 	 *  MODIFICAR
 	 */
 	$("#generarFactura").click(function(){
-		var accion = "generarFactura";
+		var accion = "Facturacion";
 		var id = $("#id").val();
-		var compania = "1";
-		var nombre = $("#nombre").val();
-		var apellido = $("#apellido").val();
-		var fechainicio = $("fechainicio").val();
-		var fechafin = $("fechafin").val();
-		var pasarporte = $("#pasarporte").val();
-		var fechana = $("#fechana").val();
-		var nacionalidad = $("#nacionalidad").val();
-		var direccion = $("#direccion").val();
-		var pais = $("#pais option:selected").html();
-		var provincia = $("#provincia").val();
-		var ciudad = $("#ciudad").val();
-		var zip = $("#zip").val();
-		var telefono = $("#telefono").val();
-		var email = $("#email").val();
-		var estado = $("#estado").val();
-		var agente = $("#agente option:selected").html();
-		var infovuelo = $("#infovuelo").val();
-		var asentamiento = $("#asentamiento option:selected").html();
-		var comentarios = $("#comentario").val();
-		var segurodeviaje = $("#segurodeviaje").val();
-		var ticketaereo = $("#ticketaereo").val();
-		var datosString = $("#actualizaparticipantes").serialize();
-		var dato = '&accion=' + accion+'&id=' + id+'&ciudad=' + ciudad;
-
-		if(fechainicio == ""){
-			$("#fechainicio").focus();
-			alert('(*)Campo Obligatorio: Ingrese fechana');
-			return false;
-		}
-		else
-		if(fechafin == ""){
-			$("#fechafin").focus();
-			alert('(*)Campo Obligatorio: Ingrese fechana');
-			return false;
-		}
-		else
-		if(nombre == ""){
-			$("#nombre").focus();
-			alert('(*)Campo Obligatorio: Ingrese nombre');
-			return false;
-		}
-		else
-		if(apellido == ""){
-			$("#apellido").focus();
-			alert('(*)Campo Obligatorio: Ingrese apellido');
-			return false;
-		}
-		else
-		if(pasarporte == ""){
-			$("#pasarporte").focus();
-			alert('(*)Campo Obligatorio: Ingrese pasaporte');
-			return false;
-		}
-		else
-		if(fechana == ""){
-			$("#fechana").focus();
-			alert('(*)Campo Obligatorio: Ingrese fechana');
-			return false;
-		}
-		else
-		if(nacionalidad == ""){
-			$("#nacionalidad").focus();
-			alert('(*)Campo Obligatorio: Ingrese nacionalidad');
-			return false;
-		}
-		else
-		if(direccion == ""){
-			$("#direccion").focus();
-			alert('(*)Campo Obligatorio: Ingrese direccion');
-			return false;
-		}
-		else
-		if(pais == ""){
-			$("#pais").focus();
-			alert('(*)Campo Obligatorio: Ingrese pais');
-			return false;
-		}
-		else
-		if(provincia == ""){
-			$("#provincia").focus();
-			alert('(*)Campo Obligatorio: Ingrese provincia');
-			return false;
-		}
-		else
-		if(zip == ""){
-			$("#zip").focus();
-			alert('(*)Campo Obligatorio: Ingrese zip');
-			return false;
-		}
-		else
-		if(telefono == ""){
-			$("#telefono").focus();
-			alert('(*)Campo Obligatorio: Ingrese telefono');
-			return false;
-		}
-		else
-		if(email == ""){
-			$("#email").focus();
-			alert('(*)Campo Obligatorio: Ingrese email');
-			return false;
-		}
-		else 
-		if(estado == ""){
-			$("#estado").focus();
-			alert('(*)Campo Obligatorio: Ingrese la estado');
-			return false;
-		}
-		else 
-		if(agente == ""){
-			$("#agente").focus();
-			alert('(*)Campo Obligatorio: Ingrese la agente');
-			return false;
-		}
-		else 
-		if(infovuelo == ""){
-			$("#infovuelo").focus();
-			alert('(*)Campo Obligatorio: Ingrese la infovuelo');
-			return false;
-		}
-		else 
-		if(asentamiento == ""){
-			$("#asentamiento").focus();
-			alert('(*)Campo Obligatorio: Ingrese la asentamiento');
-			return false;
-		}
-		else 
-		if(comentarios == ""){
-			$("#comentario").focus();
-			alert('(*)Campo Obligatorio: Ingrese la comentarios');
-			return false;
-		}
-		else 
-		if(segurodeviaje == ""){
-			$("#segurodeviaje").focus();
-			alert('(*)Campo Obligatorio: Ingrese la comentarios');
-			return false;
-		}
-		else 
-		if(ticketaereo == ""){
-			$("#ticketaereo").focus();
-			alert('(*)Campo Obligatorio: Ingrese la comentarios');
-			return false;
-		}
-		else{
+		var razonSocial = $("#razonSocial").val();
+		var nombreComercial = $("#nombreComercial").val();
+		var ruc = $("#ruc").val();
+		var dirMatriz = $("#dirMatriz").val();
+		var obligadoContabilidad = $("#obligadoContabilidad").val();
+		var datosString = $("#generafactura").serialize();
+		var dato = '&accion=' + accion+'&id=' + id+'&razonSocial=' + razonSocial+'&nombreComercial=' + nombreComercial+'&ruc=' + ruc+'&dirMatriz=' + dirMatriz+'&obligadoContabilidad=' + obligadoContabilidad;
 			datos = datosString+dato;
 			alert(datos);
 			$.ajax({
 			    type: "POST",
-			    url: "/Github/Interdeco/Controlador/Controller.Participantes.php",
+			    url: "/Github/Interdeco/Controlador/Controller.Facturacion.php",
 			    data: datos,
 			    success: function(response) {
+			    	//alert(response);
 			    	$('.panel').hide();
+			    	$('.botones').hide();
 			    	if(response == 1){
-			    		alert("No se ha podido Modificar los datos del Participante");
-			    	}
-			    	else if (response == "Exito"){
-			    		$('#myModalLabel1').html('Mensaje !');
-						$('.modal-body').html('<div class="alert alert-info" role="alert">Los datos del Participante han sido Modificados con Exito</div>');
-						$('#myModal1').modal('show');
-			    		$('.panel').hide();
+			    		alert("No se ha podido Generar la Factura");
 			    	}
 			    	else{
-			    		alert(response);
+			    		$('#myModalLabel1').html('Mensaje !');
+						$('.modal-body').html('<div class="alert alert-info" role="alert">'+response+'</div>');
+						$('#myModal1').modal('show');
+			    		$('.panel').hide();
 			    	}
 			    },
 			    error: function(response) {
 			    }
 			});
 			return false;
-		}
+		
 	});
 });

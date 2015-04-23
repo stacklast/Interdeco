@@ -16,6 +16,24 @@
 	 $id = trim($row[0]);
 	}
  ?>
+ <!-- Modal -->
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel1"></h4>
+      </div>
+      <div class="modal-body">
+      </div>
+      <div class="modal-footer">
+        <input type="hidden" id="identificador" name="identificador">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <input type="hidden" id="navegacion" value="Facturacion">
 	<div class="row">
 		<div class="col-md-12 alert alert-warning">
@@ -60,15 +78,16 @@
 		    </form>
 		</div>
 
-		<div class="panel panel-primary">
+		<div class="panel panel-primary" style="display:none;">
 			<div class="panel-heading">Comprobación de Datos para la Factura</div>
 			<div class="panel-body">
-				<form class="form-horizontal" id="companias" name="companias" style="display:block;">
+				<form class="form-horizontal" id="generafactura" name="generafactura" style="display:block;">
 		    	<div class="col-md-12">
 		    		<div class="form-group col-md-4">
 					    <label for="inputPassword3" class="col-sm-4 control-label">Factura Nro.</label>
 					    <div class="col-sm-8">
 					      <input type="text" class="form-control" id="secuencial" name="secuencial" value="00000000<?php echo $id+1; ?>" readonly="readonly">
+					      <input type="hidden" class="form-control" id="codigoNum" name="codigoNum" value="0000000<?php echo $id+1; ?>" readonly="readonly">
 					      <input type="hidden" name="id" id="id">
 					    </div>
 					  </div>
@@ -76,6 +95,7 @@
 					    <label for="inputEmail3" class="col-sm-4 control-label">Fecha</label>
 					    <div class="col-sm-8">
 					      <input type="text" class="form-control" id="fecha" name="fecha" placeholder="Fecha" value="<?php echo date('d/m/Y'); ?>" readonly="readonly">
+					      <input type="hidden" name="fechaemisionclave" id="fechaemisionclave" value="<?php echo date('dmY'); ?>">
 					    </div>
 					  </div>
 					  <div class="form-group col-md-4">
@@ -122,7 +142,7 @@
 						  <div class="form-group col-md-4">
 						    <label for="inputEmail3" class="col-sm-4 control-label">Paquete</label>
 						    <div class="col-sm-8">
-						      <input type="tel" class="form-control" id="descripcion" name="descripcion" placeholder="descripcion" readonly="readonly">
+						      <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="descripcion" readonly="readonly">
 						      <input type="hidden" class="form-control" id="codigoPrincipal" name="codigoPrincipal" placeholder="codigoPrincipal">
 						      <input type="hidden" class="form-control" id="cantidad" name="cantidad" placeholder="cantidad" value="1">
 						    </div>
@@ -136,11 +156,11 @@
 						    </div>
 						  </div>
 		    			<div class="form-group col-md-4">
-						    	<label for="inputEmail3" class="col-sm-4 control-label">Descuento</label>
-						    	<div class="col-sm-8">
-						      	<input type="text" class="form-control" id="descuento" name="descuento" placeholder="Descuento" readonly="readonly">
-						 	 	</div>
-				    		</div>
+						    <label for="inputEmail3" class="col-sm-4 control-label">Descuento</label>
+						    <div class="col-sm-8">
+						      <input type="text" class="form-control" id="totalDescuento" name="totalDescuento" placeholder="Descuento" readonly="readonly">
+						 	 </div>
+				    	</div>
 				    	<div class="form-group col-md-4">
 						    <label for="inputEmail3" class="col-sm-4 control-label">Total</label>
 						    <div class="col-sm-8">
@@ -151,7 +171,7 @@
 		    	</div>
 				</form>
 			</div>
-			<div class="alert alert-info col-md-12">
+			<div class="alert alert-info col-md-12 botones" style="display:none;">
 			<div class="form-group">
 				  <div id="div-modificar" class="form-group col-md-4">
 				    <div class="col-sm-10">

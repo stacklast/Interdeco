@@ -9,6 +9,7 @@
  */
 include ('../Modelo/DAO/Cls.DAO.Facturacion.php'); //incluimos Clase  DAO de Facturacion
 include ('seguridad.php');
+
 /**
  * $ParticipantesDAO variable para instanciar clase
  * @var ClsDAO_Inscripcion
@@ -27,8 +28,9 @@ include ('seguridad.php');
 @$nombreComercial  = NoInjection($_POST['nombreComercial']);//INTERDECO CIA. LTDA. -- Alfanumérico Max. 300
 @$ruc 	           = NoInjection($_POST['ruc']);#13
 @$codDoc		   = "01"; // 01 = Factura  04 = Nota de Credito 05= nota de debito 06= guia de remision 07= comprobante de retencion
-@$estab			   ="001"; 
+@$estab			   ="001";
 @$ptoEmi		   ="001"; // mismo numero de establecimiento donde se va a emitir
+@$serie = $estab.$ptoEmi;
 @$secuencial 	   = NoInjection($_POST['secuencial']);#13
 @$dirMatriz		   = NoInjection($_POST['dirMatriz']);//PICHINCHA / QUITO / JUAN LEON MERA 1574 Y LA PINTA
 /**
@@ -36,7 +38,7 @@ include ('seguridad.php');
  *  					    Info Factura
  *      				   					==================>
  */
-@$fechaEmision 	  	    = date('d/m/y');
+@$fechaEmision 	  	    = date('d/m/Y');
 @$dirEstablecimiento    = $dirMatriz;//PICHINCHA / QUITO / JUAN LEON MERA 1574 Y LA PINTA
 @$contribuyenteEspecial = ""; //vacio ya que no lo es
 @$obligadoContabilidad = NoInjection($_POST['obligadoContabilidad']); // Si caso contrario NA
@@ -46,22 +48,24 @@ include ('seguridad.php');
 @$razonSocialComprador = $nombre." ".$apellido;
 @$pasaporte  	= NoInjection($_POST['pasarporte']);
 @$identificacionComprador  = $pasaporte;
-@$totalSinImpuestos  	= NoInjection($_POST['totalSinImpuestos']);
+@$totalSinImpuestos  	= NoInjection($_POST['precioTotalSinImpuesto']);
 @$totalDescuento  	= NoInjection($_POST['totalDescuento']);
 //totalConImpuestos
 @$codigo  	          = "2";// 2=IVA  3=ICE 5=IRBPNR{Impuesto Redimible a las Botellas Plásticas no retornables}
 @$codigoPorcentaje  	= "0"; //0=0%  2=12%  6=No Ojeto de Impuesto 7=Excento de Iva
-@$descuentoAdicional  	= NoInjection($_POST['descuentoAdicional']);//5% estudiantes
+@$descuentoAdicional  	= $descuento;//5% estudiantes
 @$baseImponible  	    = NoInjection($_POST['baseImponible']); // subtotal - descuento o solo subtotal si esque no hay descuento.
 @$valor  	            = NoInjection($_POST['valor']);//el iva cuanto de  $ para iva
 
-@$descuentoAdicional  	= NoInjection($_POST['descuentoAdicional']);
 @$propina  	= "0.00";
 @$importeTotal  	= $totalSinImpuestos-$totalDescuento;
 @$moneda = "DOLAR";
-
-@$codigoverificador = $fechaEmision.$codDoc.$ruc.$ambiente.$serie.$secuencial.$codigoNum.$tipoEmision;
-@$claveAcceso	   = '';
+@$fechaEmisionClave 	  	    = NoInjection($_POST['fechaemisionclave']);
+@$codigoNum = NoInjection($_POST['codigoNum']);
+@$codigoverificador = $fechaEmisionClave.$codDoc.$ruc.$ambiente.$serie.$secuencial.$codigoNum.$tipoEmision;
+@$modulo11 = $FacturacionDAO->Modulo11($codigoverificador);
+@$claveAcceso	   = $codigoverificador.$modulo11;
+//echo $claveAcceso;
 /**
  * <!=====================
  *  					    Detalle
@@ -71,7 +75,7 @@ include ('seguridad.php');
 @$descripcion  	    = NoInjection($_POST['descripcion']);
 @$cantidad  	    = NoInjection($_POST['cantidad']);
 @$precioUnitario  	= NoInjection($_POST['precioUnitario']);
-@$descuento  	            = NoInjection($_POST['descuento']);
+@$descuento  	            = $totalDescuento ;
 @$precioTotalSinImpuesto  	= NoInjection($_POST['precioTotalSinImpuesto']);
 @$precioUnitario  	= NoInjection($_POST['precioUnitario']);
 /**
@@ -90,48 +94,10 @@ include ('seguridad.php');
 @$procesar 	= NoInjection($_POST['accion']);
 if(isset($procesar)){
 	if($procesar == "Facturacion"){
-
-		 $InsertarParticipante = array("1","".$fecha."","".$fechainicio."",
-		 	"".$fechafin."","".$nombre."","".$apellido."","".$genero."","".$fechana."",
-		 	"".$pasaporte."","".$nacionalidad."","".$direccion."","".$pais."","".$provincia."",
-		 	"".$ciudad."","".$zip."","".$telefono."","".$email."","".$estado."","".$agente."",
-		 	"".$infovuelo."","".$hospedaje."","".$comentario."","".$segurodeviaje."",
-		 	"".$ticketaereo."");
-		@$idparticipante =  $InscripcionDAO->InsertarParticipante($InsertarParticipante,$email,$pasaporte);
-		echo "idparticipante = "+$idparticipante;
-		$InsertarPar_Paq = array("".$idparticipante."","".$paquete."");
-		echo "paquete = "+$InscripcionDAO->InsertarPar_Paq($InsertarPar_Paq);
-
-		if($condicionmedica != " " or $nombrecontacto != " " or $apellidocontacto != " "
-			or $telefonocontacto != " " or $emailcontacto != " "){
-			$InsertarContactoEmergencia = array("".$idparticipante."","".$condicionmedica."",
-				"".$nombrecontacto."","".$apellidocontacto."","".$telefonocontacto."",
-				"".$emailcontacto."");
-			$InscripcionDAO->InsertarContactoEmergencia($InsertarContactoEmergencia);
-		}
-		if($ocupacion != " " or $intereses != " " or $estudios != " "or $nombre_escuela != " "
-		 or $trabajo != " " or $redessociales != " " or $encuentro != " " or $comparacion != " " or $trip != " "){
-			$InsertarDetallesPersonales = array("".$idparticipante."","".$ocupacion."","".$intereses."",
-				"".$estudios."","".$nombre_escuela."","".$trabajo."","".$redessociales."","".$encuentro."",
-				"".$comparacion."","".$trip."");
-			$InscripcionDAO->InsertarDetallesPersonales($InsertarDetallesPersonales);
-		}
-
-		if($paquete2 != "SelectProgram2"){
-			$InsertarPar_Paq2 = array("".$idparticipante."","".$paquete2."");
-			$InscripcionDAO->InsertarPar_Paq($InsertarPar_Paq2);
-		}
-		if($transferencia == "si"){
-			$InsertarTransporte = array("".$idparticipante."","".$cantidadtransporte."",
-				"".$desdetransporte."","".$hastatransporte."");
-			$InscripcionDAO->InsertarTransporte($InsertarTransporte);
-		}
-		if($extranoche == "si"){
-			$InsertarNochesExtras = array("".$idparticipante."","".$lugar."","".$cantidad."",
-				"".$hospedaje."","".$desde."","".$hasta."");
-			$InscripcionDAO->InsertarNochesExtras($InsertarNochesExtras);
-		}
-		echo "Datos Ingresados";
+		include ('xml.php');
+		echo "Factura Generada Correctamente y sin errores<br> 
+				<a target='_blank' href='/GitHub/Interdeco/Controlador/xml/".$pasaporte.$fechaEmisionClave.$secuencial.".xml'>VER XML</a><br>
+				 <a target='_blank' href='/GitHub/Interdeco/Controlador/xml/descarga.php?val1=".$pasaporte."&val2=".$fechaEmisionClave."&val3=".$secuencial."'>DESCARGAR XML</a> <a href=''>RISE</a>";
 	}
 	if($procesar == "ObtenerPaquete")
 	{
