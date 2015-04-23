@@ -47,7 +47,6 @@ $(document).ready(function(){
 													url: "/Github/Interdeco/Controlador/Controller.Pago.php",
 													data: 'id=' + id +'&accion='+ accion2,
 													success: function(response) {
-														
 															var miArray2 = new Array();
 															var json = $.parseJSON(''+response+'');
 																$(json).each(function(i,val){
@@ -80,8 +79,8 @@ $(document).ready(function(){
 	 *  Mantenimiento de la tabla par_participantes
 	 *  MODIFICAR
 	 */
-	$("#actualizarParticipante").click(function(){
-		var accion = "ModificarParticipante";
+	$("#generarFactura").click(function(){
+		var accion = "generarFactura";
 		var id = $("#id").val();
 		var compania = "1";
 		var nombre = $("#nombre").val();
