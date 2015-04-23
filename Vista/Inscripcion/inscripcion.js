@@ -104,7 +104,7 @@ $(document).ready(function () {
 		var validacion_email = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
 		var datosString = $("#aplicationform").serialize();
 		datos = datosString+"&redessociales = "+redessociales+"&accion="+accion;
-		alert(datos);
+		//alert(datos);
 		if(nombre == ""){
 			$("#nombre").focus();
 			alert('(*)Campo Obligatorio: Ingrese nombre');
@@ -112,7 +112,7 @@ $(document).ready(function () {
 		}
 		else if(apellido == ""){
 			$("#apellido").focus();
-			alert('(*)Campo Obligatorio: Ingrese nombre');
+			alert('(*)Campo Obligatorio: Ingrese apellido');
 			return false;
 		}
 		else if(email == "" || !validacion_email.test(email)){

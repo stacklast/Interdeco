@@ -37,6 +37,10 @@ if(isset($procesar)){
  		 				  "".$fecha."","".$observacion."","".$estado."");
 	 	echo $PagoDAO->InsertarPago($insertar);
 	}
+	if($procesar == "consultaPago"){
+		
+	 	echo json_encode($PagoDAO->ConsultarPago($id));
+	}
 }
 else{
 	echo "Se ha Enviado una petición Errónea: Controller.Usuarios.php";

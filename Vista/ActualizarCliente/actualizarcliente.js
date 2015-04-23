@@ -7,7 +7,7 @@ $(document).ready(function(){
 	$('#BusquedaParticipante').click(function() {
 		var accion = "ConsultarParticipante";
 		var cliente = $('#buscarcliente').val();
-		alert(cliente);
+		//alert(cliente);
 		$.ajax({
 				type: "POST",
 				url: "/Github/Interdeco/Controlador/Controller.Participantes.php",

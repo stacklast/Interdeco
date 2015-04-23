@@ -79,7 +79,7 @@ if ( strpos($file, '/') !== FALSE )
             <!-- /.navbar-header -->
 
             <ul class="nav navbar-top-links navbar-right">
-                <li class="dropdown">
+                <!--<li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
@@ -126,7 +126,7 @@ if ( strpos($file, '/') !== FALSE )
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         </li>
-                    </ul>
+                    </ul>-->
                     <!-- /.dropdown-messages -->
                 </li>
                 <!-- /.dropdown -->
@@ -261,22 +261,22 @@ if ( strpos($file, '/') !== FALSE )
                             <!-- /.nav-second-level -->
                         </li>
                         <li id="menu-comprobantes">
-                            <a href="#"><i class="glyphicon glyphicon-file"></i> Comprobantes Electrónicos<span class="fa arrow"></span></a>
+                            <a href="#"><i class="glyphicon glyphicon-file"></i>Comprobantes Electrónicos<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a id="menu-facturacion" href="<?php echo $domain; ?>/Vista/Facturacion/">Facturacion</a>
                                 </li>
-                                <li>
+                                <!--<li>
                                     <a id="menu-companias" href="<?php echo $domain; ?>/Vista/Mantenimiento/Companias/">Nota de Crédito</a>
                                 </li>
                                 <li>
                                     <a id="menu-programas" href="<?php echo $domain; ?>/Vista/Mantenimiento/Programas/">Comprobante de Retención</a>
-                                </li>
+                                </li>-->
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li id="menu-mantenimientos">
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> Mantenimientos<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i> CRUD de Datos<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a id="menu-usuarios" href="<?php echo $domain; ?>/Vista/Mantenimiento/Usuarios/">Usuarios</a>
@@ -290,9 +290,9 @@ if ( strpos($file, '/') !== FALSE )
                                 <li>
                                     <a id="menu-participantes" href="<?php echo $domain; ?>/Vista/Mantenimiento/Participantes/">Participantes</a>
                                 </li>
-                                <li>
+                                <!--<li>
                                     <a id="menu-programas" href="<?php echo $domain; ?>/Vista/Mantenimiento/Programas/">Planes y Programas</a>
-                                </li>
+                                </li>-->
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>

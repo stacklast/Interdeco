@@ -69,5 +69,21 @@ class ClsDAO_Pago
 			return 'Se ha generado una Exception al Agregar Nuevo Pago: '.$e;
 		}
 	}
+	public function ConsultarPago($id)
+	{
+		try{
+			$this->_consulta = $this->_tablaPago->getRecords("PAR_ID='$id'",false,1);
+			if($this->_consulta)
+				{
+					return $this->_consulta;
+				}
+				else
+				{
+					return "1";
+				}
+		}catch (Exception $e){
+			return 'Se ha generado una Exception al Agregar Nuevo Participante: '.$e;
+		}
+	}
 }
 ?>

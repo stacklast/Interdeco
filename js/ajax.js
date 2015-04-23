@@ -250,7 +250,7 @@ $(document).ready(function(){
 		}
 		else{
 			datos = datosString+dato;
-			alert(datos);
+			//alert(datos);
 			$.ajax({
 			    type: "POST",
 			    url: "/Github/Interdeco/Controlador/Controller.Programas.php",
@@ -664,7 +664,7 @@ $(document).ready(function(){
 		}
 		else{
 			datos = datosString+dato;
-			alert(datos);
+			//alert(datos);
 			$.ajax({
 			    type: "POST",
 			    url: "/Github/Interdeco/Controlador/Controller.Participantes.php",
@@ -1459,7 +1459,7 @@ $(document).ready(function(){
 		}
 		else{
 			datos = datosString+dato;
-			alert(datos);
+			//alert(datos);
 			$.ajax({
 			    type: "POST",
 			    url: "/Github/Interdeco/Controlador/Controller.Companias.php",
