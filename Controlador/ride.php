@@ -1,4 +1,17 @@
-<?php $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco"; ?>
+<?php
+$domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco"; 
+$id = $_GET['id'];
+$claveAcceso = $_GET['claveAcceso'];
+$id = $_GET['id'];
+$id = $_GET['id'];
+$id = $_GET['id'];
+$id = $_GET['id'];
+$id = $_GET['id'];
+$id = $_GET['id'];
+$id = $_GET['id'];
+$id = $_GET['id'];
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -117,7 +130,7 @@
 											<tr>
 												<td>
 													<p>
-														<span style="font-size:20px;">Nro.</span> 001-001-00000001
+														<span style="font-size:20px;">Nro.</span> 001-001-0000000<?php echo $id; ?>
 													</p>
 												</td>
 											</tr>
@@ -131,7 +144,7 @@
 											<tr>
 												<td>
 
-														112654322344545644345443453453455443453
+														<?php echo date('dmYhms') ?>
 
 												</td>
 											</tr>
@@ -143,7 +156,7 @@
 																<strong>FECHA Y HORA DE AUTORIZACIÓN:</strong>
 															</td>
 															<td>
-																2015-01-21T17:01:57.247-05:00
+																2015-04-23T14:20:57.247-05:00
 															</td>
 														</tr>
 													</table></p>
@@ -167,7 +180,7 @@
 												<td>
 													<p>
 														<strong><span style="font-size:20px;">CLAVE DE ACCESO:</span></strong>
-														<br><br><br><br><br><br>
+														<?php echo $claveAcceso ?>
 													</p>
 												</td>
 											</tr>

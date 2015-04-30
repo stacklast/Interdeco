@@ -63,7 +63,7 @@ $domain = "http://".$_SERVER['SERVER_NAME']."/github/Interdeco";
             <h4 class="modal-title" id="myModalLabel">Advertencia!</h4>
           </div>
           <div class="modal-body">
-            Los 2 Datos ingresados son Incorrectos      
+            Los 2 Datos  email y contraseña ingresados son Incorrectos
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-info" data-dismiss="modal">Cerrar</button>

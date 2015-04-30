@@ -92,7 +92,7 @@ $(document).ready(function(){
 		var datosString = $("#generafactura").serialize();
 		var dato = '&accion=' + accion+'&id=' + id+'&razonSocial=' + razonSocial+'&nombreComercial=' + nombreComercial+'&ruc=' + ruc+'&dirMatriz=' + dirMatriz+'&obligadoContabilidad=' + obligadoContabilidad;
 			datos = datosString+dato;
-			alert(datos);
+			//alert(datos);
 			$.ajax({
 			    type: "POST",
 			    url: "/Github/Interdeco/Controlador/Controller.Facturacion.php",
@@ -105,7 +105,7 @@ $(document).ready(function(){
 			    		alert("No se ha podido Generar la Factura");
 			    	}
 			    	else{
-			    		$('#myModalLabel1').html('Mensaje !');
+			    		$('#myModalLabel1').html('Mensaje Emisión de Factura!');
 						$('.modal-body').html('<div class="alert alert-info" role="alert">'+response+'</div>');
 						$('#myModal1').modal('show');
 			    		$('.panel').hide();

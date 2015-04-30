@@ -241,7 +241,7 @@
 				  </div>
 				  <div id="div-cancelar" class="form-group col-md-2">
 				    <div class="col-sm-10">
-				      <a id="cancelarActualizar" type="botton" class="btn btn-danger"><span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span> Cancelar</a>
+				      <a id="cancelarFactura" type="botton" class="btn btn-danger"><span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span> Cancelar</a>
 				    </div>
 				  </div>
 		    </div>

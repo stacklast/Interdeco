@@ -126,7 +126,8 @@ $(document).ready(function () {
 			    url: "/Github/Interdeco/Controlador/Controller.Inscripcion.php",
 			    data: datos,
 			    success: function(response) {
-				   alert(response);
+				   alert("Inscripcion Satisfactoria");
+				   location.reload();
 			    },
 			    error: function(response) {
 			    	alert(response);

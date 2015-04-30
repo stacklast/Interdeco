@@ -95,9 +95,11 @@ include ('seguridad.php');
 if(isset($procesar)){
 	if($procesar == "Facturacion"){
 		include ('xml.php');
-		echo "Factura Generada Correctamente y sin errores<br> 
-				<a target='_blank' href='/GitHub/Interdeco/Controlador/xml/".$pasaporte.$fechaEmisionClave.$secuencial.".xml'>VER XML</a><br>
-				 <a target='_blank' href='/GitHub/Interdeco/Controlador/xml/descarga.php?val1=".$pasaporte."&val2=".$fechaEmisionClave."&val3=".$secuencial."'>DESCARGAR XML</a> <a href=''>RISE</a>";
+		echo "<h4>Factura Generada Correctamente y sin errores!</h4> 
+			  <strong>Cliente</strong>".$razonSocialComprador."<br><br>
+			  <strong>CI/RUC/PASP:</strong>".$pasaporte."<br><br>
+				<a  target='_blank' href='/GitHub/Interdeco/Controlador/xml/".$pasaporte.$fechaEmisionClave.$secuencial.".xml'>VER XML</a><br><br>
+				 <a  target='_blank' href='/GitHub/Interdeco/Controlador/xml/descarga.php?val1=".$pasaporte."&val2=".$fechaEmisionClave."&val3=".$secuencial."'>DESCARGAR XML</a>";
 	}
 	if($procesar == "ObtenerPaquete")
 	{

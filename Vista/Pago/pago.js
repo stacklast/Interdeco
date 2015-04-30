@@ -7,7 +7,7 @@ $(document).ready(function(){
 	$('#BusquedaParticipantePago').click(function() {
 		var accion = "ConsultarParticipante";
 		var cliente = $('#buscarclientepago').val();
-		alert(cliente);
+		//alert(cliente);
 		$.ajax({
 				type: "POST",
 				url: "/Github/Interdeco/Controlador/Controller.Participantes.php",
@@ -68,7 +68,7 @@ $(document).ready(function(){
 		}
 		else{
 			datos = datosString+dato;
-			alert(datos);
+			//alert(datos);
 			$.ajax({
 			    type: "POST",
 			    url: "/Github/Interdeco/Controlador/Controller.Pago.php",

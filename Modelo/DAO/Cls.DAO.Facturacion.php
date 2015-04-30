@@ -133,6 +133,29 @@ class ClsDAO_Facturacion
 				);  //instanciamos base de datos
 	}
 
+	public function InsertarParticipante($arrayDatos,$email,$pasaporte)
+	{
+		try{
+			 $this->_resultado = $this->_tablaParticipantes->insertRecord($arrayDatos);
+			if($this->_resultado)
+			{
+				$this->_consulta = $this->_tablaParticipantes->getRecords("PAR_EMAIL='$email' AND PAR_NUMERO_PASAPORTE = '$pasaporte' ",false,1);
+				if($this->_consulta)
+				{
+					 $this->_idParticipante = $this->_consulta[0]['PAR_ID'];
+
+					 return $this->_idParticipante;
+				}
+			}
+			else
+			{
+				return "1";
+			}
+		}catch (Exception $e){
+			return 'Se ha generado una Exception al Agregar Nuevo Participante: '.$e;
+		}
+	}
+	
 	public function ObtenerPaquete($idParticipante)
 	{
 		try{

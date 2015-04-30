@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<factura id="comprobante" version="1.1.0">
+  <infoTributaria>
+    <ambiente>1</ambiente>
+    <tipoEmision>1</tipoEmision>
+    <razonSocial>INTERDECO NEGOCIOS Y DESARROLLO INTERNACIONAL CIA. LTDA.</razonSocial>
+    <nombreComercial>INTERDECO S.A</nombreComercial>
+    <ruc>1792027039001</ruc>
+    <claveAcceso>2304201501179202703900110010010000000020000000219</claveAcceso>
+    <codDoc>01</codDoc>
+    <estab>001</estab>
+    <ptoEmi>001</ptoEmi>
+    <secuencial>000000002</secuencial>
+    <dirMatriz>PICHINCHA / QUITO / JUAN LEON MERA 1574 Y LA PINTA</dirMatriz>
+  </infoTributaria>
+  <infoFactura>
+    <fechaEmision>23/04/2015</fechaEmision>
+    <dirEstablecimiento>PICHINCHA / QUITO / JUAN LEON MERA 1574 Y LA PINTA</dirEstablecimiento>
+    <contribuyenteEspecial/>
+    <obligadoContabilidad>SI</obligadoContabilidad>
+    <tipoIdentificadorComprador>06</tipoIdentificadorComprador>
+    <razonSocialComprador>Edwin Edw</razonSocialComprador>
+    <identificacionComprador>1231231</identificacionComprador>
+    <totalSinImpuestos>150.00</totalSinImpuestos>
+    <totalDescuento>0.00</totalDescuento>
+    <totalConImpuestos>
+      <totalImpuesto>
+        <codigo>2</codigo>
+        <codigoPorcentaje>0</codigoPorcentaje>
+        <descuentoAdicional>0.00</descuentoAdicional>
+        <baseImponible>150.00</baseImponible>
+        <valor>0.00</valor>
+      </totalImpuesto>
+    </totalConImpuestos>
+    <propina>0.00</propina>
+    <importeTotal>150.00</importeTotal>
+    <moneda>DOLAR</moneda>
+  </infoFactura>
+  <detalles>
+    <codigoPrincipal>003</codigoPrincipal>
+    <descripcion>1</descripcion>
+    <cantidad>1</cantidad>
+    <precioUnitario>150</precioUnitario>
+    <descuento>0</descuento>
+    <precioTotalSinImpuesto>150</precioTotalSinImpuesto>
+    <impuestos>
+      <impuesto>
+        <codigo>2</codigo>
+        <codigoPorcentaje>0</codigoPorcentaje>
+        <descuentoAdicional>0.00</descuentoAdicional>
+        <baseImponible>150.00</baseImponible>
+        <valor>0.00</valor>
+      </impuesto>
+    </impuestos>
+  </detalles>
+  <infoAdicional>
+    <campoAdicional nombre="Direccion">asdasdsadsada</campoAdicional>
+    <campoAdicional nombre="Email">demo@demo.com</campoAdicional>
+    <campoAdicional nombre="Telefono">12312321</campoAdicional>
+  </infoAdicional>
+</factura>
